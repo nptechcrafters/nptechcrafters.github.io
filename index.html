@@ -2,970 +2,667 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NP TechCrafters - Virtual Internships & Live Projects</title>
-  <meta name="description"
-    content="MSME-approved EdTech | Virtual Internships in Web, Mobile, AI, Design | Live Projects" />
-  <link rel="icon" href="https://i.postimg.cc/sgkt3F0D/NPTECH.jpg" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NP TechCrafters | Build The Future</title>
+    <meta name="description" content="MSME-approved EdTech | Virtual Internships in Web, Mobile, AI, Design | Live Projects" />
+    
+    <link rel="icon" href="https://i.postimg.cc/sgkt3F0D/NPTECH.jpg" />
 
-  <style>
-    :root {
-      --primary: #6366f1;
-      --accent: #a78bfa;
-      --pink: #ec4899;
-      --dark: #0f172a;
-      --light: #f8fafc;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    [data-bs-theme="light"] {
-      --bg: #ffffff;
-      --text: #1e293b;
-      --glass: rgba(0, 0, 0, 0.05);
-      --glass-border: rgba(0, 0, 0, 0.1);
-    }
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-    [data-bs-theme="dark"] {
-      --bg: #0f172a;
-      --text: #e2e8f0;
-      --glass: rgba(255, 255, 255, 0.08);
-      --glass-border: rgba(255, 255, 255, 0.15);
-    }
+    <style>
+        :root {
+            /* Modern Palette */
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.5);
+            --accent: #06b6d4;
+            --dark-bg: #030712; /* Deepest Obsidian */
+            --card-bg: #111827;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --glass: rgba(17, 24, 39, 0.7);
+        }
 
-    * {
-      scroll-behavior: smooth;
-    }
+        [data-bs-theme="light"] {
+            --dark-bg: #ffffff;
+            --card-bg: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --glass: rgba(255, 255, 255, 0.8);
+        }
 
-    body {
-      font-family: "Poppins", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      transition: all 0.5s;
-      overflow-x: hidden;
-    }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-    /* Navbar - Perfectly adapts to Light/Dark mode */
-    .navbar {
-      background: rgba(15, 23, 42, 0.95) !important;
-      backdrop-filter: blur(16px);
-      padding: 1rem 0;
-      transition: all 0.5s;
-      z-index: 1000;
-    }
+        /* --- Navbar --- */
+        .navbar {
+            padding: 1rem 0;
+            background: rgba(3, 7, 18, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
 
-    [data-bs-theme="light"] .navbar {
-      background: rgba(255, 255, 255, 0.95) !important;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    }
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+            color: var(--text-main) !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    [data-bs-theme="light"] .nav-link {
-      color: #1e293b !important;
-    }
+        .navbar-brand img {
+            height: 40px;
+            border-radius: 12px;
+        }
 
-    [data-bs-theme="light"] .nav-link::after {
-      background: var(--primary);
-    }
+        .nav-link {
+            color: var(--text-muted) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
 
-    [data-bs-theme="light"] .navbar-toggler {
-      color: #1e293b;
-      border-color: #1e293b;
-    }
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary) !important;
+        }
 
-    [data-bs-theme="light"] .navbar-toggler i {
-      color: #1e293b;
-    }
+        .btn-nav {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 0 15px var(--primary-glow);
+            transition: transform 0.2s;
+        }
+        .btn-nav:hover { transform: translateY(-2px); }
 
-    .navbar.scrolled {
-      padding: 0.6rem 0;
-    }
+        /* --- Hero Section --- */
+        #hero {
+            position: relative;
+            padding-top: 140px;
+            padding-bottom: 100px;
+            overflow: hidden;
+        }
 
-    .navbar-brand img {
-      height: 50px;
-      border-radius: 50%;
-      transition: 0.4s;
-    }
+        /* Ambient Background Glows */
+        .ambient-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            opacity: 0.15;
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 10s infinite ease-in-out;
+        }
+        .glow-1 { top: -100px; right: -100px; background: var(--accent); }
+        .glow-2 { bottom: -100px; left: -100px; background: var(--primary); }
 
-    .navbar-brand img:hover {
-      transform: rotate(360deg);
-    }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, 40px); }
+        }
 
-    .nav-link {
-      color: white !important;
-      font-weight: 500;
-      position: relative;
-      margin: 0 15px;
-    }
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--text-main) 30%, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
 
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      width: 0;
-      height: 3px;
-      background: var(--accent);
-      transition: 0.4s;
-      transform: translateX(-50%);
-    }
+        .hero-subtitle {
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
 
-    .nav-link:hover::after,
-    .nav-link.active::after {
-      width: 80%;
-    }
+        /* --- Cards & Bento Grid --- */
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
 
-    /* Hero */
-    #hero {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      position: relative;
-      overflow: hidden;
-    }
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+            z-index: -1;
+        }
 
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 20% 80%,
-          rgba(167, 139, 250, 0.4),
-          transparent 60%),
-        radial-gradient(circle at 80% 20%,
-          rgba(236, 72, 153, 0.3),
-          transparent 60%);
-      animation: floatBg 25s infinite linear;
-    }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3);
+        }
 
-    @keyframes floatBg {
-      0% {
-        transform: translate(0, 0);
-      }
+        .glass-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
 
-      100% {
-        transform: translate(100px, -100px);
-      }
-    }
+        /* --- About Section --- */
+        .section-tag {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
 
-    .particles span {
-      position: absolute;
-      background: #fff;
-      border-radius: 50%;
-      opacity: 0.7;
-      animation: float 20s infinite linear;
-    }
+        /* --- Team --- */
+        .team-img-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .team-img-wrapper img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
 
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) rotate(0);
-      }
+        .team-card:hover img {
+            transform: scale(1.05);
+        }
 
-      100% {
-        transform: translateY(-100px) rotate(360deg);
-      }
-    }
+        /* --- Marquee for Clients --- */
+        .marquee-wrapper {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        
+        .marquee-wrapper::before, .marquee-wrapper::after {
+            content: "";
+            position: absolute;
+            top: 0; width: 150px; height: 100%;
+            z-index: 2;
+        }
+        .marquee-wrapper::before { left: 0; background: linear-gradient(to right, var(--dark-bg), transparent); }
+        .marquee-wrapper::after { right: 0; background: linear-gradient(to left, var(--dark-bg), transparent); }
 
-    .text-gradient {
-      background: linear-gradient(90deg, #fff, #a78bfa, #ec4899);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        
+        .client-logo {
+            height: 60px;
+            margin: 0 40px;
+            filter: grayscale(100%) opacity(0.6);
+            transition: all 0.3s;
+        }
+        
+        .client-logo:hover {
+            filter: grayscale(0%) opacity(1);
+        }
 
-    .btn-glow {
-      background: white;
-      color: var(--primary);
-      padding: 16px 40px;
-      border-radius: 50px;
-      font-weight: 700;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-      transition: all 0.4s;
-    }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
-    .btn-glow:hover {
-      transform: translateY(-10px);
-      background: var(--accent);
-      color: white;
-      box-shadow: 0 25px 50px rgba(167, 139, 250, 0.6);
-    }
+        /* --- Footer --- */
+        footer {
+            border-top: 1px solid var(--border-color);
+            background: #020617;
+            padding-top: 5rem;
+            padding-bottom: 2rem;
+        }
 
-    .floating {
-      animation: floatUp 6s ease-in-out infinite;
-    }
+        /* --- Utilities --- */
+        .btn-glow {
+            background: linear-gradient(135deg, var(--primary), #4f46e5);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 0 25px var(--primary-glow);
+            transform: translateY(-2px);
+            color: white;
+        }
 
-    @keyframes floatUp {
+        .text-gradient {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-      0%,
-      100% {
-        transform: translateY(0);
-      }
+        /* Theme Toggle */
+        #themeToggle {
+            cursor: pointer;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-main);
+            transition: 0.3s;
+        }
+        #themeToggle:hover { border-color: var(--primary); color: var(--primary); }
 
-      50% {
-        transform: translateY(-30px);
-      }
-    }
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #25d366; color: white;
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); color: white;}
 
-    .glow-circle {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle,
-          rgba(167, 139, 250, 0.4),
-          transparent 70%);
-      border-radius: 50%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: -1;
-      animation: pulse 5s infinite alternate;
-    }
-
-    @keyframes pulse {
-      from {
-        transform: translate(-50%, -50%) scale(1);
-      }
-
-      to {
-        transform: translate(-50%, -50%) scale(1.2);
-      }
-    }
-
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .about-left h2 {
-      font-size: 3.8rem;
-      line-height: 1.2;
-    }
-
-    .about-right {
-      background: var(--glass);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      border-radius: 32px;
-      padding: 3rem;
-    }
-
-    .feature-item {
-      display: flex;
-      align-items: center;
-      margin: 2.5rem 0;
-    }
-
-    .feature-icon {
-      width: 70px;
-      height: 70px;
-      background: linear-gradient(135deg, var(--primary), var(--pink));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: white;
-      margin-right: 1.5rem;
-      flex-shrink: 0;
-    }
-
-    /* Services - Elegant No-Card Style */
-    .services-wrapper {
-      background: var(--glass);
-      backdrop-filter: blur(20px);
-      border-radius: 40px;
-      padding: 4.5rem 3rem;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(167, 139, 250, 0.2);
-    }
-
-    .services-wrapper::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: conic-gradient(from 0deg at 50% 50%,
-          transparent,
-          rgba(167, 139, 250, 0.15) 90deg,
-          transparent 180deg);
-      opacity: 0.6;
-      animation: rotate 30s linear infinite;
-    }
-
-    @keyframes rotate {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .service-elegant {
-      text-align: center;
-      padding: 2rem;
-      transition: all 0.5s;
-      border-radius: 24px;
-    }
-
-    .service-elegant:hover {
-      transform: translateY(-20px);
-      background: rgba(167, 139, 250, 0.1);
-    }
-
-    .service-elegant i {
-      font-size: 4.8rem;
-      background: linear-gradient(135deg, var(--primary), var(--pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1.5rem;
-      display: block;
-    }
-
-    .service-elegant h4 {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-    }
-
-    .service-elegant p {
-      opacity: 0.85;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    /* Team */
-    .team-card {
-      height: 340px;
-      width: 280px;
-      margin: 0 auto;
-      border-radius: 24px;
-      background: var(--card);
-      overflow: hidden;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-      transition: all 0.5s ease;
-      text-align: center;
-      padding-top: 2rem;
-    }
-
-    .team-card:hover {
-      transform: translateY(-20px) scale(1.05);
-      box-shadow: 0 30px 80px rgba(167, 139, 250, 0.4);
-    }
-
-    .team-card img {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      border: 6px solid var(--accent);
-      object-fit: cover;
-    }
-
-    /* Footer */
-    #contact-footer {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: #e2e8f0;
-      padding: 7rem 0 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    [data-bs-theme="light"] #contact-footer {
-      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-      color: #1e293b;
-    }
-
-    #contact-footer::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 6px;
-      background: linear-gradient(90deg,
-          var(--primary),
-          var(--accent),
-          var(--pink));
-    }
-
-    .contact-box {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      padding: 3rem;
-    }
-
-    [data-bs-theme="light"] .contact-box {
-      background: rgba(0, 0, 0, 0.05);
-      border: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .social-links a {
-      width: 55px;
-      height: 55px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 12px;
-      transition: all 0.4s;
-      font-size: 1.4rem;
-    }
-
-    [data-bs-theme="light"] .social-links a {
-      background: rgba(0, 0, 0, 0.08);
-    }
-
-    .social-links a:hover {
-      background: var(--accent);
-      transform: translateY(-12px);
-      box-shadow: 0 20px 40px rgba(167, 139, 250, 0.5);
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #25d366;
-      color: white;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
-      animation: pulse 2s infinite;
-      z-index: 1000;
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-      }
-
-      70% {
-        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-      }
-    }
-
-    #themeToggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--glass);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--glass-border);
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      cursor: pointer;
-      z-index: 1001;
-    }
-    @media only screen and (max-width: 768px) {
-      #brandname{
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        /* margin-right:17%; */
-      }
-       #themeToggle{
-        display: none;
-        /* margin-bottom: 5px; */
-        /* margin-right: 12%; */
-      }
-      .navbar-toggler{
-        /* margin-top: 5px; */
-        /* margin-left: 68%; */
-      }
-      .whatsapp-float{
-        /* margin-right: 5%; */
-      }
-      #aboutcontainer{
-        display: block;
-      }
-    }
-  </style>
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.8rem; }
+            .team-img-wrapper img { height: 280px; }
+        }
+    </style>
 </head>
 
-<body style="margin-top: 1%,1%,0%,1%;">
-  <!-- Theme Toggle -->
-  <div id="themeToggle" onclick="toggleTheme()">
-    <i class="bi bi-moon-stars-fill"></i>
-  </div>
+<body>
 
-  <!-- WhatsApp Float -->
-  <a href="https://wa.me/919149188705" target="_blank" class="whatsapp-float">
-    <i class="bi bi-whatsapp"></i>
-  </a>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#hero"><img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg"
-          alt="NP TechCrafters Logo" /></a><h4 id="brandname" data-aos="fade-left"><b>NP TechCrafters</b></h4>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-        <i class="bi bi-list"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="nav">
-        <ul class="navbar-nav ms-auto align-items-center">
-          <li class="nav-item">
-            <a class="nav-link active" href="#hero">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#services">Services</a>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-          <li class="nav-item">
-            <a class="nav-link" href="#clients">Clients</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact-footer">Contact</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Apply</a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="https://nptechcrafters.pythonanywhere.com/login/" target="_blank">Apply for Virtual
-                  Internship</a>
-              </li>
-              <li><a class="dropdown-item text-muted">Courses (Soon)</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section id="hero" class="d-flex align-items-center text-white position-relative">
-    <div class="hero-bg"></div>
-    <div class="particles">
-      <span style="
-            width: 12px;
-            height: 12px;
-            top: 10%;
-            left: 15%;
-            animation-delay: 0s;
-          "></span>
-      <span style="
-            width: 18px;
-            height: 18px;
-            top: 30%;
-            left: 70%;
-            animation-delay: 3s;
-          "></span>
-      <span style="
-            width: 10px;
-            height: 10px;
-            top: 60%;
-            left: 30%;
-            animation-delay: 6s;
-          "></span>
-      <span style="
-            width: 15px;
-            height: 15px;
-            top: 80%;
-            left: 80%;
-            animation-delay: 9s;
-          "></span>
-    </div>
-    <div class="container" style="margin-top:100px;">
-      <div class="row align-items-center min-vh-100">
-        <div class="col-lg-6" data-aos="fade-up">
-           <h1 class="display-3 fw-bold mb-4">
-            NP <span class="text-gradient">Techcrafters</span>
-          </h1>
-          <h1 class="display-3 fw-bold mb-4">
-            We craft your <span class="text-gradient">ideas!</span>
-          </h1>
-          <p class="lead fs-3 mb-5 typewriter"></p>
-          <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" target="_blank" class="btn btn-glow btn-lg px-5">
-            Get Started</a>
-        </div>
-        <div class="col-lg-6 text-center" data-aos="fade-up" data-aos-delay="200">
-          <div class="floating position-relative d-inline-block">
-            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/hero-img.png"
-              class="img-fluid rounded-4 shadow-lg" alt="Hero Image" />
-            <div class="glow-circle"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="py-5">
-    <div class="container py-5">
-      <div id="aboutcontainer" class="about-grid">
-        <div class="about-left" data-aos="fade-right">
-          <h2 class="display-3 fw-bold">
-           We provide<br /><span class="text-gradient">Virtual Internship</span>
-          </h2>
-          <p class="lead mt-4">
-            MSME-approved EdTech startup delivering real-world experience
-            through live projects & mentorship.
-          </p>
-        </div>
-        <div class="about-right" data-aos="fade-left">
-          <div class="feature-item">
-            <div class="feature-icon"><i class="bi bi-code-slash"></i></div>
-            <div>
-              <h5>Live Projects</h5>
-              <p>Work on real client projects</p>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="Logo">
+                NP TechCrafters
+            </a>
+            
+            <div class="d-flex align-items-center gap-3 order-lg-3">
+                <div id="themeToggle" onclick="toggleTheme()">
+                    <i class="bi bi-moon-stars-fill"></i>
+                </div>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                    <span class="bi bi-list fs-1 text-white"></span>
+                </button>
             </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon"><i class="bi bi-person-check"></i></div>
-            <div>
-              <h5>Industry Mentors</h5>
-              <p>Learn from experienced developers</p>
+
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                </ul>
+                <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" target="_blank" class="btn btn-nav d-none d-lg-block">Apply Now</a>
             </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon"><i class="bi bi-award"></i></div>
-            <div>
-              <h5>Certificate + Portfolio</h5>
-              <p>Build a strong resume & GitHub</p>
+        </div>
+    </nav>
+
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <span class="section-tag"><i class="bi bi-rocket-takeoff me-2"></i>MSME Approved EdTech</span>
+                    <h1 class="hero-title">Crafting Ideas into <br> Digital Reality.</h1>
+                    <p class="hero-subtitle mb-5 typewriter-container">
+                        <span class="typewriter"></span>
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" target="_blank" class="btn btn-glow">Get Started <i class="bi bi-arrow-right ms-2"></i></a>
+                        <a href="#services" class="btn btn-outline-light rounded-3 px-4 py-3 fw-semibold" style="border-color: var(--border-color);">View Services</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0 text-center position-relative" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="position-relative z-1">
+                        <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/hero-img.png" class="img-fluid rounded-4 shadow-lg border border-secondary border-opacity-25" alt="Hero">
+                    </div>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: var(--primary); filter: blur(100px); opacity: 0.3; z-index: 0;"></div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="text-center mt-5" data-aos="fade-up">
-        <h4 data-aos="fade-up">About us</h4>
-        <p class="text-gradient" style="text-align: justify;"data-aos="fade-left">
-          NP TechCrafters is an MSME-approved EdTech startup dedicated to empowering the youth and shaping the future of learning and technology. Our mission is to bridge the gap between academic knowledge and industry requirements by providing students with real-time, hands-on project experience.
-          We strongly believe that skill development is the foundation of a successful career. That is why we offer virtual internships across diverse domains, including Website Development, Data Science, Mobile Application Development, Artificial Intelligence, and Machine Learning. Each internship is carefully designed to give students practical exposure, industry-level tasks, personalized mentorship, and real-world problem-solving experience.
-          Along with internships, NP TechCrafters also offers industry-relevant certification courses in essential technologies such as C, Java, Python, Website Designing, and Full-Stack Development. Our goal is to make every learner job-ready, confident, and capable of building real solutions.
-          At NP TechCrafters, we are committed to supporting students not only with skills but also with career guidance, project-based learning, and continuous mentorship, helping them unlock new opportunities and strengthen their professional journey.
-        </p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Services Section -->
-  <section id="services" class="py-5" style="background: var(--dark)">
-    <div class="container">
-      <h2 class="text-center display-5 fw-bold text-gradient mb-5" data-aos="fade-up">
-        Our Services
-      </h2>
-      <p class="text-gradient" style="text-align: justify;"data-aos="fade-left">
-        At <strong>NP TechCrafters</strong>, we specialize in developing personalized, high-quality software
-        solutions tailored to meet the unique needs of our clients. We believe that every business has 
-        a different vision, and our job is to transform that vision into a digital reality.
-    </p>
-
-    <p class="text-gradient" style="text-align: justify;"data-aos="fade-left">
-        Our development process is built on close collaboration with clients, ensuring that every feature, 
-        design decision, and functionality aligns perfectly with the business goals. From the initial idea 
-        to the final deployment, we maintain transparent communication to ensure our work remains focused 
-        on the desired outcome.
-    </p>
-
-    <h3>We offer a wide range of services including:</h3>
-
-    <ul>
-        <li>Custom Software Development for businesses of all sizes</li>
-        <li>Mobile Application Development (Android & iOS)</li>
-        <li>Website Designing and Full-Stack Development</li>
-        <li>AI &amp; Machine Learning Solutions</li>
-        <li>Data Analytics and Automation Tools</li>
-        <li>Cloud-based Systems and API Integrations</li>
-        <li>Enterprise-Level Digital Solutions</li>
-    </ul>
-
-    <p class="text-gradient" style="text-align: justify;"data-aos="fade-left">
-        Our team is committed to delivering robust, scalable, and future-ready software that helps 
-        businesses grow, become efficient, and stay competitive in the digital world.
-    </p>
-
-    <p class="text-gradient" style="text-align: justify;"data-aos="fade-left">
-        <strong>NP TechCrafters</strong>, as an MSME-approved EdTech and IT development company, continues to 
-        serve both students and enterprises, building innovative solutions while nurturing the next 
-        generation of tech professionals.
-    </p>
-      <ul data-aos="fade-left">
-        <li>
-          We Are Committed To Producing Exceptional Software For Each Of Our
-          Clients.
-        </li>
-        <li>NP TechCrafters is MSME approved Edtech startup</li>
-      </ul>
-      <div class="services-wrapper">
-        <div class="row g-5 justify-content-center">
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-elegant">
-              <i class="bi bi-globe"></i>
-              <h4>Web Development</h4>
-              <p>
-                React • Node.js • Django<br />Full-Stack Websites & Web Apps
-              </p>
+    <section id="services" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-tag">What We Do</span>
+                <h2 class="display-5 fw-bold">Our Expertise</h2>
             </div>
-          </div>
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-elegant">
-              <i class="bi bi-phone"></i>
-              <h4>Mobile Apps</h4>
-              <p>Flutter • React Native<br />Android & iOS Applications</p>
+
+            <div class="row g-4">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="glass-card d-flex flex-column justify-content-center">
+                        <i class="bi bi-code-square"></i>
+                        <h3>Web Development</h3>
+                        <p class="text-muted">High-performance full-stack web applications using React, Node.js, and Django. We build scalable solutions tailored to business needs.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="glass-card">
+                        <i class="bi bi-android2"></i>
+                        <h5>App Dev</h5>
+                        <p class="small text-muted mb-0">Cross-platform apps with Flutter & React Native.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass-card">
+                        <i class="bi bi-cpu"></i>
+                        <h5>AI & ML</h5>
+                        <p class="small text-muted mb-0">Smart algorithms, NLP, and Computer Vision solutions.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="glass-card">
+                        <i class="bi bi-palette"></i>
+                        <h5>UI/UX Design</h5>
+                        <p class="small text-muted mb-0">Modern, user-centric interfaces and branding.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="glass-card">
+                        <i class="bi bi-mortarboard"></i>
+                        <h5>Internships</h5>
+                        <p class="small text-muted mb-0">Virtual internships with live project experience.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="glass-card">
+                        <i class="bi bi-shield-check"></i>
+                        <h3>Enterprise Solutions</h3>
+                        <p class="text-muted">Secure, cloud-based systems for large-scale organizations. Includes data analytics, automation tools, and API integrations.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-elegant">
-              <i class="bi bi-robot"></i>
-              <h4>AI & ML</h4>
-              <p>
-                Machine Learning • NLP<br />Computer Vision • Data Science
-              </p>
+        </div>
+    </section>
+
+    <section id="about" class="py-5 bg-dark-subtle bg-opacity-10">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <span class="section-tag">About Us</span>
+                    <h2 class="fw-bold mb-4 display-6">Bridging the Gap Between <span class="text-gradient">Education & Industry</span></h2>
+                    <p class="text-muted lead fs-6">
+                        NP TechCrafters is an MSME-approved EdTech startup. We don't just teach; we build. Our mission is to provide students with real-time, hands-on project experience while delivering top-tier software solutions to our clients.
+                    </p>
+                    <div class="d-flex gap-4 mt-4">
+                        <div>
+                            <h2 class="fw-bold text-primary mb-0">500+</h2>
+                            <small class="text-muted">Interns</small>
+                        </div>
+                        <div>
+                            <h2 class="fw-bold text-accent mb-0">50+</h2>
+                            <small class="text-muted">Projects</small>
+                        </div>
+                        <div>
+                            <h2 class="fw-bold text-white mb-0">100%</h2>
+                            <small class="text-muted">Satisfaction</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="p-4 rounded-4 border border-secondary border-opacity-10" style="background: var(--card-bg);">
+                        <ul class="list-unstyled mb-0 d-grid gap-3">
+                            <li class="d-flex align-items-center gap-3">
+                                <i class="bi bi-check-circle-fill text-success fs-4"></i>
+                                <span><strong>Virtual Internships:</strong> Work from anywhere.</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3">
+                                <i class="bi bi-check-circle-fill text-success fs-4"></i>
+                                <span><strong>Live Projects:</strong> Real clients, real deadlines.</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3">
+                                <i class="bi bi-check-circle-fill text-success fs-4"></i>
+                                <span><strong>Mentorship:</strong> Guidance from industry experts.</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3">
+                                <i class="bi bi-check-circle-fill text-success fs-4"></i>
+                                <span><strong>Certification:</strong> Validated experience for your resume.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-elegant">
-              <i class="bi bi-palette"></i>
-              <h4>Graphic Design</h4>
-              <p>
-                UI/UX • Branding • Logos<br />Social Media & Marketing Kits
-              </p>
+        </div>
+    </section>
+
+    <section id="team" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-tag">The Minds Behind</span>
+                <h2 class="display-5 fw-bold">Meet The Team</h2>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Section -->
-  <section id="team" class="py-5">
-    <div class="container">
-      <h2 class="text-center display-5 fw-bold text-gradient mb-5" data-aos="fade-up">
-        Our Team
-      </h2>
-      <div class="row g-5 justify-content-center">
-        <h2 class="display-10 fw-bold"data-aos="fade-right">
-          We Are a Team of Talented Developers<br /><span class="text-gradient">and Designers making Projects, Websites
-            & Mobile Applications
-            etc.</span>
-        </h2>
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-          <div class="team-card">
-            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/niksheppaliwal.jpg" alt="Nikshep Paliwal" />
-            <h5 class="mt-3">Nikshep Paliwal</h5>
-            <p>Founder & Chief Executive Officer</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-          <div class="team-card">
-            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/66714632.jpg" alt="Chandan Saroj" />
-            <h5 class="mt-3">Chandan Saroj</h5>
-            <p>Co-Founder & Chief Technology Officer</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-          <div class="team-card">
-            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/111854114.jpg" alt="Vishal" />
-            <h5 class="mt-3">Vishal</h5>
-            <p>Co-Founder & Lead Developer</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-          <div class="team-card">
-            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/68648513.jpg" alt="Rahul Bhaskar" />
-            <h5 class="mt-3">Rahul Bhaskar</h5>
-            <p>Co-Founder & Administrator</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-          <div class="team-card">
-            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/photo.jpeg" alt="Ravikant" />
-            <h5 class="mt-3">Ravikant Mahi</h5>
-            <p>Software Developer</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-          <div class="team-card">
-            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/aman-img.png" alt="Aman Choudhary" />
-            <h5 class="mt-3">Aman Choudhary</h5>
-            <p>Web Developer</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clients Section -->
-  <section id="clients" class="py-5" style="background: var(--dark)">
-    <div class="container">
-      <h2 class="text-center display-5 fw-bold text-gradient mb-5" data-aos="fade-up">
-        Our Clients
-      </h2>
-      <div id="clientsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-        <div class="carousel-inner text-center">
-          <div class="carousel-item active p-5">
-            <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" height="120" alt="Xpert Corner Institute" />
-            <h5 class="mt-3 text-gradient" data-aos="fade-up">Xpert Corner Institute</h5>
-            <p>
-              Educational institute focused on skill development and training.
-            </p>
-          </div>
-          <div class="carousel-item p-5">
-            <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" height="120" alt="GK Almirah" />
-            <h5 class="mt-3 text-gradient" data-aos="fade-up">GK Almirah</h5>
-            <p>Leading manufacturer of premium storage solutions.</p>
-          </div>
-          <div class="carousel-item p-5">
-            <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
-              style="width: 120px; height: 120px">
-              <i class="bi bi-building fs-1 text-muted"></i>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                    <div class="team-card text-center">
+                        <div class="team-img-wrapper">
+                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/niksheppaliwal.jpg" alt="Nikshep">
+                        </div>
+                        <h4 class="fw-bold mb-1">Nikshep Paliwal</h4>
+                        <p class="text-primary small fw-bold uppercase">Founder & CEO</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-card text-center">
+                        <div class="team-img-wrapper">
+                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/66714632.jpg" alt="Chandan">
+                        </div>
+                        <h4 class="fw-bold mb-1">Chandan Saroj</h4>
+                        <p class="text-primary small fw-bold uppercase">Co-Founder & CTO</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-card text-center">
+                        <div class="team-img-wrapper">
+                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/111854114.jpg" alt="Vishal">
+                        </div>
+                        <h4 class="fw-bold mb-1">Vishal</h4>
+                        <p class="text-primary small fw-bold uppercase">Lead Developer</p>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-card text-center">
+                        <div class="team-img-wrapper">
+                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/68648513.jpg" alt="Rahul">
+                        </div>
+                        <h4 class="fw-bold mb-1">Rahul Bhaskar</h4>
+                        <p class="text-primary small fw-bold uppercase">Administrator</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="team-card text-center">
+                        <div class="team-img-wrapper">
+                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/photo.jpeg" alt="Ravikant">
+                        </div>
+                        <h4 class="fw-bold mb-1">Ravikant Mahi</h4>
+                        <p class="text-primary small fw-bold uppercase">Software Developer</p>
+                    </div>
+                </div>
             </div>
-            <h5 class="text-gradient" data-aos="fade-up">Your Company Here</h5>
-            <p>You will be the next our partner.</p>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact + Footer -->
-  <section id="contact-footer">
-    <div class="container">
-      <div class="row gy-5">
-        <div class="col-lg-5">
-          <div class="contact-box">
-            <h3 class="text-gradient mb-4">Get In Touch</h3>
-            <p>
-              <i class="bi bi-geo-alt-fill text-primary me-3"></i>Saharanpur,
-              Uttar Pradesh, India
-            </p>
-            <p>
-              <i class="bi bi-envelope-fill text-primary me-3"></i>nptechcrafters@gmail.com
-            </p>
-            <p>
-              <i class="bi bi-phone-fill text-primary me-3"></i>+91 9149188705
-              | +91 9736551960
-            </p>
-            <a href="https://forms.gle/3jD9uSsuxoBucJFK6" target="_blank" class="btn btn-glow mt-3">Connect With Us</a>
-          </div>
+    <section class="py-5 border-top border-bottom border-secondary border-opacity-10 bg-dark-subtle bg-opacity-10">
+        <div class="container-fluid">
+            <div class="text-center mb-4">
+                <span class="section-tag">Trusted By</span>
+            </div>
+            <div class="marquee-wrapper">
+                <div class="marquee-content">
+                    <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" class="client-logo" alt="Client">
+                    <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" class="client-logo" alt="Client">
+                    <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" class="client-logo" alt="Client">
+                    
+                    <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" class="client-logo" alt="Client">
+                    <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" class="client-logo" alt="Client">
+                    <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" class="client-logo" alt="Client">
+                    
+                    <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" class="client-logo" alt="Client">
+                    <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" class="client-logo" alt="Client">
+                    <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" class="client-logo" alt="Client">
+                </div>
+            </div>
         </div>
-        <div class="col-lg-3">
-          <h5 class="text-gradient">Quick Links</h5>
-          <ul class="list-unstyled">
-            <li>
-              <a href="#hero" class="text-light text-decoration-none">Home</a>
-            </li>
-            <li>
-              <a href="#about" class="text-light text-decoration-none">About</a>
-            </li>
-            <li>
-              <a href="#services" class="text-light text-decoration-none">Services</a>
-            </li>
-            <li>
-              <a href="#team" class="text-light text-decoration-none">Team</a>
-            </li>
-          </ul>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <h3 class="fw-bold mb-4">NP TechCrafters</h3>
+                    <p class="text-muted mb-4">Empowering youth through technology and innovation. Join us to build the future.</p>
+                    <div class="d-flex gap-3 social-links">
+                        <a href="https://www.instagram.com/np.techcrafters" class="text-muted fs-4"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.facebook.com/people/NP-TechCrafters/61565158317180/" class="text-muted fs-4"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.linkedin.com/company/np-techcrafters" class="text-muted fs-4"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="fw-bold text-white mb-4">Links</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="#hero" class="text-decoration-none text-muted hover-link">Home</a></li>
+                        <li><a href="#about" class="text-decoration-none text-muted hover-link">About</a></li>
+                        <li><a href="#services" class="text-decoration-none text-muted hover-link">Services</a></li>
+                        <li><a href="#team" class="text-decoration-none text-muted hover-link">Team</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold text-white mb-4">Contact</h5>
+                    <ul class="list-unstyled text-muted d-flex flex-column gap-3">
+                        <li><i class="bi bi-geo-alt me-2 text-primary"></i> Saharanpur, UP, India</li>
+                        <li><i class="bi bi-envelope me-2 text-primary"></i> nptechcrafters@gmail.com</li>
+                        <li><i class="bi bi-telephone me-2 text-primary"></i> +91 9149188705</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top border-secondary border-opacity-10 mt-5 pt-4 text-center">
+                <small class="text-muted">© 2025 NP TechCrafters. Made with <span class="text-danger">❤</span> in India.</small>
+                <div class="mt-2 text-muted" style="font-size: 0.8rem;">
+                    Visits: <span id="visitCount" class="text-white">...</span>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-4 text-center">
-          <h5 class="text-gradient mb-4">Follow Us</h5>
-          <div class="social-links">
-            <a href="https://www.instagram.com/np.techcrafters" target="_blank"><i class="bi bi-instagram"></i></a>
-            <a href="https://www.facebook.com/people/NP-TechCrafters/61565158317180/" target="_blank"><i
-                class="bi bi-facebook"></i></a>
-            <a href="https://www.linkedin.com/company/np-techcrafters" target="_blank"><i
-                class="bi bi-linkedin"></i></a>
-            <a href="#" target="_blank"><i class="bi bi-twitter-x"></i></a>
-          </div>
-          <div class="mt-5">
-            <p class="mb-1"><strong>Visitors</strong></p>
-            <h3 id="visitCount" class="text-gradient">Loading...</h3>
-          </div>
-        </div>
-      </div>
-      <hr class="my-5 border-secondary" />
-      <div class="text-center">
-        <p class="mb-0">
-          © 2025 <strong class="text-gradient">NP TechCrafters</strong>. All
-          Rights Reserved. Made in India❤️
-        </p>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-  <script>
-    // Theme Toggle
-    function toggleTheme() {
-      const theme =
-        document.documentElement.getAttribute("data-bs-theme") === "dark"
-          ? "light"
-          : "dark";
-      document.documentElement.setAttribute("data-bs-theme", theme);
-      localStorage.setItem("theme", theme);
-      const icon = document.querySelector("#themeToggle i");
-      icon.classList.toggle("bi-moon-stars-fill");
-      icon.classList.toggle("bi-sun-fill");
-    }
-    if (localStorage.getItem("theme") === "light") {
-      document.documentElement.setAttribute("data-bs-theme", "light");
-      document
-        .querySelector("#themeToggle i")
-        .classList.replace("bi-moon-stars-fill", "bi-sun-fill");
-    }
+    <a href="https://wa.me/919149188705" target="_blank" class="whatsapp-float">
+        <i class="bi bi-whatsapp"></i>
+    </a>
 
-    // Typed.js
-    new Typed(".typewriter", {
-      strings: [
-        "Turning your idea into Reality",
-        "We provide Virtual Internship",
-        "Live Projects • Real Experience",
-        "We provide Software Solutions",
-        "Build Your Portfolio Today",
-      ],
-      typeSpeed: 70,
-      backSpeed: 40,
-      backDelay: 2000,
-      loop: true,
-    });
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    
+    <script>
+        // Init AOS
+        AOS.init({ duration: 800, once: true, easing: 'ease-out-cubic' });
 
-    // Visitor Counter
-    let visits = localStorage.getItem("visits") || 18472;
-    visits = parseInt(visits) + 1;
-    localStorage.setItem("visits", visits);
-    document.getElementById("visitCount").textContent =
-      visits.toLocaleString();
+        // Theme Toggle logic
+        const toggleBtn = document.getElementById('themeToggle');
+        const icon = toggleBtn.querySelector('i');
+        
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-bs-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            // Update Icon
+            if (theme === 'dark') {
+                icon.classList.remove('bi-sun-fill');
+                icon.classList.add('bi-moon-stars-fill');
+                // Adjust colors for dark mode if using JS styles (CSS variables handle most)
+            } else {
+                icon.classList.remove('bi-moon-stars-fill');
+                icon.classList.add('bi-sun-fill');
+            }
+        }
 
-    // AOS + Scroll Effects
-    AOS.init({ duration: 1000, easing: "ease-out-quart", once: true });
-    window.addEventListener("scroll", () => {
-      document
-        .querySelector(".navbar")
-        .classList.toggle("scrolled", window.scrollY > 50);
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        }
 
-      // Active nav link
-      let current = "";
-      document.querySelectorAll("section").forEach((section) => {
-        if (window.scrollY >= section.offsetTop - 150)
-          current = section.getAttribute("id");
-      });
-      document.querySelectorAll(".nav-link").forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${current}`)
-          link.classList.add("active");
-      });
-    });
-  </script>
+        // Initialize Theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+
+        // Navbar Blur Scroll Effect
+        window.addEventListener("scroll", () => {
+            const navbar = document.querySelector(".navbar");
+            if (window.scrollY > 50) {
+                navbar.style.background = "rgba(3, 7, 18, 0.85)";
+                navbar.style.padding = "0.6rem 0";
+            } else {
+                navbar.style.background = "rgba(3, 7, 18, 0.6)";
+                navbar.style.padding = "1rem 0";
+            }
+        });
+
+        // Typewriter Effect
+        new Typed(".typewriter", {
+            strings: [
+                "Web Development",
+                "Mobile Apps",
+                "Virtual Internships",
+                "AI Solutions"
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 1500,
+            loop: true,
+            showCursor: true,
+            cursorChar: '|'
+        });
+
+        // Visit Counter
+        let visits = localStorage.getItem("visits") || 18472;
+        visits = parseInt(visits) + 1;
+        localStorage.setItem("visits", visits);
+        document.getElementById("visitCount").textContent = visits.toLocaleString();
+    </script>
 </body>
-
 </html>
-
-
-
-
