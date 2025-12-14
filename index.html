@@ -1,659 +1,519 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NP TechCrafters | Architect The Future</title>
-    <meta name="description" content="MSME-approved EdTech | Virtual Internships in Web, Mobile, AI, Design | Live Projects" />
-
-    <link rel="icon" href="https://i.postimg.cc/sgkt3F0D/NPTECH.jpg" />
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Future UI Concept</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    
     <style>
+        /* --- CSS Variables & Global Reset --- */
         :root {
-            /* --- Neon Palette --- */
-            --primary: #6366f1;
-            --secondary: #00d4ff;
-            --tertiary: #ff00c8;
+            --bg-dark: #030512;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --text-light: #ffffff;
+            --text-muted: #8b94a5;
             
-            /* --- Base colors --- */
-            --bg-body: #050505; /* Ultra deep black */
-            --bg-surface: #0a0a0a;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
+            /* Neon Colors */
+            --neon-blue: #00f2ff;
+            --neon-purple: #bd00ff;
+            --neon-pink: #ff0099;
             
-            /* --- Effects --- */
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --neon-glow: 0 0 30px rgba(99, 102, 241, 0.3), 0 0 60px rgba(0, 212, 255, 0.2);
+            /* Gradients */
+            --grad-blue-purple: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            --grad-pink-purple: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
             
-            --gradient-main: linear-gradient(135deg, var(--primary), var(--secondary));
-            --gradient-hot: linear-gradient(135deg, var(--secondary), var(--tertiary));
+            /* Glow Effects */
+            --glow-blue: 0 0 10px rgba(0, 242, 255, 0.5), 0 0 20px rgba(0, 242, 255, 0.3), 0 0 30px rgba(0, 242, 255, 0.1);
+            --glow-purple: 0 0 10px rgba(189, 0, 255, 0.5), 0 0 20px rgba(189, 0, 255, 0.3);
+            --glow-text: 0 0 10px rgba(255,255,255,0.4);
         }
 
-        /* --- Global Aesthetics --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .btn {
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        section {
+            padding: 80px 20px;
+            min-height: 80vh; /* For presentation purposes */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
         }
         
-        h1, h2, h3, h4, h5, .navbar-brand, .btn, .section-tag { font-family: 'Space Grotesk', sans-serif; }
-
-        /* --- Liquid Aurora Background --- */
-        .aurora-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            overflow: hidden;
-            filter: blur(100px);
-            opacity: 0.4;
-        }
-        .aurora-blob {
-            position: absolute;
-            border-radius: 50%;
-            mix-blend-mode: screen;
-            animation: aurora-move 20s infinite alternate ease-in-out;
-        }
-        .blob-1 { width: 60vw; height: 60vw; background: var(--primary); top: -10%; left: -10%; }
-        .blob-2 { width: 70vw; height: 70vw; background: var(--secondary); bottom: -20%; right: -20%; animation-delay: -5s; }
-        .blob-3 { width: 50vw; height: 50vw; background: var(--tertiary); bottom: 30%; left: 30%; animation-delay: -10s; }
-
-        @keyframes aurora-move {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(10%, 15%) scale(1.1); }
-        }
-
-        /* --- Creative Utilities --- */
-        .text-gradient {
-            background: var(--gradient-main);
+        .text-gradient-blue {
+            background: var(--grad-blue-purple);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            display: inline-block;
+        }
+        
+        .text-glow {
+            text-shadow: var(--glow-text), 0 0 20px var(--neon-blue);
         }
 
-        .section-tag {
-            font-size: 0.75rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .section-tag::before {
-            content: ''; display: block; width: 30px; height: 2px; background: var(--gradient-main);
-        }
-
-        /* --- Minimalist Floating Navbar --- */
-        .navbar {
-            padding: 1rem 0;
-            background: rgba(5, 5, 5, 0.1);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.4s ease;
-        }
-        .navbar-brand img { height: 40px; border-radius: 8px; }
-        .nav-link {
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 0.5rem 1.2rem !important;
-            color: var(--text-muted) !important;
-            position: relative;
-            transition: 0.3s;
-        }
-        .nav-link::after {
-            content: ''; position: absolute; bottom: 5px; left: 50%; width: 0; height: 2px;
-            background: var(--secondary); transition: 0.3s ease; transform: translateX(-50%);
-        }
-        .nav-link:hover, .nav-link.active { color: var(--text-main) !important; }
-        .nav-link:hover::after, .nav-link.active::after { width: 60%; }
-
-        .btn-neon {
-            padding: 0.7rem 1.8rem;
-            border-radius: 0;
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-main);
-            background: transparent;
-            border: 1px solid var(--primary);
-            position: relative;
-            overflow: hidden;
-            transition: 0.3s;
-            box-shadow: inset 0 0 0 0 var(--primary);
-        }
-        .btn-neon:hover {
-            box-shadow: inset 0 0 50px var(--primary), 0 0 30px var(--primary);
-            border-color: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        /* --- Hero Section: Brutalist Layering --- */
+        .btn-neon-outline {
+            background: transparent;
+            color: var(--neon-blue);
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+        }
+        
+        .btn-neon-outline:hover {
+            background: var(--neon-blue);
+            color: var(--bg-dark);
+            box-shadow: var(--glow-blue);
+        }
+
+        /* --- SECTION 1: HERO --- */
         #hero {
-            padding-top: 180px;
-            min-height: 90vh;
+            background: radial-gradient(circle at center, rgba(0, 242, 255, 0.1) 0%, var(--bg-dark) 70%);
+            text-align: center;
+        }
+
+        /* Placeholder for the wireframe globe graphic */
+        .globe-graphic {
+            width: 400px;
+            height: 400px;
+            /* Replace this url with your actual wireframe globe image */
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'); 
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            opacity: 0.6;
+            mix-blend-mode: screen;
+            filter: hue-rotate(190deg); /* Shifting colors to match theme */
+            margin-bottom: -100px; /* Overlap effect */
+            position: relative;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+        }
+
+        /* --- SECTION 2: IMPACT (Glass Cards) --- */
+        #impact {
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .glass-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 4rem;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 20px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Top light reflection effect */
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-blue);
+            box-shadow: var(--glow-blue);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .stat-blue { color: var(--neon-blue); text-shadow: var(--glow-blue); }
+        .stat-purple { color: var(--neon-purple); text-shadow: var(--glow-purple); }
+        .stat-pink { color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink); }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* Neon Progress Bar */
+        .progress-container {
+            width: 100%;
+            max-width: 700px;
+            height: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .progress-bar {
+            width: 75%; /* Example progress */
+            height: 100%;
+            background: var(--grad-blue-purple);
+            border-radius: 20px;
+            position: relative;
+            box-shadow: var(--glow-blue);
+        }
+        
+        .progress-marker {
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 25px;
+            height: 25px;
+            background: var(--bg-dark);
+            border: 4px solid var(--neon-purple);
+            border-radius: 50%;
+            box-shadow: var(--glow-purple);
+        }
+
+        /* --- SECTION 3: TESTIMONIALS (Glowing Bubbles) --- */
+        #testimonials {
+            overflow: hidden; /* Hide overflow for scroll effect */
+        }
+
+        .testimonial-scroller {
+            display: flex;
+            gap: 30px;
+            padding: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            /* Hide scrollbar for cleaner look */
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        .testimonial-scroller::-webkit-scrollbar { display: none; }
+
+        .speech-bubble {
+            min-width: 350px;
+            background: rgba(3, 20, 35, 0.8);
+            border: 2px solid var(--neon-blue);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2), inset 0 0 20px rgba(0, 242, 255, 0.1);
+        }
+
+        /* The little triangle at the bottom */
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 40px;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid var(--neon-blue);
+            filter: drop-shadow(0 5px 5px rgba(0, 242, 255, 0.5));
+        }
+        
+        .user-profile {
             display: flex;
             align-items: center;
-            position: relative;
+            gap: 15px;
+            margin-bottom: 15px;
         }
-
-        .hero-title-wrapper { position: relative; }
-        /* Outline Text Layer */
-        .hero-title-outline {
-            font-size: clamp(4rem, 11vw, 8rem);
-            font-weight: 800;
-            line-height: 0.9;
-            color: transparent;
-            -webkit-text-stroke: 2px rgba(255,255,255,0.15);
-            position: absolute;
-            top: -10px; left: -10px;
-            z-index: -1;
-            user-select: none;
-        }
-        /* Main Text Layer */
-        .hero-title {
-            font-size: clamp(4rem, 11vw, 8rem);
-            font-weight: 800;
-            line-height: 0.9;
-            letter-spacing: -0.03em;
-            text-transform: uppercase;
-        }
-
-        /* Abstract 3D Portal instead of image */
-        .hero-portal {
-            width: 100%;
-            height: 500px;
-            position: relative;
-            perspective: 1000px;
-        }
-        .portal-ring {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
+        
+        .avatar {
+            width: 50px; height: 50px;
+            background: #333;
             border-radius: 50%;
-            border: 2px solid transparent;
-            background: linear-gradient(rgba(99, 102, 241, 0.5), rgba(0, 212, 255, 0.5)) border-box;
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: destination-out;
-            mask-composite: exclude;
-        }
-        .ring-1 { width: 400px; height: 400px; animation: spin 20s linear infinite; }
-        .ring-2 { width: 300px; height: 300px; animation: spin-rev 15s linear infinite; border-color: var(--tertiary) !important; }
-        .ring-3 { width: 200px; height: 200px; animation: spin 10s linear infinite; border-width: 5px; }
-        .portal-core {
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 100px; height: 100px;
-            transform: translate(-50%, -50%);
-            background: var(--gradient-main);
-            border-radius: 50%;
-            filter: blur(40px);
-            animation: pulse-core 4s ease-in-out infinite alternate;
+            border: 2px solid var(--neon-blue);
         }
 
-        /* --- Holographic Service Cards --- */
-        .holo-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 0; /* Brutalist sharp corners */
-            padding: 3rem 2rem;
-            height: 100%;
+        /* --- SECTION 4: FOOTER (Digital Rain) --- */
+        footer {
+            padding: 80px 20px 40px;
+            background-color: #02030a;
             position: relative;
-            overflow: hidden;
-            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            /* Simulate digital rain with a repeating gradient pattern */
+            background-image: linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
         }
-        /* Holographic gradient overlay on hover */
-        .holo-card::before {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(0, 212, 255, 0.2), rgba(255, 0, 200, 0.2));
-            opacity: 0; transition: 0.4s; z-index: -1;
-            filter: blur(20px);
-        }
-        .holo-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: rgba(255,255,255,0.2);
-        }
-        .holo-card:hover::before { opacity: 1; inset: -10px; }
 
-        .holo-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            background: var(--gradient-main);
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-logo span {
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: var(--grad-blue-purple);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            display: inline-block;
+            filter: drop-shadow(0 0 5px rgba(0,242,255,0.5));
         }
 
-
-        /* --- Horizontal Scrolling Projects --- */
-        .horizontal-scroll-wrapper {
-            overflow-x: auto;
-            white-space: nowrap;
-            padding-bottom: 2rem;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; /* Hide Firefox */
-            ms-overflow-style: none;  /* Hide IE/Edge */
-        }
-        .horizontal-scroll-wrapper::-webkit-scrollbar { display: none; /* Hide Chrome/Safari */ }
-
-        .project-slide {
-            display: inline-block;
-            width: 450px;
-            margin-right: 1.5rem;
-            white-space: normal; /* Reset for content inside */
-            vertical-align: top;
-        }
-        .project-portal {
-            height: 500px;
-            position: relative;
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-            transition: 0.5s;
-        }
-        .project-portal img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: 0.5s; filter: grayscale(100%) brightness(0.7);
-        }
-        .project-portal-content {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            padding: 2rem;
-            background: linear-gradient(to top, #000, transparent);
-        }
-        .project-portal:hover {
-            border-color: var(--secondary);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
-        }
-        .project-portal:hover img {
-            filter: grayscale(0%) brightness(1);
-            transform: scale(1.1) rotate(-2deg);
+        .footer-col h4 {
+            margin-bottom: 25px;
+            color: var(--text-light);
         }
 
-
-        /* --- Hexagonal Team --- */
-        .hex-team-member { text-align: center; }
-        .hex-container {
-            width: 150px; height: 150px;
-            margin: 0 auto 1.5rem;
-            position: relative;
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 15px; }
+        .footer-col a {
+            text-decoration: none;
+            color: var(--text-muted);
+            transition: 0.3s;
         }
-        .hex-border {
-            position: absolute; inset: -5px;
-            background: var(--gradient-hot);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            animation: spin 10s linear infinite;
-            opacity: 0.5;
+        .footer-col a:hover {
+            color: var(--neon-blue);
+            text-shadow: var(--glow-text);
         }
-        .hex-image {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            background: #111;
-            position: relative; z-index: 2;
-            filter: grayscale(100%); transition: 0.4s;
+
+        /* Neon Newsletter Form */
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            background: rgba(255,255,255,0.05);
+            padding: 5px;
+            border-radius: 50px;
+            border: 1px solid var(--neon-purple);
+            box-shadow: 0 0 15px rgba(189, 0, 255, 0.2);
         }
-        .hex-team-member:hover .hex-image { filter: grayscale(0%); }
-        .hex-team-member:hover .hex-border { opacity: 1; animation-duration: 5s; }
 
-
-        /* --- Marquee & Footer --- */
-        .marquee-section {
-            background: rgba(255,255,255,0.02);
-            border-top: 1px solid var(--glass-border);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 3rem 0;
+        .newsletter-input {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            padding: 10px 20px;
+            color: var(--text-light);
+            outline: none;
         }
-        .client-logo {
-            height: 50px; margin: 0 50px;
-            filter: grayscale(100%) brightness(3); opacity: 0.3; transition: 0.3s;
+
+        .btn-subscribe {
+            background: var(--grad-pink-purple);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 40px;
+            font-weight: 700;
+            box-shadow: var(--glow-purple);
         }
-        .client-logo:hover { filter: grayscale(0%); opacity: 1; }
 
-        footer { background: #020202; padding-top: 5rem; }
+        .copyright {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
 
-        /* --- Animations --- */
-        @keyframes spin { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
-        @keyframes spin-rev { 100% { transform: translate(-50%, -50%) rotate(-360deg); } }
-        @keyframes pulse-core { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; } 100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; } }
-
-        /* Responsive */
-        @media (max-width: 991px) {
-            #hero { padding-top: 120px; text-align: center; }
-            .hero-title, .hero-title-outline { font-size: 4.5rem; }
-            .hero-portal { height: 350px; margin-top: 3rem; }
-            .project-slide { width: 300px; }
-            .project-portal { height: 400px; }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .newsletter-form { flex-direction: column; background: transparent; border: none; box-shadow: none; gap: 15px;}
+            .newsletter-input { border: 1px solid var(--neon-purple); border-radius: 50px; }
         }
     </style>
 </head>
-
 <body>
-    <div class="aurora-bg">
-        <div class="aurora-blob blob-1"></div>
-        <div class="aurora-blob blob-2"></div>
-        <div class="aurora-blob blob-3"></div>
-    </div>
-
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-                <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="Logo">
-                <span class="fw-bold ls-1">NP TECHCRAFTERS</span>
-            </a>
-            
-            <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-                <i class="bi bi-list fs-1 text-white"></i>
-            </button>
-
-            <div class="collapse navbar-collapse" id="nav">
-                <ul class="navbar-nav mx-auto mb-3 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Intelligence</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Creations</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">Architects</a></li>
-                </ul>
-                <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" target="_blank" class="btn btn-neon">JOIN THE FUTURE</a>
-            </div>
-        </div>
-    </nav>
 
     <section id="hero">
-        <div class="container z-2">
-            <div class="row align-items-center">
-                <div class="col-lg-7" data-aos="fade-right" data-aos-duration="1200">
-                    <div class="section-tag">MSME APPROVED EDTECH</div>
-                    <div class="hero-title-wrapper mb-4">
-                        <h1 class="hero-title-outline">ARCHITECT <br> THE FUTURE.</h1>
-                        <h1 class="hero-title">ARCHITECT <br> THE <span class="text-gradient">FUTURE.</span></h1>
-                    </div>
-                    <p class="lead mb-5 text-muted" style="max-width: 500px; font-weight: 400;">
-                        We don't just teach. We forge industry-ready professionals through immersive <span class="text-white fw-bold border-bottom border-secondary typewriter"></span>
-                    </p>
-                    <div class="d-flex gap-4 flex-wrap justify-content-lg-start justify-content-center">
-                        <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="btn btn-neon px-5 py-3 fs-5" style="background: var(--primary); border:none; color: white;">START BUILDING</a>
-                         <a href="#projects" class="btn btn-neon px-5 py-3 fs-5">VIEW WORK <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-5 mt-5 mt-lg-0">
-                    <div class="hero-portal" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="portal-ring ring-1"></div>
-                        <div class="portal-ring ring-2"></div>
-                        <div class="portal-ring ring-3"></div>
-                        <div class="portal-core"></div>
-                    </div>
-                </div>
-            </div>
+        <div class="globe-graphic"></div>
+        
+        <div class="container hero-content">
+            <h1 class="hero-title">
+                FORGE THE <br> 
+                <span class="text-gradient-blue text-glow">DIGITAL FRONTIER</span>
+            </h1>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; font-size: 1.2rem;">
+                Join the elite cohort building the future with next-gen skills, virtual internships, and live projects.
+            </p>
+            <a href="#" class="btn btn-neon-outline">EXPLORE OUR PATH</a>
         </div>
     </section>
 
-    <section id="services" class="py-5 position-relative z-2">
-        <div class="container py-5">
-            <div class="row mb-5" data-aos="fade-up">
-                <div class="col-lg-8">
-                    <div class="section-tag">CORE INTELLIGENCE Modules</div>
-                    <h2 class="display-4 fw-bold">DOMINATE THE <span class="text-gradient">DIGITAL REALM.</span></h2>
-                </div>
-            </div>
+
+    <section id="impact">
+        <div class="container">
+            <h2 class="section-title">OUR IMPACT</h2>
             
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="holo-card">
-                        <i class="bi bi-layers-half holo-icon"></i>
-                        <h3 class="fw-bold mb-3">Full-Stack Alchemy</h3>
-                        <p class="text-muted mb-4">Master the MERN Stack & Django. Transmute code into scalable, high-performance web ecosystems.</p>
-                        <div class="d-flex gap-2 fs-7 text-uppercase fw-bold ls-1" style="color: var(--secondary);">
-                            <span>React</span> / <span>Node</span> / <span>MongoDB</span>
-                        </div>
-                    </div>
+            <div class="glass-grid">
+                <div class="glass-card">
+                    <span class="stat-number stat-blue">50+</span>
+                    <span class="stat-label">Live Projects Delivered</span>
                 </div>
-                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="holo-card" style="border-color: rgba(0, 212, 255, 0.2);">
-                        <i class="bi bi-cpu-fill holo-icon" style="background: var(--gradient-hot); -webkit-background-clip: text;"></i>
-                        <h3 class="fw-bold mb-3">Artificial Intelligence</h3>
-                        <p class="text-muted mb-4">Harness the power of Neural Networks, Predictive Modeling, and Deep Learning algorithms.</p>
-                         <div class="d-flex gap-2 fs-7 text-uppercase fw-bold ls-1" style="color: var(--tertiary);">
-                            <span>Python</span> / <span>TensorFlow</span> / <span>AI</span>
-                        </div>
-                    </div>
+                <div class="glass-card">
+                    <span class="stat-number stat-purple">200+</span>
+                    <span class="stat-label">Interns Mentored</span>
                 </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="holo-card">
-                         <i class="bi bi-phone-flip holo-icon"></i>
-                        <h3 class="fw-bold mb-3">Mobile Architects</h3>
-                        <p class="text-muted mb-4">Craft seamless, native-performance applications for iOS and Android using Flutter & React Native.</p>
-                         <div class="d-flex gap-2 fs-7 text-uppercase fw-bold ls-1" style="color: var(--secondary);">
-                            <span>Flutter</span> / <span>Dart</span> / <span>Firebase</span>
-                        </div>
-                    </div>
+                <div class="glass-card">
+                    <span class="stat-number stat-pink">95%</span>
+                    <span class="stat-label">Placement Rate</span>
                 </div>
             </div>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-marker"></div>
+                </div>
+            </div>
+            <p style="color: var(--text-muted); margin-top: 20px;">Current Cohort Progress</p>
         </div>
     </section>
 
-    <section class="marquee-section z-2 position-relative">
-        <div class="marquee-wrapper">
-            <div class="marquee-content d-flex align-items-center">
-                <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" class="client-logo" alt="Prashanottar" style="height: 65px; filter: grayscale(0%) brightness(1.5); opacity: 0.7;">
-                <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" class="client-logo" alt="Client">
-                <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" class="client-logo" alt="Client">
-                <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" class="client-logo rounded-circle" alt="Client">
-                <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" class="client-logo" alt="Client">
-                <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" class="client-logo" alt="Prashanottar" style="height: 65px; filter: grayscale(0%) brightness(1.5); opacity: 0.7;">
-                <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" class="client-logo" alt="Client">
-            </div>
-        </div>
-    </section>
 
-    <section id="projects" class="py-5 position-relative z-2">
-        <div class="container py-5">
-            <div class="row mb-5" data-aos="fade-up">
-                <div class="col-lg-8">
-                    <div class="section-tag">DIGITAL CREATIONS</div>
-                    <h2 class="display-4 fw-bold">RECENT <span class="text-gradient">CASE STUDIES.</span></h2>
-                </div>
-            </div>
-
-            <div class="horizontal-scroll-wrapper ps-2">
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">TESTIMONIALS</h2>
+            
+            <div class="testimonial-scroller">
                 
-                <div class="project-slide" data-aos="fade-left">
-                    <div class="project-portal">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Project">
-                        <div class="project-portal-content">
-                            <span class="badge bg-transparent border border-secondary text-secondary rounded-0 mb-3">AI / HEALTH</span>
-                            <h3 class="fw-bold mb-1">Neural Diagnostics AI</h3>
-                            <p class="text-muted">Deep learning for early disease detection.</p>
+                <div class="speech-bubble">
+                    <div class="user-profile">
+                        <div class="avatar" style="background-color: #bd00ff;"></div>
+                        <div>
+                            <h4>Alex Chen</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Full Stack Intern</p>
                         </div>
                     </div>
+                    <p>"The live project experience was unmatched. It wasn't just theory; we built a real FinTech dashboard that's being used today. The mentorship is incredible."</p>
                 </div>
 
-                 <div class="project-slide" data-aos="fade-left" data-aos-delay="100">
-                    <div class="project-portal">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Project">
-                        <div class="project-portal-content">
-                             <span class="badge bg-transparent border border-primary text-primary rounded-0 mb-3">MOBILE / FLUTTER</span>
-                            <h3 class="fw-bold mb-1">SwiftKart Commerce</h3>
-                            <p class="text-muted">Real-time inventory & seamless checkout app.</p>
+                <div class="speech-bubble" style="border-color: var(--neon-purple);">
+                     <style>.speech-bubble:nth-child(2)::after { border-top-color: var(--neon-purple); }</style>
+                    <div class="user-profile">
+                        <div class="avatar" style="background-color: #00f2ff;"></div>
+                        <div>
+                            <h4>Priya Sharma</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">AI/ML Researcher</p>
                         </div>
                     </div>
+                    <p>"I just nailed my dream job interview! The real-world datasets we worked on gave me the confidence to answer tough technical questions."</p>
                 </div>
 
-                 <div class="project-slide" data-aos="fade-left" data-aos-delay="200">
-                    <div class="project-portal">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Project">
-                        <div class="project-portal-content">
-                             <span class="badge bg-transparent border border-tertiary text-tertiary rounded-0 mb-3">WEB / MERN</span>
-                            <h3 class="fw-bold mb-1">Nova FinTech Hub</h3>
-                            <p class="text-muted">Complex financial analytics dashboard.</p>
+                <div class="speech-bubble" style="border-color: var(--neon-pink);">
+                     <style>.speech-bubble:nth-child(3)::after { border-top-color: var(--neon-pink); }</style>
+                    <div class="user-profile">
+                        <div class="avatar" style="background-color: #ff0099;"></div>
+                        <div>
+                            <h4>Rahul Verma</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Mobile Dev Lead</p>
                         </div>
                     </div>
+                    <p>"The collaborative environment felt like a real startup. We faced actual deployment challenges and solved them together. Highly recommend!"</p>
                 </div>
                  </div>
         </div>
     </section>
 
-    <section id="team" class="py-5 position-relative z-2">
-        <div class="container py-5">
-             <div class="row justify-content-center mb-5" data-aos="fade-up">
-                <div class="col-lg-8 text-center">
-                    <h2 class="display-4 fw-bold mb-3">THE <span class="text-gradient">ARCHITECTS.</span></h2>
-                    <p class="text-muted lead">The minds powering the next generation.</p>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-logo">
+                    <span>NP TechCrafters</span>
+                    <p style="color: var(--text-muted); margin-top: 20px; line-height: 1.6;">
+                        Empowering the next generation of tech leaders through immersive, project-based virtual internships.
+                    </p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">Sign up for industry trends and program updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email..." class="newsletter-input">
+                        <button type="submit" class="btn btn-subscribe">SUBSCRIBE</button>
+                    </form>
                 </div>
             </div>
             
-            <div class="row g-5 justify-content-center">
-                <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in">
-                    <div class="hex-team-member">
-                        <div class="hex-container">
-                            <div class="hex-border"></div>
-                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/niksheppaliwal.jpg" class="hex-image" alt="Nikshep">
-                        </div>
-                        <h5 class="fw-bold mb-1 fs-6">NIKSHEP PALIWAL</h5>
-                        <p class="small text-secondary fw-bold ls-2 mb-0">FOUNDER & CEO</p>
-                    </div>
-                </div>
-                 <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="hex-team-member">
-                        <div class="hex-container">
-                            <div class="hex-border" style="background: var(--gradient-main);"></div>
-                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/66714632.jpg" class="hex-image" alt="Chandan" style="object-position: top;">
-                        </div>
-                        <h5 class="fw-bold mb-1 fs-6">CHANDAN SAROJ</h5>
-                        <p class="small text-secondary fw-bold ls-2 mb-0">CTO</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="hex-team-member">
-                        <div class="hex-container">
-                            <div class="hex-border"></div>
-                             <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/111854114.jpg" class="hex-image" alt="Vishal">
-                        </div>
-                        <h5 class="fw-bold mb-1 fs-6">VISHAL</h5>
-                        <p class="small text-secondary fw-bold ls-2 mb-0">LEAD DEV</p>
-                    </div>
-                </div>
-                 <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="hex-team-member">
-                        <div class="hex-container">
-                            <div class="hex-border" style="background: var(--gradient-main);"></div>
-                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/68648513.jpg" class="hex-image" alt="Rahul">
-                        </div>
-                        <h5 class="fw-bold mb-1 fs-6">RAHUL BHASKAR</h5>
-                        <p class="small text-secondary fw-bold ls-2 mb-0">ADMIN</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="hex-team-member">
-                        <div class="hex-container">
-                            <div class="hex-border"></div>
-                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/photo.jpeg" class="hex-image" alt="Ravikant" style="object-position: center 20%;">
-                        </div>
-                        <h5 class="fw-bold mb-1 fs-6">RAVIKANT MAHI</h5>
-                        <p class="small text-secondary fw-bold ls-2 mb-0">DEVELOPER</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="z-2 position-relative">
-        <div class="container">
-            <div class="row g-5 mb-5 pb-5 border-bottom border-white border-opacity-10">
-                <div class="col-lg-5">
-                    <a class="navbar-brand mb-4 p-0 d-flex align-items-center gap-2" href="#">
-                        <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="Logo" style="border: none; height: 50px;">
-                        <span class="fw-bold fs-3 ls-1">NP TECHCRAFTERS</span>
-                    </a>
-                    <p class="mb-4 text-muted lead fs-6" style="max-width: 400px;">Forging the future workforce through elite virtual internships and live technical challenges.</p>
-                    <div class="d-flex gap-3 social-links">
-                        <a href="https://www.instagram.com/np.techcrafters" class="btn btn-outline-light rounded-0 border-opacity-25 text-muted p-3"><i class="bi bi-instagram fs-5"></i></a>
-                        <a href="https://www.facebook.com/people/NP-TechCrafters/61565158317180/" class="btn btn-outline-light rounded-0 border-opacity-25 text-muted p-3"><i class="bi bi-facebook fs-5"></i></a>
-                        <a href="https://www.linkedin.com/company/np-techcrafters" class="btn btn-outline-light rounded-0 border-opacity-25 text-muted p-3"><i class="bi bi-linkedin fs-5"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-6 offset-lg-1">
-                    <h6 class="fw-bold mb-4 text-white text-uppercase ls-2">NEXUS</h6>
-                    <ul class="list-unstyled d-flex flex-column gap-3">
-                        <li><a href="#hero" class="text-decoration-none text-muted text-uppercase fw-bold ls-1 fs-7 link-hover">Home</a></li>
-                        <li><a href="#about" class="text-decoration-none text-muted text-uppercase fw-bold ls-1 fs-7 link-hover">About</a></li>
-                        <li><a href="#team" class="text-decoration-none text-muted text-uppercase fw-bold ls-1 fs-7 link-hover">Architects</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-6">
-                    <h6 class="fw-bold mb-4 text-white text-uppercase ls-2">PROGRAMS</h6>
-                     <ul class="list-unstyled d-flex flex-column gap-3">
-                        <li><a href="#services" class="text-decoration-none text-muted text-uppercase fw-bold ls-1 fs-7 link-hover">Intelligence</a></li>
-                        <li><a href="#projects" class="text-decoration-none text-muted text-uppercase fw-bold ls-1 fs-7 link-hover">Creations</a></li>
-                        <li><a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="text-decoration-none text-primary fw-bold text-uppercase ls-1 fs-7 link-hover">APPLY NOW</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2">
-                    <h6 class="fw-bold mb-4 text-white text-uppercase ls-2">CONTACT</h6>
-                    <ul class="list-unstyled d-flex flex-column gap-3 text-muted small fw-bold ls-1 text-uppercase">
-                        <li>Saharanpur, UP, India</li>
-                        <li>nptechcrafters@gmail.com</li>
-                        <li>+91 9149188705</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="pt-4 d-md-flex justify-content-between align-items-center text-center text-md-start pb-5">
-                <small class="text-muted mb-2 mb-md-0 d-block ls-1 text-uppercase">© 2025 NP TechCrafters. Engineered in India.</small>
-                <div class="small text-muted ls-1 text-uppercase">
-                    SYSTEM VISITS: <span id="visitCount" class="text-secondary fw-bold font-monospace">...</span>
-                </div>
+            <div class="copyright">
+                <p>Engineered for the Future. &copy; 2025 NP TechCrafters. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    
-    <script>
-        // Initialize AOS
-        AOS.init({ duration: 1200, once: true, easing: 'cubic-bezier(0.25, 0.8, 0.25, 1)', offset: 50 });
-
-        // --- Navbar Scroll Effect ---
-        window.addEventListener("scroll", () => {
-            const navbar = document.querySelector(".navbar");
-            // Add background color when scrolled
-            if (window.scrollY > 50) {
-                navbar.style.background = "rgba(5, 5, 5, 0.8)";
-            } else {
-                navbar.style.background = "rgba(5, 5, 5, 0.1)";
-            }
-        });
-
-        // --- Typewriter Effect ---
-        new Typed(".typewriter", {
-            strings: ["LIVE CLIENT PROJECTS.", "AI & ML SOLUTIONS.", "MODERN WEB ARCHITECTURE."],
-            typeSpeed: 50,
-            backSpeed: 30,
-            backDelay: 2000,
-            loop: true,
-            showCursor: true,
-            cursorChar: '█',
-            autoInsertCss: true,
-        });
-
-        // --- Visitor Count ---
-        let visits = localStorage.getItem("visits") || 18472;
-        visits = parseInt(visits) + Math.floor(Math.random() * 10) + 5;
-        localStorage.setItem("visits", visits);
-        document.getElementById("visitCount").textContent = visits.toLocaleString();
-    </script>
 </body>
 </html>
