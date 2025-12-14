@@ -3,515 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon Future UI Concept</title>
+    <title>NP TechCrafters | Ethereal Innovation</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
     
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
     <style>
-        /* --- CSS Variables & Global Reset --- */
         :root {
-            --bg-dark: #030512;
-            --bg-card: rgba(255, 255, 255, 0.03);
-            --text-light: #ffffff;
-            --text-muted: #8b94a5;
+            /* --- Ethereal Palette --- */
+            --light-pearl: #fcfcff;
+            --soft-sky: #e0f2fe;
+            --gentle-rose: #ffe4e6;
+            --iridescent-purple: #e8dff5;
             
-            /* Neon Colors */
-            --neon-blue: #00f2ff;
-            --neon-purple: #bd00ff;
-            --neon-pink: #ff0099;
+            /* --- Text --- */
+            --text-dark: #1a1a2e; /* Soft black */
+            --text-muted: #525266;
             
-            /* Gradients */
-            --grad-blue-purple: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-            --grad-pink-purple: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            /* --- Gradients & Effects --- */
+            /* The main fluid background gradient */
+            --aurora-grad: linear-gradient(120deg, var(--soft-sky), var(--gentle-rose), var(--iridescent-purple), var(--soft-sky));
             
-            /* Glow Effects */
-            --glow-blue: 0 0 10px rgba(0, 242, 255, 0.5), 0 0 20px rgba(0, 242, 255, 0.3), 0 0 30px rgba(0, 242, 255, 0.1);
-            --glow-purple: 0 0 10px rgba(189, 0, 255, 0.5), 0 0 20px rgba(189, 0, 255, 0.3);
-            --glow-text: 0 0 10px rgba(255,255,255,0.4);
+            /* The prismatic glow effect */
+            --prism-shadow: 
+                -2px -2px 5px rgba(255, 255, 255, 0.8) inset,
+                2px 2px 5px rgba(70, 70, 120, 0.1) inset,
+                0 10px 30px rgba(0, 0, 0, 0.05),
+                /* Chromatic Aberration edges */
+                2px 0 5px rgba(255, 0, 128, 0.1), -2px 0 5px rgba(0, 255, 255, 0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* --- Base Styles & Animated Background --- */
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            font-family: 'Manrope', sans-serif;
+            background: var(--light-pearl);
+            color: var(--text-dark);
             overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, .btn {
-            font-family: 'Space Grotesk', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        section {
-            padding: 80px 20px;
-            min-height: 80vh; /* For presentation purposes */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             position: relative;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        /* Utility Classes */
-        .container {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
         }
         
-        .text-gradient-blue {
-            background: var(--grad-blue-purple);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* The fluid mesh animation background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: var(--aurora-grad);
+            background-size: 200% 200%;
+            filter: blur(80px);
+            opacity: 0.7;
+            z-index: -2;
+            animation: fluidFlow 25s ease infinite alternate;
         }
         
-        .text-glow {
-            text-shadow: var(--glow-text), 0 0 20px var(--neon-blue);
+        /* Subtle grain texture overlay for realism */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            opacity: 0.3;
+            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
         }
 
-        .btn {
-            padding: 12px 30px;
-            border-radius: 50px;
+        h1, h2, h3, .navbar-brand-text {
+            font-family: 'Cinzel Decorative', serif;
             font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
         }
 
-        .btn-neon-outline {
-            background: transparent;
-            color: var(--neon-blue);
-            border: 2px solid var(--neon-blue);
-            box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
-        }
-        
-        .btn-neon-outline:hover {
-            background: var(--neon-blue);
-            color: var(--bg-dark);
-            box-shadow: var(--glow-blue);
-        }
-
-        /* --- SECTION 1: HERO --- */
-        #hero {
-            background: radial-gradient(circle at center, rgba(0, 242, 255, 0.1) 0%, var(--bg-dark) 70%);
-            text-align: center;
-        }
-
-        /* Placeholder for the wireframe globe graphic */
-        .globe-graphic {
-            width: 400px;
-            height: 400px;
-            /* Replace this url with your actual wireframe globe image */
-            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'); 
-            background-size: cover;
-            background-position: center;
-            border-radius: 50%;
-            opacity: 0.6;
-            mix-blend-mode: screen;
-            filter: hue-rotate(190deg); /* Shifting colors to match theme */
-            margin-bottom: -100px; /* Overlap effect */
-            position: relative;
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-title {
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
-        }
-
-        /* --- SECTION 2: IMPACT (Glass Cards) --- */
-        #impact {
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .glass-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 4rem;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px 20px;
-            transition: 0.3s;
+        /* --- The Prismatic Glass Card Style --- */
+        .prism-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(25px) saturate(120%);
+            -webkit-backdrop-filter: blur(25px) saturate(120%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: var(--prism-shadow);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
             overflow: hidden;
         }
-
-        /* Top light reflection effect */
-        .glass-card::before {
+        
+        /* Shimmer effect on hover */
+        .prism-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-        }
-
-        .glass-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--neon-blue);
-            box-shadow: var(--glow-blue);
-        }
-
-        .stat-number {
-            font-size: 4rem;
-            font-weight: 800;
-            display: block;
-            margin-bottom: 10px;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.6s;
+            transform: skewX(-25deg);
         }
         
-        .stat-blue { color: var(--neon-blue); text-shadow: var(--glow-blue); }
-        .stat-purple { color: var(--neon-purple); text-shadow: var(--glow-purple); }
-        .stat-pink { color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink); }
-
-        .stat-label {
-            font-size: 1.1rem;
-            color: var(--text-muted);
+        .prism-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                -2px -2px 5px rgba(255, 255, 255, 0.9) inset,
+                2px 2px 5px rgba(70, 70, 120, 0.05) inset,
+                0 20px 40px rgba(0, 0, 0, 0.08),
+                4px 0 10px rgba(255, 0, 128, 0.2), -4px 0 10px rgba(0, 255, 255, 0.2); /* Stronger chromatic aberration */
         }
+        .prism-card:hover::before { left: 100%; }
 
-        /* Neon Progress Bar */
-        .progress-container {
-            width: 100%;
-            max-width: 700px;
-            height: 15px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
+        /* --- Layout & Section Styles --- */
+        section {
+            padding: 100px 20px;
+            position: relative;
+        }
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            position: relative;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-        }
-
-        .progress-bar {
-            width: 75%; /* Example progress */
-            height: 100%;
-            background: var(--grad-blue-purple);
-            border-radius: 20px;
-            position: relative;
-            box-shadow: var(--glow-blue);
+            position: relative; z-index: 2;
         }
         
-        .progress-marker {
-            position: absolute;
-            right: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 25px;
-            height: 25px;
-            background: var(--bg-dark);
-            border: 4px solid var(--neon-purple);
-            border-radius: 50%;
-            box-shadow: var(--glow-purple);
-        }
-
-        /* --- SECTION 3: TESTIMONIALS (Glowing Bubbles) --- */
-        #testimonials {
-            overflow: hidden; /* Hide overflow for scroll effect */
-        }
-
-        .testimonial-scroller {
-            display: flex;
-            gap: 30px;
-            padding: 20px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            /* Hide scrollbar for cleaner look */
-            scrollbar-width: none; 
-            -ms-overflow-style: none;
-            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-        }
-        .testimonial-scroller::-webkit-scrollbar { display: none; }
-
-        .speech-bubble {
-            min-width: 350px;
-            background: rgba(3, 20, 35, 0.8);
-            border: 2px solid var(--neon-blue);
-            border-radius: 20px;
-            padding: 30px;
-            position: relative;
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2), inset 0 0 20px rgba(0, 242, 255, 0.1);
-        }
-
-        /* The little triangle at the bottom */
-        .speech-bubble::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 40px;
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 15px solid var(--neon-blue);
-            filter: drop-shadow(0 5px 5px rgba(0, 242, 255, 0.5));
-        }
-        
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .avatar {
-            width: 50px; height: 50px;
-            background: #333;
-            border-radius: 50%;
-            border: 2px solid var(--neon-blue);
-        }
-
-        /* --- SECTION 4: FOOTER (Digital Rain) --- */
-        footer {
-            padding: 80px 20px 40px;
-            background-color: #02030a;
-            position: relative;
-            /* Simulate digital rain with a repeating gradient pattern */
-            background-image: linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-        
-        .footer-logo span {
-            font-weight: 800;
-            font-size: 1.8rem;
-            background: var(--grad-blue-purple);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 5px rgba(0,242,255,0.5));
-        }
-
-        .footer-col h4 {
-            margin-bottom: 25px;
-            color: var(--text-light);
-        }
-
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 15px; }
-        .footer-col a {
-            text-decoration: none;
-            color: var(--text-muted);
-            transition: 0.3s;
-        }
-        .footer-col a:hover {
-            color: var(--neon-blue);
-            text-shadow: var(--glow-text);
-        }
-
-        /* Neon Newsletter Form */
-        .newsletter-form {
-            display: flex;
-            gap: 10px;
-            background: rgba(255,255,255,0.05);
-            padding: 5px;
+        /* --- Navbar: Floating Pill --- */
+        .navbar {
+            position: fixed;
+            top: 20px; left: 50%;
+            transform: translateX(-50%);
+            width: 90%; max-width: 1000px;
+            padding: 0.8rem 2rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
             border-radius: 50px;
-            border: 1px solid var(--neon-purple);
-            box-shadow: 0 0 15px rgba(189, 0, 255, 0.2);
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .navbar-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-dark); }
+        .navbar-brand img { height: 35px; border-radius: 10px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; margin: 0; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--text-dark); background: -webkit-linear-gradient(0deg, #3b82f6, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* --- Hero Section: Organic & Refractive --- */
+        #hero {
+            padding-top: 200px;
+            min-height: 85vh;
+            display: flex; align-items: center;
+        }
+        .hero-title {
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            /* Image masked text for iridescent effect */
+            background-image: url('https://images.unsplash.com/photo-1504253163759-c23f3d166284?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover; background-position: center;
+            -webkit-background-clip: text; color: transparent;
+            filter: brightness(1.3) saturate(1.5);
+        }
+        
+        .hero-abstract-shape {
+            position: absolute; right: -10%; top: 10%;
+            width: 50vw; height: 50vw;
+            background: linear-gradient(45deg, var(--soft-sky), var(--iridescent-purple));
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            filter: blur(60px); opacity: 0.4;
+            animation: blobFloat 20s infinite alternate linear;
+            z-index: 0;
         }
 
-        .newsletter-input {
-            flex-grow: 1;
-            background: transparent;
-            border: none;
-            padding: 10px 20px;
-            color: var(--text-light);
-            outline: none;
+        /* Liquid Button */
+        .btn-liquid {
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #ffffff, #e0f2fe);
+            color: var(--text-dark);
+            border-radius: 50px; font-weight: 700; text-decoration: none;
+            display: inline-block;
+            box-shadow: 
+                -5px -5px 15px rgba(255,255,255,0.8) inset,
+                5px 5px 15px rgba(0,0,0,0.05) inset,
+                0 10px 25px rgba(168, 85, 247, 0.2);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+        .btn-liquid:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                -2px -2px 10px rgba(255,255,255,0.9) inset,
+                2px 2px 10px rgba(0,0,0,0.02) inset,
+                0 15px 35px rgba(168, 85, 247, 0.3);
         }
 
-        .btn-subscribe {
-            background: var(--grad-pink-purple);
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 40px;
-            font-weight: 700;
-            box-shadow: var(--glow-purple);
+        /* --- Services: Floating Organic Cluster --- */
+        .services-cluster {
+            display: flex; flex-wrap: wrap; gap: 40px; justify-content: center;
+            position: relative;
         }
+        /* Organic blob behind services */
+        .cluster-blob {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 80%; height: 80%;
+            background: linear-gradient(to right, var(--gentle-rose), var(--soft-sky));
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            filter: blur(80px); opacity: 0.3; z-index: -1;
+            animation: blobFloat 25s infinite alternate-reverse linear;
+        }
+        .service-item { flex: 1 1 300px; max-width: 400px; }
+        .service-icon { font-size: 3rem; background: linear-gradient(135deg, #3b82f6, #a855f7); -webkit-background-clip: text; color: transparent; margin-bottom: 1rem;}
 
-        .copyright {
+
+        /* --- Team: The Orbit Layout --- */
+        #team { text-align: center; height: 900px; overflow: hidden; }
+        .orbit-container {
+            position: relative;
+            width: 600px; height: 600px;
+            margin: 100px auto 0;
+        }
+        /* Central Node (CEO) */
+        .orbit-center {
+            position: absolute;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 220px; height: 220px;
+            z-index: 10;
+        }
+        /* Orbit Path Visualization */
+        .orbit-path {
+            position: absolute; top: 50%; left: 50%;
+            width: 600px; height: 600px;
+            border: 1px dashed rgba(168, 85, 247, 0.2); border-radius: 50%;
+            transform: translate(-50%, -50%) rotateX(50deg);
+        }
+        
+        /* Orbiting Members */
+        .orbit-member {
+            position: absolute; top: 50%; left: 50%;
+            width: 140px;
+            offset-path: path('M 0 -300 A 300 300 0 1 1 0 300 A 300 300 0 1 1 0 -300');
+            animation: orbitMove 30s linear infinite;
+        }
+        .member-2 { animation-delay: -7.5s; }
+        .member-3 { animation-delay: -15s; }
+        .member-4 { animation-delay: -22.5s; }
+
+        .team-card-mini {
+            padding: 1.5rem; text-align: center;
+            backdrop-filter: blur(15px); background: rgba(255,255,255,0.4);
+            border-radius: 50%; aspect-ratio: 1/1; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            box-shadow: var(--prism-shadow);
+        }
+        .team-img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; border: 2px solid white;}
+        .orbit-center .team-card-mini { border-radius: 30px; aspect-ratio: auto; width: 100%; height: 100%;}
+        .orbit-center .team-img { width: 100px; height: 100px; }
+
+        /* --- Footer: Soft Blend --- */
+        footer {
+            padding: 5rem 0;
             text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            background: linear-gradient(to top, var(--light-pearl), rgba(255,255,255,0));
+            position: relative;
+        }
+        /* Giant sinking orb footer effect */
+        footer::after {
+            content: ''; position: absolute; bottom: -30%; left: 50%; transform: translateX(-50%);
+            width: 80vw; height: 40vw; background: var(--aurora-grad);
+            border-radius: 50%; filter: blur(100px); opacity: 0.3; z-index: -1;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hero-title { font-size: 3rem; }
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .newsletter-form { flex-direction: column; background: transparent; border: none; box-shadow: none; gap: 15px;}
-            .newsletter-input { border: 1px solid var(--neon-purple); border-radius: 50px; }
+
+        /* --- Animations --- */
+        @keyframes fluidFlow { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+        @keyframes blobFloat {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: translate(0,0) rotate(0deg); }
+            100% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: translate(50px, -30px) rotate(20deg); }
         }
+        @keyframes orbitMove { 100% { offset-distance: 100%; } }
+
+        /* Hide mobile menu elements for simplicity in this demo */
+        @media (max-width: 768px) { .nav-links { display: none; } .navbar { justify-content: center; } }
     </style>
 </head>
 <body>
 
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">
+            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="Logo">
+            <span class="navbar-brand-text">NP TechCrafters</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#hero">Essence</a></li>
+            <li><a href="#services">Expertise</a></li>
+            <li><a href="#team">Collective</a></li>
+        </ul>
+    </nav>
+
     <section id="hero">
-        <div class="globe-graphic"></div>
-        
-        <div class="container hero-content">
-            <h1 class="hero-title">
-                FORGE THE <br> 
-                <span class="text-gradient-blue text-glow">DIGITAL FRONTIER</span>
-            </h1>
-            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; font-size: 1.2rem;">
-                Join the elite cohort building the future with next-gen skills, virtual internships, and live projects.
-            </p>
-            <a href="#" class="btn btn-neon-outline">EXPLORE OUR PATH</a>
+        <div class="hero-abstract-shape"></div>
+        <div class="container">
+            <div style="max-width: 700px;">
+                <h3 style="letter-spacing: 4px; color: var(--text-muted); margin-bottom: 1rem;">MSME APPROVED</h3>
+                <h1 class="hero-title">Crafting Digital <br>Elegance.</h1>
+                <p style="font-size: 1.3rem; color: var(--text-muted); margin-bottom: 3rem; line-height: 1.6;">
+                    Where art meets algorithm. We don't just build software; we sculpt immersive digital experiences through virtual internships and visionary projects.
+                </p>
+                <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="btn-liquid">Begin The Journey</a>
+            </div>
         </div>
     </section>
 
-
-    <section id="impact">
+    <section id="services">
         <div class="container">
-            <h2 class="section-title">OUR IMPACT</h2>
-            
-            <div class="glass-grid">
-                <div class="glass-card">
-                    <span class="stat-number stat-blue">50+</span>
-                    <span class="stat-label">Live Projects Delivered</span>
-                </div>
-                <div class="glass-card">
-                    <span class="stat-number stat-purple">200+</span>
-                    <span class="stat-label">Interns Mentored</span>
-                </div>
-                <div class="glass-card">
-                    <span class="stat-number stat-pink">95%</span>
-                    <span class="stat-label">Placement Rate</span>
-                </div>
+             <div style="text-align: center; margin-bottom: 4rem;">
+                <h2>Our Core Expertise</h2>
+                <p style="color: var(--text-muted);">Blending technical depth with creative vision.</p>
             </div>
 
-            <div class="progress-container">
-                <div class="progress-bar">
-                    <div class="progress-marker"></div>
-                </div>
-            </div>
-            <p style="color: var(--text-muted); margin-top: 20px;">Current Cohort Progress</p>
-        </div>
-    </section>
-
-
-    <section id="testimonials">
-        <div class="container">
-            <h2 class="section-title">TESTIMONIALS</h2>
-            
-            <div class="testimonial-scroller">
+            <div class="services-cluster">
+                <div class="cluster-blob"></div>
                 
-                <div class="speech-bubble">
-                    <div class="user-profile">
-                        <div class="avatar" style="background-color: #bd00ff;"></div>
-                        <div>
-                            <h4>Alex Chen</h4>
-                            <p style="color: var(--text-muted); font-size: 0.9rem;">Full Stack Intern</p>
-                        </div>
-                    </div>
-                    <p>"The live project experience was unmatched. It wasn't just theory; we built a real FinTech dashboard that's being used today. The mentorship is incredible."</p>
+                <div class="prism-card service-item" style="transform: rotate(-2deg) translateY(20px);">
+                    <i class="bi bi-palette service-icon"></i>
+                    <h3>Creative Engineering</h3>
+                    <p style="color: var(--text-muted);">Full-stack development that prioritizes aesthetics and user experience alongside robust MERN & Django architecture.</p>
                 </div>
 
-                <div class="speech-bubble" style="border-color: var(--neon-purple);">
-                     <style>.speech-bubble:nth-child(2)::after { border-top-color: var(--neon-purple); }</style>
-                    <div class="user-profile">
-                        <div class="avatar" style="background-color: #00f2ff;"></div>
-                        <div>
-                            <h4>Priya Sharma</h4>
-                            <p style="color: var(--text-muted); font-size: 0.9rem;">AI/ML Researcher</p>
-                        </div>
-                    </div>
-                    <p>"I just nailed my dream job interview! The real-world datasets we worked on gave me the confidence to answer tough technical questions."</p>
+                <div class="prism-card service-item" style="z-index: 2;">
+                    <i class="bi bi-cpu service-icon" style="background: linear-gradient(135deg, #f472b6, #a855f7); -webkit-background-clip: text;"></i>
+                    <h3>Intelligent Design</h3>
+                    <p style="color: var(--text-muted);">Weaving AI and Machine Learning into the fabric of applications for smarter, predictive interactions.</p>
                 </div>
 
-                <div class="speech-bubble" style="border-color: var(--neon-pink);">
-                     <style>.speech-bubble:nth-child(3)::after { border-top-color: var(--neon-pink); }</style>
-                    <div class="user-profile">
-                        <div class="avatar" style="background-color: #ff0099;"></div>
-                        <div>
-                            <h4>Rahul Verma</h4>
-                            <p style="color: var(--text-muted); font-size: 0.9rem;">Mobile Dev Lead</p>
-                        </div>
-                    </div>
-                    <p>"The collaborative environment felt like a real startup. We faced actual deployment challenges and solved them together. Highly recommend!"</p>
+                <div class="prism-card service-item" style="transform: rotate(2deg) translateY(20px);">
+                    <i class="bi bi-phone service-icon" style="background: linear-gradient(135deg, #34d399, #3b82f6); -webkit-background-clip: text;"></i>
+                    <h3>Fluid Mobility</h3>
+                    <p style="color: var(--text-muted);">Crafting cross-platform mobile experiences with Flutter that feel native, natural, and incredibly smooth.</p>
                 </div>
-                 </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="team">
+        <div class="container">
+            <h2>The Collective Mind</h2>
+            <p style="color: var(--text-muted);">An ecosystem of innovators orbiting a shared vision.</p>
+
+            <div class="orbit-container">
+                <div class="orbit-path"></div>
+                
+                <div class="orbit-center">
+                    <div class="prism-card team-card-mini">
+                        <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/niksheppaliwal.jpg" class="team-img" alt="Nikshep">
+                        <h4>Nikshep Paliwal</h4>
+                        <small style="letter-spacing: 2px; color: #a855f7; font-weight: 700;">FOUNDER</small>
+                    </div>
+                </div>
+
+                <div class="orbit-member member-1">
+                    <div class="prism-card team-card-mini p-3">
+                         <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/66714632.jpg" class="team-img" style="width:50px; height:50px;" alt="Chandan">
+                        <h5>Chandan</h5>
+                        <small>CTO</small>
+                    </div>
+                </div>
+                 <div class="orbit-member member-2">
+                    <div class="prism-card team-card-mini p-3">
+                         <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/111854114.jpg" class="team-img" style="width:50px; height:50px;" alt="Vishal">
+                        <h5>Vishal</h5>
+                        <small>Lead Dev</small>
+                    </div>
+                </div>
+                 <div class="orbit-member member-3">
+                    <div class="prism-card team-card-mini p-3">
+                         <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/68648513.jpg" class="team-img" style="width:50px; height:50px;" alt="Rahul">
+                        <h5>Rahul</h5>
+                        <small>Admin</small>
+                    </div>
+                </div>
+                 <div class="orbit-member member-4">
+                    <div class="prism-card team-card-mini p-3">
+                         <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/photo.jpeg" class="team-img" style="width:50px; height:50px; object-position: center 20%;" alt="Ravikant">
+                        <h5>Ravikant</h5>
+                        <small>Dev</small>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
 
     <footer>
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col footer-logo">
-                    <span>NP TechCrafters</span>
-                    <p style="color: var(--text-muted); margin-top: 20px; line-height: 1.6;">
-                        Empowering the next generation of tech leaders through immersive, project-based virtual internships.
-                    </p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Careers</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Case Studies</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Support</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Newsletter</h4>
-                    <p style="color: var(--text-muted); margin-bottom: 20px;">Sign up for industry trends and program updates.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your email..." class="newsletter-input">
-                        <button type="submit" class="btn btn-subscribe">SUBSCRIBE</button>
-                    </form>
-                </div>
+            <h2 style="margin-bottom: 1rem;">NP TechCrafters</h2>
+            <p style="color: var(--text-muted); margin-bottom: 3rem;">Beautifully Engineered Futures.</p>
+            
+            <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 3rem;">
+                <i class="bi bi-instagram" style="font-size: 1.5rem; color: var(--text-muted); cursor: pointer;"></i>
+                <i class="bi bi-linkedin" style="font-size: 1.5rem; color: var(--text-muted); cursor: pointer;"></i>
+                <i class="bi bi-envelope" style="font-size: 1.5rem; color: var(--text-muted); cursor: pointer;"></i>
             </div>
             
-            <div class="copyright">
-                <p>Engineered for the Future. &copy; 2025 NP TechCrafters. All rights reserved.</p>
-            </div>
+            <small style="color: var(--text-muted);">© 2025 NP TechCrafters. Crafted with care in India.</small>
         </div>
     </footer>
 
