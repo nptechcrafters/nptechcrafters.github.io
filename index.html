@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NP TechCrafters | Build The Future</title>
+    <title>NP TechCrafters | Crafting the Future</title>
     <meta name="description" content="MSME-approved EdTech | Virtual Internships in Web, Mobile, AI, Design | Live Projects" />
-    
+
     <link rel="icon" href="https://i.postimg.cc/sgkt3F0D/NPTECH.jpg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
@@ -19,271 +19,476 @@
 
     <style>
         :root {
-            /* --- Dark Mode Defaults --- */
+            /* --- Color Palette --- */
             --primary: #6366f1;
-            --primary-glow: rgba(99, 102, 241, 0.4);
-            --accent: #06b6d4;
+            --primary-dark: #4f46e5;
+            --secondary: #06b6d4;
+            --accent-glow: rgba(99, 102, 241, 0.5);
             
-            /* Backgrounds */
-            --bg-body: #030712;       /* Deepest Black */
-            --bg-surface: #111827;    /* Card Background */
-            --bg-subtle: #1f2937;     /* Section Alternates */
-            --bg-footer: #0b0f19;
+            /* --- Dark Mode Base --- */
+            --bg-body: #030712;
+            --bg-surface-1: #0b0f19; /* Deeper cards */
+            --bg-surface-2: #111827; /* Lighter cards */
             
-            /* Text */
-            --text-main: #f9fafb;
-            --text-secondary: #d1d5db;
-            --text-muted: #9ca3af;
+            /* --- Text --- */
+            --text-main: #ffffff;
+            --text-secondary: #9ca3af;
             
-            /* Borders & Glass */
-            --border-color: rgba(255, 255, 255, 0.1);
-            --glass-bg: rgba(17, 24, 39, 0.7);
+            /* --- Borders & Effects --- */
+            --border-light: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(3, 7, 18, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            
+            /* --- Gradients --- */
+            --gradient-main: linear-gradient(135deg, var(--primary), var(--secondary));
+            --gradient-text: linear-gradient(to right, #fff, #a5b4fc);
         }
 
         [data-bs-theme="light"] {
-            /* --- Light Mode Overrides --- */
-            --bg-body: #ffffff;
-            --bg-surface: #ffffff;
-            --bg-subtle: #f3f4f6;     /* Light Grey */
-            --bg-footer: #f8fafc;
-            
-            /* Text */
+            --bg-body: #f8fafc;
+            --bg-surface-1: #ffffff;
+            --bg-surface-2: #f1f5f9;
             --text-main: #0f172a;
-            --text-secondary: #334155;
-            --text-muted: #64748b;
-            
-            /* Borders & Glass */
-            --border-color: rgba(0, 0, 0, 0.08);
-            --glass-bg: rgba(255, 255, 255, 0.85);
-            --primary-glow: rgba(99, 102, 241, 0.2);
+            --text-secondary: #475569;
+            --border-light: rgba(0, 0, 0, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(99, 102, 241, 0.15);
+            --accent-glow: rgba(99, 102, 241, 0.2);
+             --card-shadow: 0 8px 32px rgba(99, 102, 241, 0.1);
+            --gradient-text: linear-gradient(to right, var(--primary-dark), var(--secondary));
         }
 
+        /* --- Global Styles & Ambient Background --- */
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-main);
             overflow-x: hidden;
             transition: background-color 0.4s ease, color 0.4s ease;
+            position: relative;
+        }
+        
+        /* Ambient Aurora Background Effect */
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: -1;
+            animation: floatingBg 20s infinite alternate ease-in-out;
+        }
+        body::before {
+            background: var(--primary);
+            top: -10%;
+            left: -10%;
+        }
+        body::after {
+            background: var(--secondary);
+            bottom: -10%;
+            right: -10%;
+            animation-delay: -10s;
+        }
+        [data-bs-theme="light"] body::before, [data-bs-theme="light"] body::after {
+             opacity: 0.08;
         }
 
-        /* --- Navbar --- */
+        h1, h2, h3, h4, .navbar-brand {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* --- Modern Utilities --- */
+        .section-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 30px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--primary-glow);
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .text-gradient {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- Creative Navbar --- */
         .navbar {
             padding: 1rem 0;
             background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
             transition: all 0.3s ease;
         }
 
         .navbar-brand {
             font-weight: 800;
-            color: var(--text-main) !important;
+            font-size: 1.35rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .navbar-brand img {
-            height: 40px;
-            border-radius: 50%;
+            height: 42px;
+            border-radius: 12px; /* Squircle */
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         .nav-link {
             color: var(--text-secondary) !important;
-            font-weight: 500;
+            font-weight: 600;
+            padding: 0.5rem 1rem !important;
+            position: relative;
             transition: color 0.3s;
         }
 
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-main);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
         .nav-link:hover, .nav-link.active {
-            color: var(--primary) !important;
+            color: var(--text-main) !important;
         }
+        .nav-link.active::after { width: 60%; }
 
-        .btn-nav {
-            background: var(--primary);
-            color: white !important;
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px var(--primary-glow);
-        }
-
-        /* --- Hero Section --- */
-        #hero {
-            padding-top: 140px;
-            padding-bottom: 100px;
+        .btn-nav-creative {
             position: relative;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            color: white !important;
+            background: var(--bg-body);
+            border: 2px solid transparent;
+            background-image: linear-gradient(var(--bg-body), var(--bg-body)), var(--gradient-main);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            box-shadow: 0 4px 20px var(--accent-glow);
+            transition: 0.3s;
+        }
+        .btn-nav-creative:hover {
+             transform: translateY(-2px);
+             box-shadow: 0 8px 25px var(--accent-glow);
+        }
+
+        /* --- Dynamic Hero Section --- */
+        #hero {
+            padding-top: 160px;
+            padding-bottom: 120px;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: clamp(3rem, 8vw, 5.5rem);
             font-weight: 800;
-            line-height: 1.1;
-            background: linear-gradient(135deg, var(--text-main) 30%, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
             margin-bottom: 1.5rem;
         }
-        
-        @media (min-width: 992px) {
-            .hero-title { font-size: 4.5rem; }
-        }
 
-        /* --- General Card Styles --- */
-        .glass-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            height: 100%;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
-            border-color: var(--primary);
-        }
-
-        /* --- Project Samples (New) --- */
-        .project-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .project-img {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .project-body { padding: 1.5rem; }
-
-        .tech-badge {
-            font-size: 0.75rem;
-            padding: 4px 10px;
-            border-radius: 20px;
-            background: var(--bg-subtle);
-            color: var(--text-secondary);
-            border: 1px solid var(--border-color);
-            margin-right: 5px;
-        }
-
-        /* --- Team Section (Updated Size) --- */
-        .team-card {
-            max-width: 280px; /* Constrain width */
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .team-img-wrapper {
+        .hero-image-container {
             position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-            border: 1px solid var(--border-color);
-            /* Reduced Height */
-            height: 220px; 
-            width: 100%;
-        }
-        
-        .team-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top; /* Focus on faces */
-            transition: transform 0.5s;
-        }
-
-        .team-card:hover img {
-            transform: scale(1.08);
-        }
-
-        /* --- Marquee --- */
-        .marquee-wrapper {
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
-        }
-        /* Gradient Fade matches body background automatically */
-        .marquee-wrapper::before, .marquee-wrapper::after {
-            content: "";
-            position: absolute;
-            top: 0; width: 100px; height: 100%;
             z-index: 2;
-            pointer-events: none;
         }
-        .marquee-wrapper::before { left: 0; background: linear-gradient(to right, var(--bg-body), transparent); }
-        .marquee-wrapper::after { right: 0; background: linear-gradient(to left, var(--bg-body), transparent); }
-
-        .marquee-content { display: inline-block; animation: marquee 20s linear infinite; }
         
+        /* Tech Ring behind hero image */
+        .tech-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            height: 110%;
+            border: 2px dashed var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: rotateRing 30s linear infinite;
+            z-index: -1;
+        }
+        .tech-ring::after {
+            content: '';
+            position: absolute;
+            top: -10%; left: -10%;
+            width: 120%; height: 120%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            z-index: -2;
+        }
+
+        .hero-img {
+            border-radius: 30px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-light);
+            animation: floatingImg 6s ease-in-out infinite;
+        }
+
+        .btn-glow-rich {
+            background: var(--gradient-main);
+            color: white;
+            padding: 14px 36px;
+            border-radius: 16px;
+            border: none;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 25px var(--accent-glow);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .btn-glow-rich:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px var(--accent-glow);
+            color: white;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.6;
+            animation: bounce 2s infinite;
+        }
+        .mouse {
+            width: 26px; height: 42px;
+            border: 2px solid var(--text-secondary);
+            border-radius: 20px;
+            position: relative;
+        }
+        .wheel {
+            width: 4px; height: 8px;
+            background: var(--text-secondary);
+            border-radius: 2px;
+            position: absolute;
+            top: 8px; left: 50%;
+            transform: translateX(-50%);
+            animation: scrollWheel 2s infinite;
+        }
+
+        /* --- Modern Glass Cards (Services) --- */
+        .creative-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: var(--card-shadow);
+        }
+        
+        /* Subtle gradient border on hover */
+        .creative-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 2px;
+            background: linear-gradient(135deg, transparent, var(--primary-dark), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .creative-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px var(--accent-glow);
+        }
+        .creative-card:hover::before { opacity: 1; }
+
+        .card-icon-wrapper {
+            width: 70px; height: 70px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: 0.3s;
+        }
+        .creative-card:hover .card-icon-wrapper {
+            background: var(--primary);
+            color: white;
+            transform: rotate(-10deg) scale(1.1);
+        }
+        .creative-card:hover .card-icon-wrapper i { color: white !important; }
+
+
+        /* --- Project Showcase (Overlay Style) --- */
+        .project-showcase {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            height: 350px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--card-shadow);
+        }
+
+        .project-showcase img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(3, 7, 18, 0.95), transparent);
+            padding: 2rem;
+            transform: translateY(30%);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        [data-bs-theme="light"] .project-overlay {
+             background: linear-gradient(to top, rgba(255, 255, 255, 0.95), transparent);
+        }
+
+        .project-showcase:hover img {
+            transform: scale(1.1);
+        }
+        .project-showcase:hover .project-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* --- Creative Team Frames --- */
+        .team-creative {
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .avatar-frame {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Squircle-ish */
+            box-shadow: var(--card-shadow);
+            border: 3px solid var(--bg-body);
+            transition: 0.4s ease;
+        }
+
+        /* Spinning gradient border behind avatar */
+        .avatar-frame::before {
+            content: '';
+            position: absolute;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            background: var(--gradient-main);
+            border-radius: 32% 68% 68% 32% / 32% 32% 68% 68%;
+            z-index: -1;
+            animation: morphRotate 8s linear infinite;
+            opacity: 0.7;
+        }
+        
+        .team-creative:hover img {
+             border-radius: 50%;
+             transform: scale(1.05);
+        }
+
+        /* --- Marquee & Footer --- */
+        .marquee-section {
+            background: var(--bg-surface-1);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            padding: 3rem 0;
+        }
         .client-logo {
             height: 50px;
             margin: 0 40px;
-            filter: grayscale(100%) opacity(0.6);
-            transition: 0.3s;
+            filter: grayscale(100%) opacity(0.5) brightness(1.2);
+            transition: 0.4s;
         }
-        .client-logo:hover { filter: grayscale(0%) opacity(1); }
+        .client-logo:hover { filter: grayscale(0%) opacity(1) brightness(1); transform: scale(1.1); }
 
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        /* --- Footer --- */
         footer {
-            background: var(--bg-footer);
-            border-top: 1px solid var(--border-color);
+            background: var(--bg-surface-1);
             padding-top: 5rem;
-            padding-bottom: 2rem;
-            color: var(--text-secondary);
+            padding-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Big background watermark text */
+        footer::before {
+            content: 'TECHCRAFTERS';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12vw;
+            font-weight: 800;
+            color: var(--text-main);
+            opacity: 0.03;
+            pointer-events: none;
+            white-space: nowrap;
         }
 
-        /* Utilities */
-        .section-tag {
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        
-        .bg-alt { background-color: var(--bg-subtle); }
-        
-        .btn-glow {
-            background: linear-gradient(135deg, var(--primary), #4f46e5);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 12px;
-            border: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-        .btn-glow:hover {
-            box-shadow: 0 0 20px var(--primary-glow);
-            transform: translateY(-2px);
-            color: white;
-        }
+        /* --- Animations --- */
+        @keyframes floatingBg { 0% { transform: translate(0, 0); } 100% { transform: translate(100px, 50px); } }
+        @keyframes floatingImg { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        @keyframes rotateRing { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
+        @keyframes scrollWheel { 0% { opacity: 1; top: 8px; } 100% { opacity: 0; top: 24px; } }
+        @keyframes morphRotate { 0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(0deg); } 50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; } 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(360deg); } }
 
         /* Theme Toggle */
         #themeToggle {
             cursor: pointer;
-            width: 40px; height: 40px;
-            border-radius: 50%;
+            width: 44px; height: 44px;
+            border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
-            border: 1px solid var(--border-color);
-            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            background: var(--glass-bg);
             color: var(--text-main);
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+        #themeToggle:hover { background: var(--border-light); transform: rotate(15deg); }
+
+        /* Responsive tweaks */
+        @media (max-width: 991px) {
+            #hero { padding-top: 120px; text-align: center; }
+            .hero-image-container { margin-top: 3rem; }
+            .navbar-collapse {
+                background: var(--bg-surface-1);
+                padding: 1.5rem;
+                border-radius: 20px;
+                margin-top: 1rem;
+                border: 1px solid var(--border-light);
+            }
+            .scroll-indicator { display: none; }
         }
     </style>
 </head>
@@ -294,27 +499,27 @@
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="Logo">
-                NP TechCrafters
+                <span class="text-gradient">NP TechCrafters</span>
             </a>
             
             <div class="d-flex align-items-center gap-3 order-lg-3">
                 <div id="themeToggle" onclick="toggleTheme()">
-                    <i class="bi bi-moon-stars-fill"></i>
+                    <i class="bi bi-moon-stars-fill fs-5"></i>
                 </div>
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-                    <span class="bi bi-list fs-1" style="color: var(--text-main)"></span>
+                <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                    <i class="bi bi-filter-right fs-1 text-gradient"></i>
                 </button>
             </div>
 
             <div class="collapse navbar-collapse" id="nav">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav mx-auto mb-3 mb-lg-0">
                     <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Work</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
                 </ul>
-                <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" target="_blank" class="btn btn-nav d-none d-lg-block">Apply Now</a>
+                <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" target="_blank" class="btn-nav-creative d-none d-lg-block px-4">Apply Now <i class="bi bi-arrow-right-short"></i></a>
             </div>
         </div>
     </nav>
@@ -322,118 +527,146 @@
     <section id="hero" class="d-flex align-items-center">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6" data-aos="fade-up">
-                    <span class="section-tag"><i class="bi bi-patch-check-fill me-2"></i>MSME Approved</span>
-                    <h1 class="hero-title">We Craft Your <br> Digital Future.</h1>
-                    <p class="lead mb-5 typewriter-container" style="color: var(--text-muted)">
-                        <span class="typewriter"></span>
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <span class="section-tag"><i class="bi bi-patch-check-fill me-2"></i>MSME Approved EdTech</span>
+                    <h1 class="hero-title">Crafting Your <br> <span class="text-gradient">Digital Destiny.</span></h1>
+                    <p class="lead mb-5 typewriter-container fw-medium" style="color: var(--text-secondary); max-width: 500px;">
+                        We bridge the gap between theory and practice with <span class="text-primary fw-bold typewriter"></span>
                     </p>
-                    <div class="d-flex gap-3 flex-wrap">
-                        <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="btn btn-glow">Get Started</a>
-                        <a href="#projects" class="btn btn-outline-secondary rounded-3 px-4 py-2 fw-semibold" style="border-color: var(--border-color); color: var(--text-main)">View Work</a>
+                    <div class="d-flex gap-3 flex-wrap justify-content-md-start justify-content-center">
+                        <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="btn btn-glow-rich">Get Started Now</a>
+                        <a href="#projects" class="btn btn-outline-light rounded-4 px-4 py-3 fw-bold d-flex align-items-center gap-2" style="border: 2px solid var(--border-light); color: var(--text-main)">View Case Studies <i class="bi bi-play-circle-fill fs-5 text-primary"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-6 mt-5 mt-lg-0 text-center" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/hero-img.png" class="img-fluid rounded-4 shadow-lg border border-opacity-25" style="border-color: var(--border-color)" alt="Hero">
+                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000">
+                    <div class="hero-image-container">
+                        <div class="tech-ring"></div>
+                        <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/hero-img.png" class="img-fluid hero-img" alt="Hero">
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="scroll-indicator">
+            <div class="mouse"><div class="wheel"></div></div>
+            <span class="small mt-2 text-muted ls-1">SCROLL</span>
+        </div>
     </section>
 
-    <section id="services" class="py-5">
+    <section id="services" class="py-5 position-relative">
         <div class="container py-5">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <span class="section-tag">Services</span>
-                <h2 class="display-6 fw-bold" style="color: var(--text-main)">What We Deliver</h2>
+            <div class="row justify-content-center mb-5" data-aos="fade-up">
+                <div class="col-lg-7 text-center">
+                    <span class="section-tag">What We Deliver</span>
+                    <h2 class="display-5 fw-bold mb-3"><span class="text-gradient">Future-Ready</span> Skills & Solutions</h2>
+                    <p class="text-muted fs-5">Real-world experience in the most demanded technologies.</p>
+                </div>
             </div>
+            
             <div class="row g-4">
-                <div class="col-md-6 col-lg-3" data-aos="fade-up">
-                    <div class="glass-card">
-                        <i class="bi bi-globe fs-1 text-primary mb-3 d-block"></i>
-                        <h5 style="color: var(--text-main)">Web Development</h5>
-                        <p style="color: var(--text-muted)">MERN Stack, Django & Custom sites.</p>
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="creative-card d-flex flex-column justify-content-between">
+                        <div>
+                             <div class="card-icon-wrapper">
+                                <i class="bi bi-globe fs-2 text-primary"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Full-Stack Web Development</h4>
+                            <p class="text-muted mb-4 w-75">Master the MERN Stack (MongoDB, Express, React, Node.js) and Django. Build scalable, high-performance web applications from scratch.</p>
+                        </div>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <span class="tech-badge">React.js</span><span class="tech-badge">Node.js</span><span class="tech-badge">MongoDB</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                    <div class="glass-card">
-                        <i class="bi bi-phone fs-1 text-primary mb-3 d-block"></i>
-                        <h5 style="color: var(--text-main)">App Development</h5>
-                        <p style="color: var(--text-muted)">Flutter & React Native solutions.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                    <div class="glass-card">
-                        <i class="bi bi-cpu fs-1 text-primary mb-3 d-block"></i>
-                        <h5 style="color: var(--text-main)">AI & ML</h5>
-                        <p style="color: var(--text-muted)">Smart algorithms & automation.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                    <div class="glass-card">
-                        <i class="bi bi-vector-pen fs-1 text-primary mb-3 d-block"></i>
-                        <h5 style="color: var(--text-main)">UI/UX Design</h5>
-                        <p style="color: var(--text-muted)">Modern interfaces & branding.</p>
+                
+                <div class="col-lg-6">
+                    <div class="row g-4">
+                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="creative-card">
+                                <div class="card-icon-wrapper">
+                                    <i class="bi bi-phone-vibrate fs-2 text-primary"></i>
+                                </div>
+                                <h5 class="fw-bold">App Development</h5>
+                                <p class="text-muted small">Cross-platform excellence with Flutter & React Native.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                             <div class="creative-card">
+                                <div class="card-icon-wrapper">
+                                    <i class="bi bi-cpu-fill fs-2 text-primary"></i>
+                                </div>
+                                <h5 class="fw-bold">AI & Machine Learning</h5>
+                                <p class="text-muted small">Data science, predictive modeling, and neural networks.</p>
+                            </div>
+                        </div>
+                        <div class="col-12" data-aos="fade-up" data-aos-delay="300">
+                             <div class="creative-card d-flex align-items-center gap-4">
+                                <div class="card-icon-wrapper mb-0 flex-shrink-0">
+                                    <i class="bi bi-palette-fill fs-2 text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">UI/UX & Product Design</h5>
+                                    <p class="text-muted small mb-0">Creating intuitive, beautiful user journeys and brand identities.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-5 bg-alt">
+    <section id="projects" class="py-5 bg-surface-1" style="background: var(--bg-surface-1);">
         <div class="container py-5">
             <div class="row align-items-end mb-5">
                 <div class="col-lg-8" data-aos="fade-right">
-                    <span class="section-tag">Our Work</span>
-                    <h2 class="display-6 fw-bold" style="color: var(--text-main)">Recent Projects</h2>
-                    <p style="color: var(--text-muted)">A glimpse into the solutions we've crafted for our clients.</p>
+                    <span class="section-tag">Our Portfolio</span>
+                    <h2 class="display-5 fw-bold">Recent <span class="text-gradient">Case Studies</span></h2>
+                    <p class="text-muted fs-5">Innovative solutions crafted by our interns and experts.</p>
                 </div>
                 <div class="col-lg-4 text-lg-end" data-aos="fade-left">
-                    <a href="#" class="btn btn-outline-secondary rounded-pill px-4">View All Projects</a>
+                    <a href="#" class="btn btn-outline-light rounded-pill px-4 py-2 fw-semibold" style="border-color: var(--border-light);">View All Work <i class="bi bi-arrow-right ms-1"></i></a>
                 </div>
             </div>
 
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="project-card">
-                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="project-img" alt="Project 1">
-                        <div class="project-body">
-                            <h5 class="fw-bold mb-2" style="color: var(--text-main)">FinTech Dashboard</h5>
-                            <p class="small mb-3" style="color: var(--text-muted)">A comprehensive financial analytics tool for a banking client.</p>
-                            <div class="d-flex flex-wrap mb-3">
-                                <span class="tech-badge">React</span>
-                                <span class="tech-badge">Node.js</span>
+                    <div class="project-showcase">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Project 1">
+                        <div class="project-overlay">
+                            <div class="d-flex gap-2 mb-3">
+                                <span class="tech-badge bg-primary text-white border-0">AI/ML</span>
+                                <span class="tech-badge bg-dark border-0">Python</span>
                             </div>
-                            <a href="#" class="text-primary text-decoration-none fw-bold small">View Case Study <i class="bi bi-arrow-right"></i></a>
+                            <h4 class="fw-bold mb-2">Smart Health Diagnostic AI</h4>
+                            <p class="text-secondary small mb-0">Improving early detection accuracy using deep learning models.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-card">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="project-img" alt="Project 2">
-                        <div class="project-body">
-                            <h5 class="fw-bold mb-2" style="color: var(--text-main)">E-Commerce App</h5>
-                            <p class="small mb-3" style="color: var(--text-muted)">Mobile shopping application with real-time inventory tracking.</p>
-                            <div class="d-flex flex-wrap mb-3">
-                                <span class="tech-badge">Flutter</span>
-                                <span class="tech-badge">Firebase</span>
+                    <div class="project-showcase">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Project 2">
+                         <div class="project-overlay">
+                            <div class="d-flex gap-2 mb-3">
+                                <span class="tech-badge bg-primary text-white border-0">Mobile</span>
+                                <span class="tech-badge bg-dark border-0">Flutter</span>
                             </div>
-                            <a href="#" class="text-primary text-decoration-none fw-bold small">View Case Study <i class="bi bi-arrow-right"></i></a>
+                            <h4 class="fw-bold mb-2">SwiftKart E-Commerce</h4>
+                            <p class="text-secondary small mb-0">A seamless shopping experience with real-time inventory sync.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-card">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="project-img" alt="Project 3">
-                        <div class="project-body">
-                            <h5 class="fw-bold mb-2" style="color: var(--text-main)">Smart Health AI</h5>
-                            <p class="small mb-3" style="color: var(--text-muted)">AI-powered diagnostic assistance tool for medical professionals.</p>
-                            <div class="d-flex flex-wrap mb-3">
-                                <span class="tech-badge">Python</span>
-                                <span class="tech-badge">TensorFlow</span>
+                    <div class="project-showcase">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Project 3">
+                         <div class="project-overlay">
+                            <div class="d-flex gap-2 mb-3">
+                                <span class="tech-badge bg-primary text-white border-0">Web</span>
+                                <span class="tech-badge bg-dark border-0">React MERN</span>
                             </div>
-                            <a href="#" class="text-primary text-decoration-none fw-bold small">View Case Study <i class="bi bi-arrow-right"></i></a>
+                            <h4 class="fw-bold mb-2">Nova FinTech Dashboard</h4>
+                            <p class="text-secondary small mb-0">Comprehensive financial analytics and reporting platform.</p>
                         </div>
                     </div>
                 </div>
@@ -441,121 +674,133 @@
         </div>
     </section>
 
-    <section id="team" class="py-5">
+    <section id="team" class="py-5 position-relative">
         <div class="container py-5">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <span class="section-tag">Our Team</span>
-                <h2 class="display-6 fw-bold" style="color: var(--text-main)">Meet The Experts</h2>
+             <div class="row justify-content-center mb-5" data-aos="fade-up">
+                <div class="col-lg-7 text-center">
+                    <span class="section-tag">The Minds Behind</span>
+                    <h2 class="display-5 fw-bold mb-3">Meet The <span class="text-gradient">Experts</span></h2>
+                </div>
             </div>
             
-            <div class="row g-4 justify-content-center">
-                <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up">
-                    <div class="team-card">
-                        <div class="team-img-wrapper">
+            <div class="row g-5 justify-content-center">
+                <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in-up">
+                    <div class="team-creative">
+                        <div class="avatar-frame">
                             <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/niksheppaliwal.jpg" alt="Nikshep">
                         </div>
-                        <h6 class="fw-bold mb-1" style="color: var(--text-main)">Nikshep Paliwal</h6>
-                        <p class="small text-primary mb-0">Founder & CEO</p>
+                        <h5 class="fw-bold mb-1">Nikshep Paliwal</h5>
+                        <p class="small text-primary fw-bold ls-1 mb-0">FOUNDER & CEO</p>
                     </div>
                 </div>
-                <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="100">
-                    <div class="team-card">
-                        <div class="team-img-wrapper">
-                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/66714632.jpg" alt="Chandan">
+                 <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="team-creative">
+                        <div class="avatar-frame">
+                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/66714632.jpg" alt="Chandan" style="object-position: top;">
                         </div>
-                        <h6 class="fw-bold mb-1" style="color: var(--text-main)">Chandan Saroj</h6>
-                        <p class="small text-primary mb-0">CTO</p>
+                        <h5 class="fw-bold mb-1">Chandan Saroj</h5>
+                        <p class="small text-primary fw-bold ls-1 mb-0">CTO</p>
                     </div>
                 </div>
-                <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="200">
-                    <div class="team-card">
-                        <div class="team-img-wrapper">
+                <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in-up" data-aos-delay="200">
+                    <div class="team-creative">
+                        <div class="avatar-frame">
                             <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/111854114.jpg" alt="Vishal">
                         </div>
-                        <h6 class="fw-bold mb-1" style="color: var(--text-main)">Vishal</h6>
-                        <p class="small text-primary mb-0">Lead Dev</p>
+                        <h5 class="fw-bold mb-1">Vishal</h5>
+                        <p class="small text-primary fw-bold ls-1 mb-0">LEAD DEV</p>
                     </div>
                 </div>
-                <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="300">
-                    <div class="team-card">
-                        <div class="team-img-wrapper">
+                <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in-up" data-aos-delay="300">
+                    <div class="team-creative">
+                        <div class="avatar-frame">
                             <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/68648513.jpg" alt="Rahul">
                         </div>
-                        <h6 class="fw-bold mb-1" style="color: var(--text-main)">Rahul Bhaskar</h6>
-                        <p class="small text-primary mb-0">Admin</p>
+                        <h5 class="fw-bold mb-1">Rahul Bhaskar</h5>
+                        <p class="small text-primary fw-bold ls-1 mb-0">ADMIN</p>
                     </div>
                 </div>
-                <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="400">
-                    <div class="team-card">
-                        <div class="team-img-wrapper">
-                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/photo.jpeg" alt="Ravikant">
+                 <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in-up" data-aos-delay="400">
+                    <div class="team-creative">
+                        <div class="avatar-frame">
+                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/photo.jpeg" alt="Ravikant" style="object-position: center 20%;">
                         </div>
-                        <h6 class="fw-bold mb-1" style="color: var(--text-main)">Ravikant Mahi</h6>
-                        <p class="small text-primary mb-0">Developer</p>
+                        <h5 class="fw-bold mb-1">Ravikant Mahi</h5>
+                        <p class="small text-primary fw-bold ls-1 mb-0">DEVELOPER</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-5 bg-alt border-top border-bottom" style="border-color: var(--border-color) !important;">
+    <section class="marquee-section">
         <div class="container-fluid">
             <div class="text-center mb-4">
-                <span class="section-tag">Trusted By</span>
+                <span class="section-tag" style="background: var(--bg-body);">Trusted Partners & Clients</span>
             </div>
-            <div class="marquee-wrapper">
-                <div class="marquee-content">
-                    <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" class="client-logo" alt="Client">
+            <div class="marquee-wrapper" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
+                <div class="marquee-content d-flex align-items-center">
+                    <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" class="client-logo" alt="Prashanottar" style="height: 60px; filter: none;">
+                    
                     <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" class="client-logo" alt="Client">
                     <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" class="client-logo" alt="Client">
-                    <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" class="client-logo" alt="Client">
+                    <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" class="client-logo rounded-circle" alt="Client">
                     <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" class="client-logo" alt="Client">
-                    <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" class="client-logo" alt="Client">                   
+                    <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" class="client-logo" alt="Prashanottar" style="height: 60px; filter: none;">
+
                     <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" class="client-logo" alt="Client">
-                    <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" class="client-logo" alt="Client">
-                     <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" class="client-logo" alt="Client">
-                     <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" class="client-logo" alt="Client">
-                     <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" class="client-logo" alt="Client">
-                    <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" class="client-logo" alt="Client">
+                    <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" class="client-logo rounded-circle" alt="Client">
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <div class="row g-5">
+        <div class="container position-relative z-2">
+            <div class="row g-5 mb-5">
                 <div class="col-lg-5">
-                    <h4 class="fw-bold mb-4" style="color: var(--text-main)">NP TechCrafters</h4>
-                    <p class="mb-4">Empowering youth through technology and innovation. Join us to build the future.</p>
+                    <a class="navbar-brand mb-4" href="#">
+                        <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="Logo">
+                        <span class="text-gradient fw-bold">NP TechCrafters</span>
+                    </a>
+                    <p class="mb-4 text-secondary lead fs-6">Empowering the next generation of tech leaders through virtual internships, live projects, and cutting-edge skill development in Web, AI, and Design.</p>
                     <div class="d-flex gap-3 social-links">
-                        <a href="https://www.instagram.com/np.techcrafters" class="fs-4" style="color: var(--text-muted)"><i class="bi bi-instagram"></i></a>
-                        <a href="https://www.facebook.com/people/NP-TechCrafters/61565158317180/" class="fs-4" style="color: var(--text-muted)"><i class="bi bi-facebook"></i></a>
-                        <a href="https://www.linkedin.com/company/np-techcrafters" class="fs-4" style="color: var(--text-muted)"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://www.instagram.com/np.techcrafters" class="btn btn-icon btn-outline-light rounded-circle border-opacity-25" style="border-color: var(--border-light); color: var(--text-secondary)"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.facebook.com/people/NP-TechCrafters/61565158317180/" class="btn btn-icon btn-outline-light rounded-circle border-opacity-25" style="border-color: var(--border-light); color: var(--text-secondary)"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.linkedin.com/company/np-techcrafters" class="btn btn-icon btn-outline-light rounded-circle border-opacity-25" style="border-color: var(--border-light); color: var(--text-secondary)"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <h5 class="fw-bold mb-4" style="color: var(--text-main)">Links</h5>
-                    <ul class="list-unstyled d-flex flex-column gap-2">
-                        <li><a href="#hero" class="text-decoration-none" style="color: var(--text-muted)">Home</a></li>
-                        <li><a href="#about" class="text-decoration-none" style="color: var(--text-muted)">About</a></li>
-                        <li><a href="#projects" class="text-decoration-none" style="color: var(--text-muted)">Projects</a></li>
-                        <li><a href="#team" class="text-decoration-none" style="color: var(--text-muted)">Team</a></li>
+                <div class="col-lg-2 col-6 offset-lg-1">
+                    <h6 class="fw-bold mb-4 text-white">Company</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-3">
+                        <li><a href="#hero" class="text-decoration-none text-secondary link-hover">Home</a></li>
+                        <li><a href="#about" class="text-decoration-none text-secondary link-hover">About Us</a></li>
+                        <li><a href="#team" class="text-decoration-none text-secondary link-hover">Our Team</a></li>
+                        <li><a href="#" class="text-decoration-none text-secondary link-hover">Careers</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4">
-                    <h5 class="fw-bold mb-4" style="color: var(--text-main)">Contact</h5>
-                    <ul class="list-unstyled d-flex flex-column gap-3" style="color: var(--text-muted)">
-                        <li><i class="bi bi-geo-alt me-2 text-primary"></i> Saharanpur, UP, India</li>
-                        <li><i class="bi bi-envelope me-2 text-primary"></i> nptechcrafters@gmail.com</li>
-                        <li><i class="bi bi-telephone me-2 text-primary"></i> +91 9149188705</li>
+                <div class="col-lg-2 col-6">
+                    <h6 class="fw-bold mb-4 text-white">Resources</h6>
+                     <ul class="list-unstyled d-flex flex-column gap-3">
+                        <li><a href="#services" class="text-decoration-none text-secondary link-hover">Services</a></li>
+                        <li><a href="#projects" class="text-decoration-none text-secondary link-hover">Case Studies</a></li>
+                        <li><a href="#" class="text-decoration-none text-secondary link-hover">Blog</a></li>
+                        <li><a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="text-decoration-none text-primary fw-bold link-hover">Apply Now</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-4 text-white">Contact</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-3 text-secondary small">
+                        <li class="d-flex gap-2"><i class="bi bi-geo-alt text-primary"></i> Saharanpur, UP, India</li>
+                        <li class="d-flex gap-2"><i class="bi bi-envelope text-primary"></i> nptechcrafters@gmail.com</li>
+                        <li class="d-flex gap-2"><i class="bi bi-telephone text-primary"></i> +91 9149188705</li>
                     </ul>
                 </div>
             </div>
-            <div class="border-top mt-5 pt-4 text-center" style="border-color: var(--border-color) !important;">
-                <small>© 2025 NP TechCrafters. Made with ❤️ in India.</small>
-                <div class="mt-2" style="font-size: 0.8rem;">
-                    Visits: <span id="visitCount" style="color: var(--text-main)">...</span>
+            <div class="border-top pt-4 d-md-flex justify-content-between align-items-center text-center text-md-start" style="border-color: var(--border-light) !important;">
+                <small class="text-secondary mb-2 mb-md-0 d-block">© 2025 NP TechCrafters. All rights reserved. Made with <i class="bi bi-heart-fill text-danger mx-1"></i> in India.</small>
+                <div class="small text-secondary">
+                    Total Visits: <span id="visitCount" class="text-primary fw-bold font-monospace">...</span>
                 </div>
             </div>
         </div>
@@ -566,19 +811,19 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     
     <script>
-        AOS.init({ duration: 800, once: true, easing: 'ease-out-cubic' });
+        // Initialize AOS with sleeker settings
+        AOS.init({ duration: 1000, once: true, easing: 'cubic-bezier(0.25, 0.8, 0.25, 1)', offset: 50 });
 
+        // --- Theme Toggling Logic ---
         function setTheme(theme) {
             document.documentElement.setAttribute('data-bs-theme', theme);
             localStorage.setItem('theme', theme);
             const icon = document.querySelector('#themeToggle i');
             
             if (theme === 'dark') {
-                icon.classList.remove('bi-sun-fill');
-                icon.classList.add('bi-moon-stars-fill');
+                icon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill');
             } else {
-                icon.classList.remove('bi-moon-stars-fill');
-                icon.classList.add('bi-sun-fill');
+                icon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
             }
         }
 
@@ -591,32 +836,35 @@
         const savedTheme = localStorage.getItem('theme') || 'dark';
         setTheme(savedTheme);
 
-        // Navbar Scroll
+        // --- Navbar Scroll Effect ---
         window.addEventListener("scroll", () => {
             const navbar = document.querySelector(".navbar");
             if (window.scrollY > 50) {
-                navbar.style.padding = "0.6rem 0";
+                navbar.classList.add('py-2', 'shadow-sm');
+                navbar.classList.remove('py-3');
             } else {
-                navbar.style.padding = "1rem 0";
+                navbar.classList.add('py-3');
+                 navbar.classList.remove('py-2', 'shadow-sm');
             }
         });
 
-        // Typewriter
+        // --- Typewriter Effect ---
         new Typed(".typewriter", {
-            strings: ["Web Development", "Mobile Apps", "Internships", "AI Solutions"],
-            typeSpeed: 50,
-            backSpeed: 30,
-            backDelay: 1500,
-            loop: true
+            strings: ["Virtual Internships.", "Live Client Projects.", "AI & ML Solutions.", "Modern Web Design."],
+            typeSpeed: 40,
+            backSpeed: 25,
+            backDelay: 2000,
+            loop: true,
+            showCursor: true,
+            cursorChar: '|',
+            autoInsertCss: true,
         });
 
-        // Visitor Count
+        // --- Visitor Count (Simulated) ---
         let visits = localStorage.getItem("visits") || 18472;
-        visits = parseInt(visits) + 1;
+        visits = parseInt(visits) + Math.floor(Math.random() * 5) + 1; // Simulate realistic increment
         localStorage.setItem("visits", visits);
         document.getElementById("visitCount").textContent = visits.toLocaleString();
     </script>
 </body>
 </html>
-
-
