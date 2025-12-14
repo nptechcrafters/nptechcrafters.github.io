@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NP TechCrafters | Creative Future</title>
+    <title>NP TechCrafters | The Crystalline Future</title>
     <meta name="description" content="MSME-approved EdTech | Virtual Internships in Web, Mobile, AI, Design | Live Projects" />
 
     <link rel="icon" href="https://i.postimg.cc/sgkt3F0D/NPTECH.jpg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
@@ -19,539 +19,348 @@
 
     <style>
         :root {
-            /* --- NEW Creative Palette (Holographic/Neon) --- */
-            --primary: #8A2BE2; /* Electric Violet */
-            --primary-dark: #6a1bb3;
-            --secondary: #00FFC8; /* Neon Mint */
-            --tertiary: #FF0080; /* Hot PinkAccent */
+            /* --- NEW Palette: Deep Ocean Prism --- */
+            --primary: #3b82f6; /* Deep Blue */
+            --secondary: #10b981; /* Emerald */
+            --tertiary: #8b5cf6; /* Amethyst */
             
-            --accent-glow: rgba(138, 43, 226, 0.6);
-            --accent-glow-sec: rgba(0, 255, 200, 0.5);
+            /* Subtle refractive accents used in shadows */
+            --prism-cyan: rgba(0, 255, 255, 0.2);
+            --prism-magenta: rgba(255, 0, 255, 0.2);
 
-            /* --- Dark Mode Base (Deeper, richer black) --- */
-            --bg-body: #050510; 
-            --bg-surface-1: #0a0a18; 
-            --bg-surface-2: #121225; 
+            /* --- Dark Mode Base (Cooler, deeper slate) --- */
+            --bg-body: #020617; 
+            --bg-surface-1: #0f172a; 
+            --bg-surface-2: #1e293b; 
             
             /* --- Text --- */
-            --text-main: #ffffff;
-            --text-secondary: #b8b8d0;
+            --text-main: #f8fafc;
+            --text-secondary: #94a3b8;
             
-            /* --- Borders & Effects --- */
-            --border-light: rgba(255, 255, 255, 0.05);
-            --glass-bg: rgba(10, 10, 24, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --card-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            /* --- Crystalline Borders & Effects --- */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
             
-            /* --- NEW Gradients --- */
-            /* A vibrant, shifting holographic gradient */
-            --gradient-main: linear-gradient(135deg, var(--primary), var(--tertiary), var(--secondary));
-            /* Conic gradient for spinning border effects */
-            --gradient-conic: conic-gradient(from 180deg at 50% 50%, var(--primary), var(--secondary), var(--tertiary), var(--secondary), var(--primary));
-            --gradient-text: linear-gradient(to right, #fff, var(--secondary), var(--primary));
+            /* A complex shadow that mimics light passing through a prism */
+            --prism-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 0 1px var(--glass-border) inset;
+            
+            --gradient-main: linear-gradient(135deg, var(--primary), var(--tertiary));
+            --gradient-text: linear-gradient(to right, #fff, #c4b5fd);
         }
 
         [data-bs-theme="light"] {
-            /* Light mode adjustments for the new palette */
-            --bg-body: #f0f2f9;
+            --bg-body: #f0f9ff;
             --bg-surface-1: #ffffff;
-            --bg-surface-2: #f8f9fe;
-            --text-main: #0a0a18;
-            --text-secondary: #50506a;
-            --border-light: rgba(0, 0, 0, 0.08);
-            --glass-bg: rgba(255, 255, 255, 0.8);
-            --accent-glow: rgba(138, 43, 226, 0.2);
-             --card-shadow: 0 15px 40px rgba(138, 43, 226, 0.1);
-            --gradient-text: linear-gradient(to right, var(--primary-dark), var(--tertiary));
+            --bg-surface-2: #e0f2fe;
+            --text-main: #0c4a6e;
+            --text-secondary: #475569;
+            --glass-bg: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(59, 130, 246, 0.1);
+            --prism-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+            --gradient-text: linear-gradient(to right, var(--primary), var(--tertiary));
         }
 
-        /* --- Global Styles & Ambient Background --- */
+        /* --- Global Styles --- */
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-main);
             overflow-x: hidden;
-            transition: background-color 0.4s ease, color 0.4s ease;
             position: relative;
-            /* Subtle grid overlay for a tech-creative feel */
-            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
         }
         
-        /* Vibrant Ambient Background Effect */
+        /* --- Slow, Organic Aurora Background --- */
         body::before, body::after {
             content: '';
             position: fixed;
-            width: 700px;
-            height: 700px;
+            width: 80vw;
+            height: 80vw;
             border-radius: 50%;
-            filter: blur(150px);
-            opacity: 0.2;
+            filter: blur(120px);
+            opacity: 0.25;
             z-index: -1;
-            animation: floatingBg 25s infinite alternate ease-in-out;
+            /* Slower, more organic movement */
+            animation: auroraFlow 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
             mix-blend-mode: screen;
         }
         body::before {
-            background: var(--gradient-main);
-            top: -20%;
-            left: -10%;
+            background: linear-gradient(to right, var(--primary), var(--tertiary));
+            top: -30%; left: -20%;
         }
         body::after {
-            background: linear-gradient(to right, var(--secondary), var(--tertiary));
-            bottom: -20%;
-            right: -10%;
-            animation-delay: -8s;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            bottom: -30%; right: -20%;
+            animation-delay: -12s;
         }
         [data-bs-theme="light"] body::before, [data-bs-theme="light"] body::after {
-             opacity: 0.1;
-             mix-blend-mode: normal;
+             opacity: 0.15; mix-blend-mode: normal; filter: blur(150px);
         }
 
-        h1, h2, h3, h4, .navbar-brand, .section-tag {
+        h1, h2, h3, h4, .navbar-brand, .section-tag, .btn {
             font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* --- Modern Utilities --- */
+        /* --- Utilities --- */
         .section-tag {
-            display: inline-block;
-            padding: 8px 20px;
+            display: inline-flex; align-items: center;
+            padding: 6px 16px;
             border-radius: 30px;
-            /* gradient background */
-            background: linear-gradient(to right, rgba(138, 43, 226, 0.1), rgba(0, 255, 200, 0.1));
-            color: var(--secondary);
-            font-size: 0.85rem;
+            background: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            /* Holographic border */
-            border: 2px solid transparent;
-            background-clip: padding-box, border-box;
-            background-origin: padding-box, border-box;
-            background-image: linear-gradient(var(--glass-bg), var(--glass-bg)), var(--gradient-main);
+            letter-spacing: 2px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
             margin-bottom: 1.5rem;
             backdrop-filter: blur(5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
+        .section-tag i { margin-right: 8px; }
 
         .text-gradient {
-            background: var(--gradient-main);
+            background: var(--gradient-text);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 800;
         }
 
-        /* --- Creative Navbar --- */
+        /* --- Crystalline Navbar --- */
         .navbar {
             padding: 1rem 0;
-            background: rgba(5, 5, 16, 0.6); /* Slightly darker glass */
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-bottom: 1px solid var(--border-light);
+            background: rgba(2, 6, 23, 0.6);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
             transition: all 0.3s ease;
         }
-
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .navbar-brand img {
-            height: 44px;
-            border-radius: 12px;
-            /* Glowing border for logo */
-            box-shadow: 0 0 20px var(--accent-glow), 0 0 10px var(--accent-glow-sec);
-            border: 2px solid rgba(255,255,255,0.1);
-        }
-
+        .navbar-brand img { height: 42px; border-radius: 10px; }
         .nav-link {
             color: var(--text-secondary) !important;
             font-weight: 600;
+            font-size: 0.95rem;
             padding: 0.5rem 1rem !important;
-            position: relative;
             transition: color 0.3s;
-            font-family: 'Space Grotesk', sans-serif;
         }
+        .nav-link:hover, .nav-link.active { color: var(--text-main) !important; }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 50%;
-            width: 0; height: 3px;
-            /* Gradient underline */
-            background: var(--gradient-main);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-            border-radius: 4px;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--text-main) !important;
-            text-shadow: 0 0 10px var(--accent-glow);
-        }
-        .nav-link.active::after { width: 70%; box-shadow: 0 0 10px var(--accent-glow); }
-
-        .btn-nav-creative {
-            position: relative;
+        .btn-nav-glass {
             padding: 0.7rem 1.8rem;
             border-radius: 50px;
             font-weight: 700;
-            color: white !important;
-            background: var(--bg-body);
-            border: none;
-            z-index: 1;
-            overflow: hidden;
-            transition: 0.4s;
-            font-family: 'Space Grotesk', sans-serif;
+            color: white;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-highlight);
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
-        /* Animated gradient background for button */
-        .btn-nav-creative::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 200%; height: 100%;
-            background: var(--gradient-main);
-            z-index: -1;
-            transition: 0.4s;
-            animation: gradientShift 3s linear infinite;
-            background-size: 200% 200%;
-        }
-        
-        .btn-nav-creative:hover {
-             transform: translateY(-3px);
-             box-shadow: 0 10px 30px var(--accent-glow), 0 0 15px var(--accent-glow-sec);
+        .btn-nav-glass:hover {
+             background: rgba(255,255,255,0.1);
+             border-color: rgba(255,255,255,0.3);
+             transform: translateY(-2px);
         }
 
-        /* --- Dynamic Hero Section --- */
+        /* --- Hero Section --- */
         #hero {
-            padding-top: 170px;
-            padding-bottom: 120px;
+            padding-top: 180px;
+            padding-bottom: 140px;
             position: relative;
             overflow: hidden;
         }
-
         .hero-title {
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            font-weight: 900;
+            font-size: clamp(3.5rem, 9vw, 6rem);
+            font-weight: 800;
             line-height: 1.05;
             letter-spacing: -0.03em;
             margin-bottom: 1.5rem;
         }
 
-        .hero-image-container {
+        /* Hero Image: Floating Crystal */
+        .hero-img-frame {
             position: relative;
-            z-index: 2;
-            perspective: 1000px;
-        }
-        
-        /* Conic Gradient Tech Ring */
-        .tech-ring {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 110%; height: 110%;
-            border-radius: 50%;
-            /* Spinning conic gradient border */
-            padding: 3px;
-            background: var(--gradient-conic);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            animation: rotateRing 10s linear infinite;
-            z-index: -1;
-            opacity: 0.7;
-        }
-        .tech-ring::after {
-            content: '';
-            position: absolute;
-            top: -20%; left: -20%;
-            width: 140%; height: 140%;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
-            z-index: -2;
-            filter: blur(30px);
-        }
-
-        .hero-img {
             border-radius: 30px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid var(--border-light);
-            animation: floatingImg 6s ease-in-out infinite;
-            transform-style: preserve-3d;
+            padding: 10px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--prism-shadow);
+            animation: deepFloat 8s ease-in-out infinite;
+        }
+        .hero-img {
+            border-radius: 20px;
+            width: 100%;
+            filter: saturate(1.1);
         }
 
-        .btn-glow-rich {
-            background: var(--gradient-main);
-            background-size: 200% auto;
+        /* Liquid Metal Button */
+        .btn-liquid-metal {
+            background: linear-gradient(135deg, var(--primary), var(--tertiary));
             color: white;
             padding: 16px 40px;
-            border-radius: 16px;
-            border: none;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
             font-weight: 700;
-            font-family: 'Space Grotesk', sans-serif;
             letter-spacing: 0.5px;
-            box-shadow: 0 10px 30px -5px var(--accent-glow);
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.5);
+            transition: 0.3s;
         }
-        .btn-glow-rich:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 40px -5px var(--accent-glow), 0 0 20px var(--accent-glow-sec);
-            color: white;
-            background-position: right center;
+        /* Frosted sheen effect */
+        .btn-liquid-metal::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: skewX(-25deg); transition: 0.5s;
         }
+        .btn-liquid-metal:hover { transform: translateY(-3px); box-shadow: 0 15px 40px -10px rgba(59, 130, 246, 0.7); }
+        .btn-liquid-metal:hover::before { left: 100%; }
         
         .scroll-indicator {
             position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
-            display: flex; flex-direction: column; align-items: center; opacity: 0.6;
-            animation: bounce 2s infinite;
-        }
-        .mouse {
-            width: 26px; height: 42px; border: 2px solid var(--secondary);
-            border-radius: 20px; position: relative; box-shadow: 0 0 10px var(--accent-glow-sec);
-        }
-        .wheel {
-            width: 4px; height: 8px; background: var(--secondary);
-            border-radius: 2px; position: absolute; top: 8px; left: 50%;
-            transform: translateX(-50%); animation: scrollWheel 2s infinite;
+            display: flex; flex-direction: column; align-items: center; opacity: 0.5;
+            animation: bounce 2s infinite; letter-spacing: 2px; font-size: 0.8rem;
         }
 
-        /* --- Creative "Energy Glass" Cards --- */
-        .creative-card {
+        /* --- NEW: Prismatic Crystal Cards --- */
+        .prism-card {
             background: var(--glass-bg);
-            /* Transparent border to accommodate gradient */
-            border: 2px solid transparent;
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border-radius: 24px;
-            padding: 2.5rem;
+            padding: 3rem 2.5rem;
             height: 100%;
             position: relative;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: var(--card-shadow);
-            /* Gradient border trick using background-origin */
-            background-image: linear-gradient(var(--glass-bg), var(--glass-bg)), var(--gradient-main);
-            background-origin: padding-box, border-box;
-            background-clip: padding-box, border-box;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: var(--prism-shadow);
         }
         
-        /* Inner glow effect on hover */
-        .creative-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 24px;
-            background: radial-gradient(circle at top right, var(--accent-glow-sec), transparent 40%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
+        /* Top reflective edge */
+        .prism-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-highlight), transparent);
         }
 
-        .creative-card:hover {
+        .prism-card:hover {
             transform: translateY(-10px) scale(1.02);
-            /* Intense holographic shadow */
-            box-shadow: 0 20px 50px -10px var(--accent-glow), 0 0 20px var(--accent-glow-sec);
-            background-image: linear-gradient(var(--glass-bg), var(--glass-bg)), linear-gradient(135deg, var(--secondary), var(--primary), var(--tertiary));
+            border-color: var(--glass-highlight);
+            /* THE PRISM EFFECT: Splitting shadows into cyan and magenta colors */
+            box-shadow: 
+                -5px -5px 15px var(--prism-cyan),
+                5px 5px 15px var(--prism-magenta),
+                0 30px 60px rgba(0, 0, 0, 0.5);
         }
-        .creative-card:hover::after { opacity: 0.4; }
 
-        .card-icon-wrapper {
-            width: 75px; height: 75px;
-            /* Gradient background for icon shape */
-            background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(0, 255, 200, 0.2));
-            border-radius: 20px;
-            display: flex; align-items: center; justify-content: center;
+        .card-icon {
+            font-size: 3rem;
             margin-bottom: 1.5rem;
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .creative-card:hover .card-icon-wrapper {
-            background: var(--gradient-main);
-            transform: rotate(-15deg) scale(1.15);
-            box-shadow: 0 0 20px var(--accent-glow);
-            border-color: transparent;
-        }
-        .creative-card .card-icon-wrapper i { 
-            color: var(--text-main); /* Make icons white initially */
-            transition: 0.3s; 
-            font-size: 2.2rem !important;
+            /* Gradient fill for icons */
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            filter: drop-shadow(0 5px 10px rgba(59, 130, 246, 0.3));
         }
 
 
-        /* --- Project Showcase (Creative Overlay) --- */
+        /* --- Project Showcase (Clean Glass) --- */
         .project-showcase {
             position: relative;
             border-radius: 24px;
             overflow: hidden;
             height: 350px;
-            border: 2px solid transparent;
-            /* Holographic border for projects too */
-            background-image: linear-gradient(var(--bg-surface-1), var(--bg-surface-1)), var(--gradient-main);
-            background-origin: padding-box, border-box;
-            background-clip: padding-box, border-box;
-            box-shadow: var(--card-shadow);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--prism-shadow);
         }
-
         .project-showcase img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), filter 0.6s;
-            filter: grayscale(20%);
+            width: 100%; height: 100%; object-fit: cover;
+            transition: 0.7s ease;
         }
-
         .project-overlay {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            /* More colorful gradient overlay */
-            background: linear-gradient(to top, rgba(5, 5, 16, 0.95) 20%, rgba(138, 43, 226, 0.3) 80%, transparent);
-            padding: 2.5rem 2rem;
-            transform: translateY(40%);
-            opacity: 0;
+            position: absolute; bottom: 0; left: 0; right: 0;
+            /* Deeper, smoother gradient */
+            background: linear-gradient(to top, #020617, rgba(2, 6, 23, 0.8), transparent);
+            padding: 2.5rem;
+            transform: translateY(40%); opacity: 0;
             transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-            backdrop-filter: blur(5px);
         }
-
-        .project-showcase:hover img {
-            transform: scale(1.1);
-            filter: grayscale(0%);
-        }
+        .project-showcase:hover img { transform: scale(1.08); }
         .project-showcase:hover {
-             box-shadow: 0 20px 50px -10px var(--accent-glow-sec);
+            border-color: var(--glass-highlight);
+            box-shadow: -5px -5px 15px var(--prism-cyan), 5px 5px 15px var(--prism-magenta), 0 30px 60px rgba(0, 0, 0, 0.5);
         }
-        .project-showcase:hover .project-overlay {
-            transform: translateY(0);
-            opacity: 1;
-        }
+        .project-showcase:hover .project-overlay { transform: translateY(0); opacity: 1; }
 
         .tech-badge {
-            /* Redefine badges with new colors */
-            font-size: 0.75rem;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: 700;
-            margin-right: 5px;
-            border: 1px solid var(--border-light);
+            font-size: 0.7rem; padding: 6px 14px; border-radius: 30px;
+            font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+            background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
         }
-        .tech-badge.bg-primary { background: var(--gradient-main) !important; border: none; box-shadow: 0 0 10px var(--accent-glow); }
-        .tech-badge.bg-dark { background: rgba(0,0,0,0.5) !important; color: var(--secondary); border-color: var(--secondary); }
 
-        /* --- Creative Team Frames (Organic Morphing) --- */
-        .team-creative {
-            text-align: center;
-            padding: 1rem;
-            position: relative;
-        }
+        /* --- Team (Crystal Hexagons) --- */
+        .team-creative { text-align: center; padding: 1rem; }
         
-        .avatar-frame {
-            width: 190px; height: 190px;
-            margin: 0 auto 1.8rem;
+        .hex-frame {
+            width: 160px; height: 160px; margin: 0 auto 1.8rem;
             position: relative; z-index: 1;
             display: flex; justify-content: center; align-items: center;
         }
-        
-        .avatar-frame img {
-            width: 90%; height: 90%;
-            object-fit: cover;
-            /* Organic morphing shape instead of simple circle */
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            box-shadow: var(--card-shadow);
-            border: 3px solid var(--bg-body);
-            transition: 0.5s ease;
-            animation: morphBubble 8s ease-in-out infinite alternate;
-            z-index: 2;
+        .hex-frame img {
+            width: 100%; height: 100%; object-fit: cover;
+            /* Hexagon clip path */
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            filter: grayscale(100%); transition: 0.5s ease;
+            background: var(--bg-surface-2);
         }
-
-        /* Spinning gradient blob behind avatar */
-        .avatar-frame::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--gradient-conic);
-            /* Matching organic shape */
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            z-index: -1;
-            animation: morphBubble 8s ease-in-out infinite alternate-reverse, rotateRing 15s linear infinite;
-            opacity: 0.8;
-            filter: blur(10px);
+        /* Rotating crystal border */
+        .hex-frame::before {
+            content: ''; position: absolute; inset: -4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--tertiary));
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            z-index: -1; opacity: 0.3;
+            transition: 0.5s;
         }
-        
-        .team-creative:hover img {
-             transform: scale(1.05);
-             box-shadow: 0 0 25px var(--accent-glow);
-        }
-        .team-creative:hover .avatar-frame::before {
-            opacity: 1; filter: blur(5px);
-        }
+        .team-creative:hover img { filter: grayscale(0%); transform: scale(0.95); }
+        .team-creative:hover .hex-frame::before { opacity: 1; transform: rotate(30deg); }
 
         /* --- Marquee & Footer --- */
         .marquee-section {
-            background: var(--bg-surface-1);
-            border-top: 1px solid var(--border-light);
-            border-bottom: 1px solid var(--border-light);
+            background: rgba(255,255,255,0.02);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
             padding: 4rem 0;
-            position: relative;
         }
-        /* Add glowing lines to marquee */
-        .marquee-section::before, .marquee-section::after {
-            content: ''; position: absolute; left: 0; width: 100%; height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
-        }
-        .marquee-section::before { top: 0; } .marquee-section::after { bottom: 0; }
-
         .client-logo {
-            height: 55px; margin: 0 45px;
-            /* Make logos bright white/colored on dark bg */
-            filter: grayscale(100%) brightness(2) opacity(0.6);
-            transition: 0.4s;
+            height: 50px; margin: 0 45px;
+            filter: grayscale(100%) brightness(1.5) opacity(0.4); transition: 0.4s;
         }
-        .client-logo:hover { filter: grayscale(0%) brightness(1) opacity(1); transform: scale(1.15); filter: drop-shadow(0 0 10px var(--accent-glow-sec)); }
+        .client-logo:hover { filter: grayscale(0%) brightness(1) opacity(1); transform: scale(1.1); }
 
         footer {
-            background: var(--bg-surface-1);
+            background: #01040f; /* Almost black */
             padding-top: 6rem; padding-bottom: 3rem;
-            position: relative; overflow: hidden;
-        }
-        footer::before {
-            content: 'TECHCRAFTERS';
-            position: absolute; bottom: 0%; left: 50%;
-            transform: translate(-50%, 30%);
-            font-size: 15vw; font-weight: 900;
-            /* Gradient text fill for watermark */
-            background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            opacity: 0.04; pointer-events: none; white-space: nowrap;
-            font-family: 'Space Grotesk', sans-serif;
         }
         .social-links a {
             display: flex; align-items: center; justify-content: center;
             width: 45px; height: 45px;
-            border: 2px solid var(--border-light) !important;
-            transition: 0.4s;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border) !important;
+            transition: 0.4s; color: var(--text-secondary);
         }
         .social-links a:hover {
-            background: var(--gradient-main);
-            border-color: transparent !important;
-            color: white !important;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px var(--accent-glow);
+            background: var(--primary); border-color: transparent !important; color: white !important;
+            transform: translateY(-3px); box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
         }
 
         /* --- Animations --- */
-        @keyframes floatingBg { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(150px, 80px) scale(1.1); } }
-        @keyframes floatingImg { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(2deg); } }
-        @keyframes rotateRing { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
-        @keyframes gradientShift { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
-        @keyframes morphBubble {
-            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-            100% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-        }
-        /* Other existing animations (bounce, scrollWheel) remain the same */
+        @keyframes auroraFlow { 0% { transform: translate(0, 0) scale(1) rotate(0deg); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; } 100% { transform: translate(10%, 10%) scale(1.1) rotate(5deg); border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; } }
+        @keyframes deepFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        /* Other existing animations (bounce, scrollWheel) remain */
 
-        /* Helper for primary color text in new palette */
-        .text-primary { color: var(--secondary) !important; } 
-        .bg-alt { background-color: var(--bg-surface-2) !important; }
-
+        .bg-alt { background: transparent !important; } /* Remove solid bg for alt sections to let aurora show */
     </style>
 </head>
 
@@ -561,15 +370,15 @@
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="Logo">
-                <span class="text-gradient">NP TechCrafters</span>
+                <span class="ps-2 fw-bold">NP TechCrafters</span>
             </a>
             
             <div class="d-flex align-items-center gap-3 order-lg-3">
-                <div id="themeToggle" onclick="toggleTheme()">
+                <div id="themeToggle" onclick="toggleTheme()" style="cursor: pointer; opacity: 0.7;">
                     <i class="bi bi-moon-stars-fill fs-5"></i>
                 </div>
                 <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-                    <i class="bi bi-filter-right fs-1 text-gradient"></i>
+                    <i class="bi bi-filter-right fs-1 text-white"></i>
                 </button>
             </div>
 
@@ -581,7 +390,7 @@
                     <li class="nav-item"><a class="nav-link" href="#projects">Work</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
                 </ul>
-                <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" target="_blank" class="btn btn-nav-creative d-none d-lg-block px-4">Apply Now <i class="bi bi-arrow-right-short"></i></a>
+                <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" target="_blank" class="btn btn-nav-glass d-none d-lg-block px-4">Apply Now</a>
             </div>
         </div>
     </nav>
@@ -590,19 +399,18 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
-                    <span class="section-tag"><i class="bi bi-patch-check-fill me-2"></i>MSME Approved EdTech</span>
-                    <h1 class="hero-title">Crafting Your <br> <span class="text-gradient">Digital Destiny.</span></h1>
-                    <p class="lead mb-5 typewriter-container fw-medium fs-5" style="color: var(--text-secondary); max-width: 500px;">
-                        We bridge the gap between theory and future-tech with <span class="text-primary fw-bold typewriter" style="text-shadow: 0 0 10px var(--accent-glow-sec);"></span>
+                    <div class="section-tag"><i class="bi bi-award-fill"></i> MSME Approved</div>
+                    <h1 class="hero-title">Forge Your <br> <span class="text-gradient">Digital Future.</span></h1>
+                    <p class="lead mb-5 typewriter-container fw-normal fs-5" style="color: var(--text-secondary); max-width: 500px;">
+                        Closing the skills gap with immersive, project-based learning in <span class="text-white fw-bold typewriter" style="border-bottom: 2px solid var(--primary);"></span>
                     </p>
                     <div class="d-flex gap-3 flex-wrap justify-content-md-start justify-content-center">
-                        <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="btn btn-glow-rich">Get Started Now</a>
-                        <a href="#projects" class="btn btn-outline-light rounded-4 px-4 py-3 fw-bold d-flex align-items-center gap-2" style="border: 2px solid var(--border-light); color: var(--text-main)">View Case Studies <i class="bi bi-play-circle-fill fs-5 text-primary"></i></a>
+                        <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="btn btn-liquid-metal">Start Your Journey</a>
+                        <a href="#projects" class="btn btn-outline-light rounded-3 px-4 py-3 fw-bold d-flex align-items-center gap-2" style="border: 1px solid var(--glass-border); color: var(--text-main); backdrop-filter: blur(10px);">View Case Studies</a>
                     </div>
                 </div>
-                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="zoom-in-left" data-aos-delay="200" data-aos-duration="1000">
-                    <div class="hero-image-container">
-                        <div class="tech-ring"></div>
+                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="zoom-in-left" data-aos-delay="200" data-aos-duration="1200">
+                    <div class="hero-img-frame">
                         <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/hero-img.png" class="img-fluid hero-img" alt="Hero">
                     </div>
                 </div>
@@ -610,7 +418,7 @@
         </div>
         <div class="scroll-indicator">
             <div class="mouse"><div class="wheel"></div></div>
-            <span class="small mt-2 text-muted ls-1" style="font-family: 'Space Grotesk'">SCROLL</span>
+            <span class="mt-2">SCROLL</span>
         </div>
     </section>
 
@@ -618,59 +426,34 @@
         <div class="container py-5">
             <div class="row justify-content-center mb-5" data-aos="fade-up">
                 <div class="col-lg-7 text-center">
-                    <span class="section-tag">What We Deliver</span>
-                    <h2 class="display-5 fw-bold mb-3"><span class="text-gradient">Future-Ready</span> Skills & Solutions</h2>
-                    <p class="text-muted fs-5">Real-world experience in the most demanded technologies.</p>
+                    <span class="section-tag">Our Expertise</span>
+                    <h2 class="display-5 fw-bold mb-3">Future-Ready <span class="text-gradient">Intelligence</span></h2>
+                    <p class="text-muted fs-5">Mastering the most demanded technologies through real-world application.</p>
                 </div>
             </div>
             
             <div class="row g-4">
-                <div class="col-lg-6" data-aos="fade-up">
-                    <div class="creative-card d-flex flex-column justify-content-between">
-                        <div>
-                             <div class="card-icon-wrapper">
-                                <i class="bi bi-globe fs-2"></i>
-                            </div>
-                            <h3 class="fw-bold mb-3">Full-Stack Web Development</h3>
-                            <p class="text-muted mb-4 w-75 fs-6">Master the MERN Stack (MongoDB, Express, React, Node.js) and Django. Build scalable, high-performance web applications from scratch.</p>
-                        </div>
-                        <div class="d-flex gap-2 flex-wrap">
-                            <span class="tech-badge bg-primary text-white">React.js</span><span class="tech-badge bg-primary text-white">Node.js</span><span class="tech-badge bg-primary text-white">MongoDB</span>
-                        </div>
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="prism-card">
+                        <i class="bi bi-code-square card-icon"></i>
+                        <h3 class="fw-bold mb-3 h4">Full-Stack Engineering</h3>
+                        <p class="text-muted mb-4">Build scalable ecosystems. Master the MERN Stack (MongoDB, Express, React, Node.js) and Python Django architecture.</p>
                     </div>
                 </div>
                 
-                <div class="col-lg-6">
-                    <div class="row g-4">
-                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="creative-card">
-                                <div class="card-icon-wrapper">
-                                    <i class="bi bi-phone-vibrate fs-2"></i>
-                                </div>
-                                <h4 class="fw-bold">App Development</h4>
-                                <p class="text-muted small">Cross-platform excellence with Flutter & React Native.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                             <div class="creative-card">
-                                <div class="card-icon-wrapper">
-                                    <i class="bi bi-cpu-fill fs-2"></i>
-                                </div>
-                                <h4 class="fw-bold">AI & Machine Learning</h4>
-                                <p class="text-muted small">Data science, predictive modeling, and neural networks.</p>
-                            </div>
-                        </div>
-                        <div class="col-12" data-aos="fade-up" data-aos-delay="300">
-                             <div class="creative-card d-flex align-items-center gap-4">
-                                <div class="card-icon-wrapper mb-0 flex-shrink-0">
-                                    <i class="bi bi-palette-fill fs-2"></i>
-                                </div>
-                                <div>
-                                    <h4 class="fw-bold">UI/UX & Product Design</h4>
-                                    <p class="text-muted small mb-0">Creating intuitive, beautiful user journeys and brand identities.</p>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="prism-card">
+                        <i class="bi bi-cpu card-icon" style="background: linear-gradient(135deg, var(--tertiary), var(--secondary)); -webkit-background-clip: text;"></i>
+                        <h3 class="fw-bold mb-3 h4">AI & Machine Learning</h3>
+                        <p class="text-muted mb-4">Harness data. Develop predictive models, neural networks, and intelligent automation solutions.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="prism-card">
+                        <i class="bi bi-phone-flip card-icon" style="background: linear-gradient(135deg, var(--secondary), var(--primary)); -webkit-background-clip: text;"></i>
+                        <h3 class="fw-bold mb-3 h4">Cross-Platform Mobile</h3>
+                        <p class="text-muted mb-4">Create seamless native experiences for iOS and Android using a single codebase with Flutter.</p>
                     </div>
                 </div>
             </div>
@@ -681,12 +464,11 @@
         <div class="container py-5">
             <div class="row align-items-end mb-5">
                 <div class="col-lg-8" data-aos="fade-right">
-                    <span class="section-tag">Our Portfolio</span>
-                    <h2 class="display-5 fw-bold">Recent <span class="text-gradient">Case Studies</span></h2>
-                    <p class="text-muted fs-5">Innovative solutions crafted by our interns and experts.</p>
+                    <span class="section-tag">Portfolio</span>
+                    <h2 class="display-5 fw-bold">Recent <span class="text-gradient">Creations</span></h2>
                 </div>
                 <div class="col-lg-4 text-lg-end" data-aos="fade-left">
-                    <a href="#" class="btn btn-outline-light rounded-pill px-4 py-2 fw-semibold" style="border-color: var(--border-light);">View All Work <i class="bi bi-arrow-right ms-1"></i></a>
+                    <a href="#" class="btn btn-outline-light rounded-pill px-4 py-2 fw-bold small" style="border-color: var(--glass-border);">View All Work <i class="bi bi-arrow-right ms-1"></i></a>
                 </div>
             </div>
 
@@ -696,11 +478,11 @@
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Project 1">
                         <div class="project-overlay">
                             <div class="d-flex gap-2 mb-3">
-                                <span class="tech-badge bg-primary text-white">AI/ML</span>
-                                <span class="tech-badge bg-dark">Python</span>
+                                <span class="tech-badge">AI/ML</span>
+                                <span class="tech-badge">Python</span>
                             </div>
-                            <h4 class="fw-bold mb-2">Smart Health Diagnostic AI</h4>
-                            <p class="text-secondary small mb-0">Improving early detection accuracy using deep learning models.</p>
+                            <h4 class="fw-bold mb-2">Neural Diagnostics AI</h4>
+                            <p class="text-secondary small mb-0">Deep learning models improving early disease detection accuracy.</p>
                         </div>
                     </div>
                 </div>
@@ -710,11 +492,11 @@
                         <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Project 2">
                          <div class="project-overlay">
                             <div class="d-flex gap-2 mb-3">
-                                <span class="tech-badge bg-primary text-white">Mobile</span>
-                                <span class="tech-badge bg-dark">Flutter</span>
+                                <span class="tech-badge">Flutter</span>
+                                <span class="tech-badge">Firebase</span>
                             </div>
-                            <h4 class="fw-bold mb-2">SwiftKart E-Commerce</h4>
-                            <p class="text-secondary small mb-0">A seamless shopping experience with real-time inventory sync.</p>
+                            <h4 class="fw-bold mb-2">SwiftKart Commerce</h4>
+                            <p class="text-secondary small mb-0">Real-time inventory sync and seamless mobile checkout.</p>
                         </div>
                     </div>
                 </div>
@@ -724,11 +506,11 @@
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Project 3">
                          <div class="project-overlay">
                             <div class="d-flex gap-2 mb-3">
-                                <span class="tech-badge bg-primary text-white">Web</span>
-                                <span class="tech-badge bg-dark">React MERN</span>
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">Node.js</span>
                             </div>
-                            <h4 class="fw-bold mb-2">Nova FinTech Dashboard</h4>
-                            <p class="text-secondary small mb-0">Comprehensive financial analytics and reporting platform.</p>
+                            <h4 class="fw-bold mb-2">Nova FinTech Hub</h4>
+                            <p class="text-secondary small mb-0">Comprehensive analytics dashboard for financial data.</p>
                         </div>
                     </div>
                 </div>
@@ -740,55 +522,55 @@
         <div class="container py-5">
              <div class="row justify-content-center mb-5" data-aos="fade-up">
                 <div class="col-lg-7 text-center">
-                    <span class="section-tag">The Minds Behind</span>
-                    <h2 class="display-5 fw-bold mb-3">Meet The <span class="text-gradient">Experts</span></h2>
+                    <span class="section-tag">The Collective</span>
+                    <h2 class="display-5 fw-bold mb-3">Meet The <span class="text-gradient">Architects</span></h2>
                 </div>
             </div>
             
             <div class="row g-5 justify-content-center">
-                <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in-up">
+                <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up">
                     <div class="team-creative">
-                        <div class="avatar-frame">
+                        <div class="hex-frame">
                             <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/niksheppaliwal.jpg" alt="Nikshep">
                         </div>
                         <h5 class="fw-bold mb-1">Nikshep Paliwal</h5>
-                        <p class="small text-primary fw-bold ls-1 mb-0" style="letter-spacing: 1px;">FOUNDER & CEO</p>
+                        <p class="small text-primary fw-bold ls-1 mb-0" style="letter-spacing: 1px; color: var(--tertiary) !important;">FOUNDER & CEO</p>
                     </div>
                 </div>
-                 <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in-up" data-aos-delay="100">
+                 <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="100">
                     <div class="team-creative">
-                        <div class="avatar-frame">
+                        <div class="hex-frame">
                             <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/66714632.jpg" alt="Chandan" style="object-position: top;">
                         </div>
                         <h5 class="fw-bold mb-1">Chandan Saroj</h5>
-                        <p class="small text-primary fw-bold ls-1 mb-0">CTO</p>
+                        <p class="small text-primary fw-bold ls-1 mb-0" style="color: var(--secondary) !important;">CTO</p>
                     </div>
                 </div>
-                <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in-up" data-aos-delay="200">
+                <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="200">
                     <div class="team-creative">
-                        <div class="avatar-frame">
+                        <div class="hex-frame">
                             <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/111854114.jpg" alt="Vishal">
                         </div>
                         <h5 class="fw-bold mb-1">Vishal</h5>
-                        <p class="small text-primary fw-bold ls-1 mb-0">LEAD DEV</p>
+                        <p class="small text-primary fw-bold ls-1 mb-0" style="color: var(--primary) !important;">LEAD DEV</p>
                     </div>
                 </div>
-                <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in-up" data-aos-delay="300">
+                <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="300">
                     <div class="team-creative">
-                        <div class="avatar-frame">
+                        <div class="hex-frame">
                             <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/68648513.jpg" alt="Rahul">
                         </div>
                         <h5 class="fw-bold mb-1">Rahul Bhaskar</h5>
-                        <p class="small text-primary fw-bold ls-1 mb-0">ADMIN</p>
+                        <p class="small text-primary fw-bold ls-1 mb-0" style="color: var(--tertiary) !important;">ADMIN</p>
                     </div>
                 </div>
-                 <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in-up" data-aos-delay="400">
+                 <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="400">
                     <div class="team-creative">
-                        <div class="avatar-frame">
+                        <div class="hex-frame">
                             <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/photo.jpeg" alt="Ravikant" style="object-position: center 20%;">
                         </div>
                         <h5 class="fw-bold mb-1">Ravikant Mahi</h5>
-                        <p class="small text-primary fw-bold ls-1 mb-0">DEVELOPER</p>
+                        <p class="small text-primary fw-bold ls-1 mb-0" style="color: var(--secondary) !important;">DEVELOPER</p>
                     </div>
                 </div>
             </div>
@@ -798,18 +580,16 @@
     <section class="marquee-section">
         <div class="container-fluid">
             <div class="text-center mb-4">
-                <span class="section-tag" style="background: var(--bg-surface-1);">Trusted Partners & Clients</span>
+                <span class="section-tag">Trusted Partners</span>
             </div>
             <div class="marquee-wrapper" style="mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);">
                 <div class="marquee-content d-flex align-items-center">
                     <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" class="client-logo" alt="Prashanottar" style="height: 60px; filter: none;">
-                    
                     <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" class="client-logo" alt="Client">
                     <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" class="client-logo" alt="Client">
                     <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" class="client-logo rounded-circle" alt="Client">
                     <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" class="client-logo" alt="Client">
                     <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" class="client-logo" alt="Prashanottar" style="height: 60px; filter: none;">
-
                     <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" class="client-logo" alt="Client">
                     <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" class="client-logo rounded-circle" alt="Client">
                 </div>
@@ -821,15 +601,15 @@
         <div class="container position-relative z-2">
             <div class="row g-5 mb-5">
                 <div class="col-lg-5">
-                    <a class="navbar-brand mb-4" href="#">
-                        <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="Logo">
-                        <span class="text-gradient fw-bold">NP TechCrafters</span>
+                    <a class="navbar-brand mb-4 gap-2" href="#">
+                        <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="Logo" style="height: 50px;">
+                        <span class="fw-bold fs-3">NP TechCrafters</span>
                     </a>
-                    <p class="mb-4 text-secondary lead fs-6">Empowering the next generation of tech leaders through virtual internships, live projects, and cutting-edge skill development in Web, AI, and Design.</p>
+                    <p class="mb-4 text-secondary lead fs-6">Empowering the next generation of tech leaders through virtual internships, live projects, and cutting-edge skill development.</p>
                     <div class="d-flex gap-3 social-links">
-                        <a href="https://www.instagram.com/np.techcrafters" class="btn btn-icon btn-outline-light rounded-circle border-opacity-25" style="border-color: var(--border-light); color: var(--text-secondary)"><i class="bi bi-instagram"></i></a>
-                        <a href="https://www.facebook.com/people/NP-TechCrafters/61565158317180/" class="btn btn-icon btn-outline-light rounded-circle border-opacity-25" style="border-color: var(--border-light); color: var(--text-secondary)"><i class="bi bi-facebook"></i></a>
-                        <a href="https://www.linkedin.com/company/np-techcrafters" class="btn btn-icon btn-outline-light rounded-circle border-opacity-25" style="border-color: var(--border-light); color: var(--text-secondary)"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://www.instagram.com/np.techcrafters" class="btn"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.facebook.com/people/NP-TechCrafters/61565158317180/" class="btn"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.linkedin.com/company/np-techcrafters" class="btn"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-6 offset-lg-1">
@@ -838,7 +618,6 @@
                         <li><a href="#hero" class="text-decoration-none text-secondary link-hover">Home</a></li>
                         <li><a href="#about" class="text-decoration-none text-secondary link-hover">About Us</a></li>
                         <li><a href="#team" class="text-decoration-none text-secondary link-hover">Our Team</a></li>
-                        <li><a href="#" class="text-decoration-none text-secondary link-hover">Careers</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-6">
@@ -846,23 +625,22 @@
                      <ul class="list-unstyled d-flex flex-column gap-3">
                         <li><a href="#services" class="text-decoration-none text-secondary link-hover">Services</a></li>
                         <li><a href="#projects" class="text-decoration-none text-secondary link-hover">Case Studies</a></li>
-                        <li><a href="#" class="text-decoration-none text-secondary link-hover">Blog</a></li>
-                        <li><a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="text-decoration-none text-primary fw-bold link-hover">Apply Now</a></li>
+                        <li><a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="text-decoration-none text-primary fw-bold link-hover" style="color: var(--tertiary) !important;">Apply Now</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2">
                     <h6 class="fw-bold mb-4 text-white" style="font-family: 'Space Grotesk'">Contact</h6>
                     <ul class="list-unstyled d-flex flex-column gap-3 text-secondary small">
-                        <li class="d-flex gap-2"><i class="bi bi-geo-alt text-primary"></i> Saharanpur, UP, India</li>
-                        <li class="d-flex gap-2"><i class="bi bi-envelope text-primary"></i> nptechcrafters@gmail.com</li>
-                        <li class="d-flex gap-2"><i class="bi bi-telephone text-primary"></i> +91 9149188705</li>
+                        <li class="d-flex gap-2"><i class="bi bi-geo-alt" style="color: var(--secondary)"></i> Saharanpur, UP, India</li>
+                        <li class="d-flex gap-2"><i class="bi bi-envelope" style="color: var(--secondary)"></i> nptechcrafters@gmail.com</li>
+                        <li class="d-flex gap-2"><i class="bi bi-telephone" style="color: var(--secondary)"></i> +91 9149188705</li>
                     </ul>
                 </div>
             </div>
-            <div class="border-top pt-4 d-md-flex justify-content-between align-items-center text-center text-md-start" style="border-color: var(--border-light) !important;">
-                <small class="text-secondary mb-2 mb-md-0 d-block">© 2025 NP TechCrafters. All rights reserved. Made with <i class="bi bi-heart-fill text-danger mx-1"></i> in India.</small>
+            <div class="border-top pt-4 d-md-flex justify-content-between align-items-center text-center text-md-start" style="border-color: var(--glass-border) !important;">
+                <small class="text-secondary mb-2 mb-md-0 d-block">© 2025 NP TechCrafters. All rights reserved. Engineered in India.</small>
                 <div class="small text-secondary">
-                    Total Visits: <span id="visitCount" class="text-primary fw-bold font-monospace" style="text-shadow: 0 0 10px var(--secondary);">...</span>
+                    Total Visits: <span id="visitCount" class="fw-bold font-monospace" style="color: var(--secondary);">...</span>
                 </div>
             </div>
         </div>
@@ -873,58 +651,34 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     
     <script>
-        // Initialize AOS with sleeker settings
         AOS.init({ duration: 1000, once: true, easing: 'cubic-bezier(0.25, 0.8, 0.25, 1)', offset: 50 });
 
-        // --- Theme Toggling Logic ---
         function setTheme(theme) {
             document.documentElement.setAttribute('data-bs-theme', theme);
             localStorage.setItem('theme', theme);
             const icon = document.querySelector('#themeToggle i');
-            
-            if (theme === 'dark') {
-                icon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill');
-            } else {
-                icon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
-            }
+            if (theme === 'dark') { icon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill'); } 
+            else { icon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill'); }
         }
-
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-bs-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            setTheme(newTheme);
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
         }
+        setTheme(localStorage.getItem('theme') || 'dark');
 
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        setTheme(savedTheme);
-
-        // --- Navbar Scroll Effect ---
         window.addEventListener("scroll", () => {
             const navbar = document.querySelector(".navbar");
-            if (window.scrollY > 50) {
-                navbar.classList.add('py-2', 'shadow-sm');
-                navbar.classList.remove('py-3');
-            } else {
-                navbar.classList.add('py-3');
-                 navbar.classList.remove('py-2', 'shadow-sm');
-            }
+            navbar.classList.toggle('py-2', window.scrollY > 50);
+            navbar.classList.toggle('py-3', window.scrollY <= 50);
         });
 
-        // --- Typewriter Effect ---
         new Typed(".typewriter", {
-            strings: ["Virtual Internships.", "Live Client Projects.", "Creative AI Solutions.", "Next-Gen Web Design."],
-            typeSpeed: 40,
-            backSpeed: 25,
-            backDelay: 2000,
-            loop: true,
-            showCursor: true,
-            cursorChar: '▌',
-            autoInsertCss: true,
+            strings: ["Web Development.", "AI & Machine Learning.", "Mobile Apps.", "UI/UX Design."],
+            typeSpeed: 50, backSpeed: 30, backDelay: 2000, loop: true, showCursor: true, cursorChar: '_', autoInsertCss: true,
         });
 
-        // --- Visitor Count (Simulated) ---
         let visits = localStorage.getItem("visits") || 18472;
-        visits = parseInt(visits) + Math.floor(Math.random() * 5) + 1; // Simulate realistic increment
+        visits = parseInt(visits) + 1;
         localStorage.setItem("visits", visits);
         document.getElementById("visitCount").textContent = visits.toLocaleString();
     </script>
