@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NP TechCrafters | The Crystalline Future</title>
-    <meta name="description" content="MSME-approved EdTech | Virtual Internships in Web, Mobile, AI, Design | Live Projects" />
+    <title>NP TechCrafters | Enterprise Digital Solutions</title>
+    <meta name="description" content="MSME-approved EdTech & Consultancy | Web, Mobile, AI, Design | Live Projects" />
 
     <link rel="icon" href="https://i.postimg.cc/sgkt3F0D/NPTECH.jpg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
@@ -19,49 +19,50 @@
 
     <style>
         :root {
-            /* --- NEW Palette: Deep Ocean Prism --- */
-            --primary: #3b82f6; /* Deep Blue */
-            --secondary: #10b981; /* Emerald */
-            --tertiary: #8b5cf6; /* Amethyst */
+            /* --- Corporate Tech Palette --- */
+            --primary: #2563eb; /* Sharp Electric Blue */
+            --primary-hover: #1d4ed8;
+            --secondary: #0ea5e9; /* Clean Sky Blue */
+            --accent: #10b981; /* Success/Live Green */
             
-            /* Subtle refractive accents used in shadows */
-            --prism-cyan: rgba(0, 255, 255, 0.2);
-            --prism-magenta: rgba(255, 0, 255, 0.2);
-
-            /* --- Dark Mode Base (Cooler, deeper slate) --- */
-            --bg-body: #020617; 
-            --bg-surface-1: #0f172a; 
-            --bg-surface-2: #1e293b; 
+            /* --- Dark Mode Base --- */
+            --bg-body: #0b0f19; 
+            --bg-surface-1: #111827; 
+            --bg-surface-2: #1f2937; 
             
             /* --- Text --- */
-            --text-main: #f8fafc;
-            --text-secondary: #94a3b8;
+            --text-main: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
             
-            /* --- Crystalline Borders & Effects --- */
-            --glass-bg: rgba(255, 255, 255, 0.03);
+            /* --- Enterprise Glass Effect --- */
+            --glass-bg: rgba(255, 255, 255, 0.02);
             --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-highlight: rgba(255, 255, 255, 0.15);
+            --glass-highlight: rgba(255, 255, 255, 0.12);
             
-            /* A complex shadow that mimics light passing through a prism */
-            --prism-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.4),
-                0 0 0 1px var(--glass-border) inset;
-
+            /* Clean, professional shadows */
+            --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--primary) inset;
             
-            --gradient-main: linear-gradient(135deg, var(--primary), var(--tertiary));
-            --gradient-text: linear-gradient(to right, #fff, #c4b5fd);
+            --gradient-text: linear-gradient(to right, #ffffff, #93c5fd);
+            --radius-md: 16px;
+            --radius-lg: 24px;
         }
 
+        /* --- Light Mode Refinements --- */
         [data-bs-theme="light"] {
-            --bg-body: #f0f9ff;
+            --bg-body: #f8fafc;
             --bg-surface-1: #ffffff;
-            --bg-surface-2: #e0f2fe;
-            --text-main: #0c4a6e;
+            --bg-surface-2: #f1f5f9;
+            --text-main: #0f172a;
             --text-secondary: #475569;
-            --glass-bg: rgba(255, 255, 255, 0.6);
-            --glass-border: rgba(59, 130, 246, 0.1);
-            --prism-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
-            --gradient-text: linear-gradient(to right, var(--primary), var(--tertiary));
+            --text-muted: #94a3b8;
+            --glass-bg: #ffffff;
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass-highlight: rgba(37, 99, 235, 0.2);
+            --shadow-soft: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+            --shadow-hover: 0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 0 0 1px var(--primary) inset;
+            --gradient-text: linear-gradient(to right, #0f172a, var(--primary));
         }
 
         /* --- Global Styles --- */
@@ -70,56 +71,44 @@
             background-color: var(--bg-body);
             color: var(--text-main);
             overflow-x: hidden;
-            position: relative;
+            line-height: 1.6;
         }
         
-        /* --- Slow, Organic Aurora Background --- */
-        body::before, body::after {
+        /* Subtle, professional background glow */
+        body::before {
             content: '';
             position: fixed;
-            width: 80vw;
-            height: 80vw;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.25;
+            top: -20%; left: 50%;
+            transform: translateX(-50%);
+            width: 80vw; height: 80vh;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(11, 15, 25, 0) 70%);
             z-index: -1;
-            /* Slower, more organic movement */
-            animation: auroraFlow 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
-            mix-blend-mode: screen;
+            pointer-events: none;
         }
-        body::before {
-            background: linear-gradient(to right, var(--primary), var(--tertiary));
-            top: -30%; left: -20%;
-        }
-        body::after {
-            background: linear-gradient(to right, var(--secondary), var(--primary));
-            bottom: -30%; right: -20%;
-            animation-delay: -12s;
-        }
-        [data-bs-theme="light"] body::before, [data-bs-theme="light"] body::after {
-             opacity: 0.15; mix-blend-mode: normal; filter: blur(150px);
+        [data-bs-theme="light"] body::before {
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, rgba(248, 250, 252, 0) 70%);
         }
 
-        h1, h2, h3, h4, .navbar-brand, .section-tag, .btn {
+        h1, h2, h3, h4, h5, h6, .navbar-brand, .btn {
             font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
         }
 
         /* --- Utilities --- */
         .section-tag {
             display: inline-flex; align-items: center;
-            padding: 6px 16px;
-            border-radius: 30px;
-            background: rgba(59, 130, 246, 0.1);
-            color: #60a5fa;
-            font-size: 0.8rem;
+            padding: 6px 14px;
+            border-radius: 6px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(37, 99, 235, 0.2);
             margin-bottom: 1.5rem;
-            backdrop-filter: blur(5px);
         }
-        .section-tag i { margin-right: 8px; }
+        [data-bs-theme="light"] .section-tag { background: rgba(37, 99, 235, 0.05); }
 
         .text-gradient {
             background: var(--gradient-text);
@@ -127,241 +116,182 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* --- Crystalline Navbar --- */
+        /* --- Navbar --- */
         .navbar {
-            padding: 1rem 0;
-            background: rgba(2, 6, 23, 0.6);
-            backdrop-filter: blur(20px);
+            padding: 1.2rem 0;
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--glass-border);
             transition: all 0.3s ease;
         }
-        .navbar-brand img { height: 42px; border-radius: 10px; }
+        [data-bs-theme="light"] .navbar { background: rgba(255, 255, 255, 0.9); }
+        
+        .navbar-brand img { height: 38px; border-radius: 8px; }
         .nav-link {
             color: var(--text-secondary) !important;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 0.95rem;
-            padding: 0.5rem 1rem !important;
-            transition: color 0.3s;
+            padding: 0.5rem 1.2rem !important;
+            transition: color 0.2s;
         }
         .nav-link:hover, .nav-link.active { color: var(--text-main) !important; }
 
-        .btn-nav-glass {
+        .btn-primary-custom {
+            background-color: var(--primary);
+            color: #fff !important;
             padding: 0.7rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 700;
-            color: white;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--glass-highlight);
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
         }
-        .btn-nav-glass:hover {
-             background: rgba(255,255,255,0.1);
-             border-color: rgba(255,255,255,0.3);
-             transform: translateY(-2px);
+        .btn-primary-custom:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
         }
 
         /* --- Hero Section --- */
         #hero {
             padding-top: 180px;
-            padding-bottom: 140px;
+            padding-bottom: 120px;
             position: relative;
-            overflow: hidden;
         }
         .hero-title {
-            font-size: clamp(3.5rem, 9vw, 6rem);
-            font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -0.03em;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
         }
-
-        /* Hero Image: Floating Crystal */
-        .hero-img-frame {
-            position: relative;
-            border-radius: 30px;
-            padding: 10px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-            box-shadow: var(--prism-shadow);
-            animation: deepFloat 8s ease-in-out infinite;
-        }
-        .hero-img {
-            border-radius: 20px;
-            width: 100%;
-            filter: saturate(1.1);
-        }
-
-        /* Liquid Metal Button */
-        .btn-liquid-metal {
-            background: linear-gradient(135deg, var(--primary), var(--tertiary));
-            color: white;
-            padding: 16px 40px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.2);
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.5);
-            transition: 0.3s;
-        }
-        /* Frosted sheen effect */
-        .btn-liquid-metal::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transform: skewX(-25deg); transition: 0.5s;
-        }
-        .btn-liquid-metal:hover { transform: translateY(-3px); box-shadow: 0 15px 40px -10px rgba(59, 130, 246, 0.7); }
-        .btn-liquid-metal:hover::before { left: 100%; }
         
-        .scroll-indicator {
-            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
-            display: flex; flex-direction: column; align-items: center; opacity: 0.5;
-            animation: bounce 2s infinite; letter-spacing: 2px; font-size: 0.8rem;
-        }
-
-        /* --- NEW: Prismatic Crystal Cards --- */
-        .prism-card {
+        .hero-img-container {
+            position: relative;
+            border-radius: var(--radius-lg);
+            padding: 8px;
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-radius: 24px;
-            padding: 3rem 2.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+        .hero-img {
+            border-radius: calc(var(--radius-lg) - 8px);
+            width: 100%;
+            filter: contrast(1.05);
+        }
+
+        /* --- Professional Cards --- */
+        .pro-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
             height: 100%;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: var(--prism-shadow);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
         }
-        
-        /* Top reflective edge */
-        .prism-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px;
-            background: linear-gradient(90deg, transparent, var(--glass-highlight), transparent);
-        }
-
-        .prism-card:hover {
-            transform: translateY(-10px) scale(1.02);
+        .pro-card:hover {
+            transform: translateY(-5px);
             border-color: var(--glass-highlight);
-            /* THE PRISM EFFECT: Splitting shadows into cyan and magenta colors */
-            box-shadow: 
-                -5px -5px 15px var(--prism-cyan),
-                5px 5px 15px var(--prism-magenta),
-                0 30px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: var(--shadow-hover);
         }
-
-        .card-icon {
-            font-size: 3rem;
+        .card-icon-wrapper {
+            width: 56px; height: 56px;
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
             margin-bottom: 1.5rem;
-            /* Gradient fill for icons */
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-            filter: drop-shadow(0 5px 10px rgba(59, 130, 246, 0.3));
+            color: var(--primary);
+            font-size: 1.5rem;
+            border: 1px solid rgba(37, 99, 235, 0.2);
         }
 
-
-        /* --- Project Showcase (Clean Glass) --- */
+        /* --- Project Showcase --- */
         .project-showcase {
             position: relative;
-            border-radius: 24px;
+            border-radius: var(--radius-md);
             overflow: hidden;
-            height: 350px;
+            height: 380px;
             border: 1px solid var(--glass-border);
-            box-shadow: var(--prism-shadow);
+            background: var(--bg-surface-1);
         }
         .project-showcase img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: 0.7s ease;
+            width: 100%; height: 60%; object-fit: cover;
+            border-bottom: 1px solid var(--glass-border);
         }
-        .project-overlay {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            /* Deeper, smoother gradient */
-            background: linear-gradient(to top, #020617, rgba(2, 6, 23, 0.8), transparent);
-            padding: 2.5rem;
-            transform: translateY(40%); opacity: 0;
-            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        .project-content {
+            padding: 1.5rem;
+            height: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .project-showcase:hover img { transform: scale(1.08); }
-        .project-showcase:hover {
-            border-color: var(--glass-highlight);
-            box-shadow: -5px -5px 15px var(--prism-cyan), 5px 5px 15px var(--prism-magenta), 0 30px 60px rgba(0, 0, 0, 0.5);
-        }
-        .project-showcase:hover .project-overlay { transform: translateY(0); opacity: 1; }
-
         .tech-badge {
-            font-size: 0.7rem; padding: 6px 14px; border-radius: 30px;
-            font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
-            background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+            font-size: 0.65rem; padding: 4px 10px; border-radius: 4px;
+            font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+            background: var(--bg-surface-2); border: 1px solid var(--glass-border);
             color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
         }
 
-        /* --- Team (Crystal Hexagons) --- */
-        .team-creative { text-align: center; padding: 1rem; }
-        
-        .hex-frame {
-            width: 160px; height: 160px; margin: 0 auto 1.8rem;
-            position: relative; z-index: 1;
-            display: flex; justify-content: center; align-items: center;
+        /* --- Tech Stack Pills --- */
+        .tech-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--bg-surface-1);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
         }
-        .hex-frame img {
-            width: 100%; height: 100%; object-fit: cover;
-            /* Hexagon clip path */
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            filter: grayscale(100%); transition: 0.5s ease;
-            background: var(--bg-surface-2);
+        .tech-pill:hover {
+            background: rgba(37, 99, 235, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
         }
-        /* Rotating crystal border */
-        .hex-frame::before {
-            content: ''; position: absolute; inset: -4px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--tertiary));
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            z-index: -1; opacity: 0.3;
-            transition: 0.5s;
-        }
-        .team-creative:hover img { filter: grayscale(0%); transform: scale(0.95); }
-        .team-creative:hover .hex-frame::before { opacity: 1; transform: rotate(30deg); }
 
-        /* --- Marquee & Footer --- */
+        /* --- Footer & Marquee --- */
         .marquee-section {
-            background: rgba(255,255,255,0.02);
             border-top: 1px solid var(--glass-border);
             border-bottom: 1px solid var(--glass-border);
-            padding: 4rem 0;
+            padding: 3rem 0;
+            background: var(--bg-surface-1);
         }
         .client-logo {
-            height: 50px; margin: 0 45px;
-            filter: grayscale(100%) brightness(1.5) opacity(0.4); transition: 0.4s;
+            height: 40px; margin: 0 40px;
+            filter: grayscale(100%) opacity(0.6); transition: 0.3s;
         }
-        .client-logo:hover { filter: grayscale(0%) brightness(1) opacity(1); transform: scale(1.1); }
+        .client-logo:hover { filter: grayscale(0%) opacity(1); }
 
         footer {
-            background: #01040f; /* Almost black */
-            padding-top: 6rem; padding-bottom: 3rem;
+            background: var(--bg-body);
+            padding-top: 5rem; padding-bottom: 2rem;
+            border-top: 1px solid var(--glass-border);
         }
-        .social-links a {
+        .social-link {
+            width: 40px; height: 40px;
             display: flex; align-items: center; justify-content: center;
-            width: 45px; height: 45px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--glass-border) !important;
-            transition: 0.4s; color: var(--text-secondary);
+            border-radius: 8px;
+            background: var(--bg-surface-1);
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            transition: 0.2s;
         }
-        .social-links a:hover {
-            background: var(--primary); border-color: transparent !important; color: white !important;
-            transform: translateY(-3px); box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        .social-link:hover {
+            background: var(--primary); color: white;
+            border-color: var(--primary);
         }
-
-        /* --- Animations --- */
-        @keyframes auroraFlow { 0% { transform: translate(0, 0) scale(1) rotate(0deg); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; } 100% { transform: translate(10%, 10%) scale(1.1) rotate(5deg); border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; } }
-        @keyframes deepFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-        /* Other existing animations (bounce, scrollWheel) remain */
-
-        .bg-alt { background: transparent !important; } /* Remove solid bg for alt sections to let aurora show */
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+        .footer-link:hover { color: var(--primary); }
     </style>
 </head>
 
@@ -369,29 +299,29 @@
 
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
                 <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="Logo">
-                <span class="ps-2 fw-bold">NP TechCrafters</span>
+                <span class="fw-bold fs-5 text-main">NP TechCrafters</span>
             </a>
             
             <div class="d-flex align-items-center gap-3 order-lg-3">
-                <div id="themeToggle" onclick="toggleTheme()" style="cursor: pointer; opacity: 0.7;">
+                <div id="themeToggle" onclick="toggleTheme()" style="cursor: pointer; color: var(--text-secondary);">
                     <i class="bi bi-moon-stars-fill fs-5"></i>
                 </div>
                 <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-                    <i class="bi bi-filter-right fs-1 text-white"></i>
+                    <i class="bi bi-list fs-1" style="color: var(--text-main);"></i>
                 </button>
             </div>
 
             <div class="collapse navbar-collapse" id="nav">
                 <ul class="navbar-nav mx-auto mb-3 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#hero">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Capabilities</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Work</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stack">Tech Stack</a></li>
                 </ul>
-                <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" target="_blank" class="btn btn-nav-glass d-none d-lg-block px-4">Apply Now</a>
+                <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" target="_blank" class="btn btn-primary-custom d-none d-lg-block">Apply Now</a>
             </div>
         </div>
     </nav>
@@ -399,179 +329,245 @@
     <section id="hero" class="d-flex align-items-center">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="section-tag"><i class="bi bi-award-fill"></i> MSME Approved</div>
-                    <h1 class="hero-title">Forge Your <br> <span class="text-gradient">Digital Future.</span></h1>
-                    <p class="lead mb-5 typewriter-container fw-normal fs-5" style="color: var(--text-secondary); max-width: 500px;">
-                        Closing the skills gap with immersive, project-based learning in <span class="text-white fw-bold typewriter" style="border-bottom: 2px solid var(--primary);"></span>
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="section-tag"><i class="bi bi-check-circle-fill me-2"></i> MSME Approved</div>
+                    <h1 class="hero-title">Engineering <br> <span class="text-gradient">Digital Scale.</span></h1>
+                    <p class="lead mb-5 fw-normal text-secondary" style="max-width: 540px;">
+                        Bridging the gap between academic theory and industry execution through robust engineering, AI integration, and immersive <span class="text-main fw-bold typewriter"></span>
                     </p>
-                    <div class="d-flex gap-3 flex-wrap justify-content-md-start justify-content-center">
-                        <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="btn btn-liquid-metal">Start Your Journey</a>
-                        <a href="#projects" class="btn btn-outline-light rounded-3 px-4 py-3 fw-bold d-flex align-items-center gap-2" style="border: 1px solid var(--glass-border); color: var(--text-main); backdrop-filter: blur(10px);">View Case Studies</a>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="btn btn-primary-custom">Start Your Journey</a>
+                        <a href="#projects" class="btn bg-transparent fw-bold" style="border: 1px solid var(--glass-border); color: var(--text-main); border-radius: 8px; padding: 0.7rem 1.8rem;">View Case Studies</a>
                     </div>
                 </div>
-                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="zoom-in-left" data-aos-delay="200" data-aos-duration="1200">
-                    <div class="hero-img-frame">
-                        <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/hero-img.png" class="img-fluid hero-img" alt="Hero">
+                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
+                    <div class="hero-img-container">
+                        <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/hero-img.png" class="img-fluid hero-img" alt="Digital Infrastructure">
                     </div>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <div class="mouse"><div class="wheel"></div></div>
-            <span class="mt-2">SCROLL</span>
+    </section>
+
+    <section id="impact" class="py-5 border-top border-bottom" style="border-color: var(--glass-border) !important; background: rgba(37, 99, 235, 0.02);">
+        <div class="container py-4">
+            <div class="row g-4 text-center">
+                <div class="col-6 col-md-3" data-aos="fade-up">
+                    <h2 class="display-5 fw-bold text-gradient mb-2">25+</h2>
+                    <p class="text-secondary small text-uppercase letter-spacing-1 fw-bold mb-0">Projects Deployed</p>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <h2 class="display-5 fw-bold text-gradient mb-2">500+</h2>
+                    <p class="text-secondary small text-uppercase letter-spacing-1 fw-bold mb-0">Students Mentored</p>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <h2 class="display-5 fw-bold text-gradient mb-2">4+</h2>
+                    <p class="text-secondary small text-uppercase letter-spacing-1 fw-bold mb-0">Live Platforms</p>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <h2 class="display-5 fw-bold text-gradient mb-2">100%</h2>
+                    <p class="text-secondary small text-uppercase letter-spacing-1 fw-bold mb-0">Client Delivery</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="services" class="py-5 position-relative">
+    <section id="about" class="py-5" style="background: var(--bg-surface-1);">
         <div class="container py-5">
-            <div class="row justify-content-center mb-5" data-aos="fade-up">
-                <div class="col-lg-7 text-center">
-                    <span class="section-tag">Our Expertise</span>
-                    <h2 class="display-5 fw-bold mb-3">Future-Ready <span class="text-gradient">Intelligence</span></h2>
-                    <p class="text-muted fs-5">Mastering the most demanded technologies through real-world application.</p>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <span class="section-tag">Corporate Identity</span>
+                    <h2 class="display-6 fw-bold mb-4">Architecting the <span class="text-gradient">Ecosystem</span></h2>
+                    <p class="text-secondary mb-4">
+                        NP TechCrafters is a forward-thinking technology consultancy and MSME-approved EdTech innovator. We design scalable architecture and engineer systems that drive real-world impact.
+                    </p>
+                    <p class="text-secondary mb-4">
+                        Led by active researchers and industry veterans, our expertise spans across cross-platform mobile development, robust backend ecosystems, and Explainable AI (XAI) models. Concurrently, we cultivate the next generation of technical leaders through hands-on virtual internships.
+                    </p>
+                    <div class="d-flex gap-4 mt-5">
+                        <div class="border-start border-primary border-3 ps-3">
+                            <h4 class="fw-bold mb-1">MSME</h4>
+                            <span class="text-muted small text-uppercase letter-spacing-1">Govt. Recognized</span>
+                        </div>
+                        <div class="border-start border-primary border-3 ps-3">
+                            <h4 class="fw-bold mb-1">Live</h4>
+                            <span class="text-muted small text-uppercase letter-spacing-1">Project Mentorship</span>
+                        </div>
+                    </div>
                 </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="row g-4">
+                        <div class="col-sm-6">
+                            <div class="pro-card">
+                                <div class="card-icon-wrapper"><i class="bi bi-cpu"></i></div>
+                                <h5 class="fw-bold">Innovation</h5>
+                                <p class="small text-secondary mb-0">Building robust tech infrastructure for tomorrow.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mt-sm-5">
+                            <div class="pro-card">
+                                <div class="card-icon-wrapper"><i class="bi bi-people"></i></div>
+                                <h5 class="fw-bold">Community</h5>
+                                <p class="small text-secondary mb-0">Empowering and training future developers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-tag">Capabilities</span>
+                <h2 class="display-6 fw-bold mb-3">Core <span class="text-gradient">Competencies</span></h2>
+                <p class="text-secondary">Mastering high-demand technologies through practical application.</p>
             </div>
             
             <div class="row g-4">
                 <div class="col-lg-4" data-aos="fade-up">
-                    <div class="prism-card">
-                        <i class="bi bi-code-square card-icon"></i>
-                        <h3 class="fw-bold mb-3 h4">Full-Stack Engineering</h3>
-                        <p class="text-muted mb-4">Build scalable ecosystems. Master the MERN Stack (MongoDB, Express, React, Node.js) and Python Django architecture.</p>
+                    <div class="pro-card">
+                        <div class="card-icon-wrapper"><i class="bi bi-code-square"></i></div>
+                        <h4 class="fw-bold mb-3">Full-Stack Engineering</h4>
+                        <p class="text-secondary mb-0">Develop scalable ecosystems. We specialize in MERN Stack (MongoDB, Express, React, Node.js) and robust Python Django architectures.</p>
                     </div>
                 </div>
                 
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="prism-card">
-                        <i class="bi bi-cpu card-icon" style="background: linear-gradient(135deg, var(--tertiary), var(--secondary)); -webkit-background-clip: text;"></i>
-                        <h3 class="fw-bold mb-3 h4">AI & Machine Learning</h3>
-                        <p class="text-muted mb-4">Harness data. Develop predictive models, neural networks, and intelligent automation solutions.</p>
+                    <div class="pro-card">
+                        <div class="card-icon-wrapper"><i class="bi bi-diagram-3"></i></div>
+                        <h4 class="fw-bold mb-3">AI & Machine Learning</h4>
+                        <p class="text-secondary mb-0">Harness data intelligence. We develop predictive models, NLP systems, and intelligent automation with a strong focus on Explainable AI (XAI).</p>
                     </div>
                 </div>
 
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="prism-card">
-                        <i class="bi bi-phone-flip card-icon" style="background: linear-gradient(135deg, var(--secondary), var(--primary)); -webkit-background-clip: text;"></i>
-                        <h3 class="fw-bold mb-3 h4">Cross-Platform Mobile</h3>
-                        <p class="text-muted mb-4">Create seamless native experiences for iOS and Android using a single codebase with Flutter.</p>
+                    <div class="pro-card">
+                        <div class="card-icon-wrapper"><i class="bi bi-phone"></i></div>
+                        <h4 class="fw-bold mb-3">Cross-Platform Mobile</h4>
+                        <p class="text-secondary mb-0">Deliver seamless native experiences for iOS and Android utilizing single dynamic codebases with Flutter and Firebase integration.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-   <section id="projects" class="py-5 bg-alt">
+   <section id="projects" class="py-5" style="background: var(--bg-surface-1);">
     <div class="container py-5">
-
-        <!-- Heading -->
-        <div class="row align-items-end mb-5">
-            <div class="col-lg-8" data-aos="fade-right">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5" data-aos="fade-up">
+            <div>
                 <span class="section-tag">Portfolio</span>
-                <h2 class="display-5 fw-bold">
-                    Recent <span class="text-gradient">Creations</span>
-                </h2>
-                <p class="text-secondary fs-5 mt-2">
-                    Real-world products, research, and platforms built with industry-grade technologies.
-                </p>
+                <h2 class="display-6 fw-bold mb-0">Recent <span class="text-gradient">Deployments</span></h2>
             </div>
+            <p class="text-secondary mb-0 mt-3 mt-md-0 max-w-md">Real-world platforms built with industry-grade technologies.</p>
         </div>
 
-        <!-- Projects Grid -->
         <div class="row g-4">
-
-            <!-- Prashanottar -->
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                <div class="project-showcase">
+                <div class="project-showcase d-flex flex-column">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="B2H Nirman">
+                    <div class="project-content">
+                        <div>
+                            <div class="d-flex flex-wrap gap-2 mb-2">
+                                <span class="tech-badge">Flutter</span>
+                                <span class="tech-badge">Firebase</span>
+                                <span class="tech-badge bg-success text-white border-success">Live App</span>
+                            </div>
+                            <h5 class="fw-bold mb-1">B2H Nirman</h5>
+                            <p class="text-secondary small mb-3" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                Cross-platform e-commerce mobile application streamlining construction material procurement.
+                            </p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a href="https://b2hnirman.com" target="_blank" class="btn btn-sm btn-primary-custom w-50">Website</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.np.ecommerceapp&pcampaignid=web_share" target="_blank" class="btn btn-sm w-50" style="background: var(--bg-surface-2); color: var(--text-main); border: 1px solid var(--glass-border);">Play Store</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-showcase d-flex flex-column">
                     <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" alt="Prashanottar Platform">
-                    <div class="project-overlay">
-                        <div class="d-flex gap-2 mb-3">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Django</span>
-                            <span class="tech-badge">AI</span>
+                    <div class="project-content">
+                        <div>
+                            <div class="d-flex flex-wrap gap-2 mb-2">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">Django</span>
+                            </div>
+                            <h5 class="fw-bold mb-1">Prashanottar</h5>
+                            <p class="text-secondary small mb-3">An intelligent Q&A and exam-preparation platform for competitive learning.</p>
                         </div>
-                        <h4 class="fw-bold mb-2">Prashanottar</h4>
-                        <p class="text-secondary small mb-3">
-                            An intelligent Q&A and exam-preparation platform for competitive learning.
-                        </p>
-                        <a href="https://prashanottar.pythonanywhere.com/"
-                           target="_blank"
-                           class="btn btn-sm btn-liquid-metal px-4">
-                            Visit Project
-                        </a>
+                        <a href="https://prashanottar.pythonanywhere.com/" target="_blank" class="btn btn-sm btn-primary-custom w-100 mt-auto">View Platform</a>
                     </div>
                 </div>
             </div>
 
-           <!-- Smart Billing System -->
-<div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-    <div class="project-showcase">
-        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&w=800&q=80"
-             alt="Smart Billing System">
-        <div class="project-overlay">
-            <div class="d-flex gap-2 mb-3">
-                <span class="tech-badge">Android</span>
-                <span class="tech-badge">QR</span>
-                <span class="tech-badge">Inventory</span>
-            </div>
-            <h4 class="fw-bold mb-2">Smart Billing System</h4>
-            <p class="text-secondary small mb-3">
-                Barcode-based billing and inventory management system integrated with a live grocery app.
-            </p>
-            <a href="https://play.google.com/store/apps/details?id=com.Project1.mygrocery&hl=en_IN"
-               target="_blank"
-               class="btn btn-sm btn-liquid-metal px-4">
-                View Grocery App
-            </a>
-        </div>
-    </div>
-</div>
-
-
-            <!-- XCI Classes -->
             <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="project-showcase">
-                    <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=800&q=80"
-                         alt="XCI Classes Website">
-                    <div class="project-overlay">
-                        <div class="d-flex gap-2 mb-3">
-                            <span class="tech-badge">Web</span>
-                            <span class="tech-badge">EdTech</span>
-                            <span class="tech-badge">UI/UX</span>
+                <div class="project-showcase d-flex flex-column">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&w=800&q=80" alt="Smart Billing">
+                    <div class="project-content">
+                        <div>
+                            <div class="d-flex flex-wrap gap-2 mb-2">
+                                <span class="tech-badge">Android</span>
+                                <span class="tech-badge">QR API</span>
+                            </div>
+                            <h5 class="fw-bold mb-1">Smart Billing System</h5>
+                            <p class="text-secondary small mb-3">Barcode-based billing and inventory management integrated with a grocery app.</p>
                         </div>
-                        <h4 class="fw-bold mb-2">XCI Classes</h4>
-                        <p class="text-secondary small mb-3">
-                            A modern EdTech website delivering structured courses and learning resources.
-                        </p>
-                        <a href="https://xciclasses.com/"
-                           target="_blank"
-                           class="btn btn-sm btn-outline-light rounded-pill px-4 fw-bold"
-                           style="border-color: var(--glass-border);">
-                            Visit Website
-                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.Project1.mygrocery&hl=en_IN" target="_blank" class="btn btn-sm w-100 mt-auto" style="background: var(--bg-surface-2); color: var(--text-main); border: 1px solid var(--glass-border);">View on Play Store</a>
                     </div>
                 </div>
             </div>
 
-           
-            <!-- AI Legal Analytics -->
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="project-showcase">
-                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80"
-                         alt="AI Legal Analytics">
-                    <div class="project-overlay">
-                        <div class="d-flex gap-2 mb-3">
-                            <span class="tech-badge">NLP</span>
-                            <span class="tech-badge">BERT</span>
-                            <span class="tech-badge">XAI</span>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="project-showcase d-flex flex-column">
+                    <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=800&q=80" alt="XCI Classes">
+                    <div class="project-content">
+                        <div>
+                            <div class="d-flex flex-wrap gap-2 mb-2">
+                                <span class="tech-badge">Web</span>
+                                <span class="tech-badge">EdTech</span>
+                            </div>
+                            <h5 class="fw-bold mb-1">XCI Classes</h5>
+                            <p class="text-secondary small mb-3">A modern EdTech website delivering structured courses and digital learning resources.</p>
                         </div>
-                        <h4 class="fw-bold mb-2">AI Legal Analytics</h4>
-                        <p class="text-secondary small mb-3">
-                            Bail prediction and legal risk analysis using Explainable AI models.
-                        </p>
-                        <span class="badge rounded-pill bg-primary-subtle text-primary px-3 py-2">
-                            Research Project
-                        </span>
+                        <a href="https://xciclasses.com/" target="_blank" class="btn btn-sm btn-primary-custom w-100 mt-auto">Visit Website</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="project-showcase d-flex flex-column">
+                    <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?auto=format&fit=crop&w=800&q=80" alt="Q-In System">
+                    <div class="project-content">
+                        <div>
+                            <div class="d-flex flex-wrap gap-2 mb-2">
+                                <span class="tech-badge">Mobile</span>
+                                <span class="tech-badge">Geofencing</span>
+                            </div>
+                            <h5 class="fw-bold mb-1">Q-In Tracker</h5>
+                            <p class="text-secondary small mb-3">Smart mobile attendance system utilizing QR scanners and geofencing.</p>
+                        </div>
+                        <span class="btn btn-sm w-100 mt-auto disabled" style="background: transparent; color: var(--text-secondary); border: 1px dashed var(--glass-border);">Internal Tool</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="project-showcase d-flex flex-column">
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80" alt="AI Legal">
+                    <div class="project-content">
+                        <div>
+                            <div class="d-flex flex-wrap gap-2 mb-2">
+                                <span class="tech-badge">NLP</span>
+                                <span class="tech-badge">XAI</span>
+                            </div>
+                            <h5 class="fw-bold mb-1">Legal AI Analytics</h5>
+                            <p class="text-secondary small mb-3">Bail prediction and legal risk analysis using Explainable AI (XAI) models.</p>
+                        </div>
+                        <span class="btn btn-sm w-100 mt-auto disabled" style="background: transparent; color: var(--primary); border: 1px solid rgba(37, 99, 235, 0.3);">Research Protocol</span>
                     </div>
                 </div>
             </div>
@@ -580,61 +576,44 @@
     </div>
 </section>
 
-
-
-    <section id="team" class="py-5 position-relative">
-        <div class="container py-5">
-             <div class="row justify-content-center mb-5" data-aos="fade-up">
-                <div class="col-lg-7 text-center">
-                    <span class="section-tag">The Collective</span>
-                    <h2 class="display-5 fw-bold mb-3">Meet The <span class="text-gradient">Architects</span></h2>
-                </div>
+    <section id="stack" class="py-5">
+        <div class="container py-5 text-center">
+            <div class="mb-5" data-aos="fade-up">
+                <span class="section-tag">Technology Arsenal</span>
+                <h2 class="display-6 fw-bold mb-3">Powered by <span class="text-gradient">Modern Tech</span></h2>
+                <p class="text-secondary max-w-md mx-auto">We leverage industry-leading frameworks and tools to build robust, scalable, and high-performance digital products.</p>
             </div>
             
-            <div class="row g-5 justify-content-center">
-                <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up">
-                    <div class="team-creative">
-                        <div class="hex-frame">
-                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/niksheppaliwal.jpg" alt="Nikshep">
-                        </div>
-                        <h5 class="fw-bold mb-1">Nikshep Paliwal</h5>
-                        <p class="small text-primary fw-bold ls-1 mb-0" style="letter-spacing: 1px; color: var(--tertiary) !important;">FOUNDER & CEO</p>
+            <div class="row g-5 mt-3 text-start justify-content-center">
+                <div class="col-md-5" data-aos="fade-up" data-aos-delay="100">
+                    <h5 class="fw-bold text-main mb-4 border-bottom border-secondary pb-2" style="border-color: var(--glass-border) !important;">Frontend & Mobile</h5>
+                    <div class="d-flex flex-wrap gap-3">
+                        <span class="tech-pill"><i class="bi bi-phone text-primary"></i> Flutter</span>
+                        <span class="tech-pill"><i class="bi bi-filetype-jsx text-info"></i> React.js</span>
+                        <span class="tech-pill"><i class="bi bi-android2 text-success"></i> Android SDK</span>
+                        <span class="tech-pill"><i class="bi bi-bootstrap text-purple" style="color: #8b5cf6;"></i> Bootstrap</span>
+                        <span class="tech-pill"><i class="bi bi-palette text-warning"></i> Tailwind CSS</span>
                     </div>
                 </div>
-                 <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="100">
-                    <div class="team-creative">
-                        <div class="hex-frame">
-                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/66714632.jpg" alt="Chandan" style="object-position: top;">
-                        </div>
-                        <h5 class="fw-bold mb-1">Chandan Saroj</h5>
-                        <p class="small text-primary fw-bold ls-1 mb-0" style="color: var(--secondary) !important;">CTO</p>
+                
+                <div class="col-md-5" data-aos="fade-up" data-aos-delay="200">
+                    <h5 class="fw-bold text-main mb-4 border-bottom border-secondary pb-2" style="border-color: var(--glass-border) !important;">Backend & Database</h5>
+                    <div class="d-flex flex-wrap gap-3">
+                        <span class="tech-pill"><i class="bi bi-filetype-py text-warning"></i> Python / Django</span>
+                        <span class="tech-pill"><i class="bi bi-server text-success"></i> Node.js</span>
+                        <span class="tech-pill"><i class="bi bi-database text-info"></i> MongoDB</span>
+                        <span class="tech-pill"><i class="bi bi-database-fill text-primary"></i> Firebase</span>
+                        <span class="tech-pill"><i class="bi bi-cloud text-secondary"></i> AWS Cloud</span>
                     </div>
                 </div>
-                <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="200">
-                    <div class="team-creative">
-                        <div class="hex-frame">
-                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/111854114.jpg" alt="Vishal">
-                        </div>
-                        <h5 class="fw-bold mb-1">Vishal</h5>
-                        <p class="small text-primary fw-bold ls-1 mb-0" style="color: var(--primary) !important;">LEAD DEV</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="300">
-                    <div class="team-creative">
-                        <div class="hex-frame">
-                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/68648513.jpg" alt="Rahul">
-                        </div>
-                        <h5 class="fw-bold mb-1">Rahul Bhaskar</h5>
-                        <p class="small text-primary fw-bold ls-1 mb-0" style="color: var(--tertiary) !important;">ADMIN</p>
-                    </div>
-                </div>
-                 <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="400">
-                    <div class="team-creative">
-                        <div class="hex-frame">
-                            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/photo.jpeg" alt="Ravikant" style="object-position: center 20%;">
-                        </div>
-                        <h5 class="fw-bold mb-1">Ravikant Mahi</h5>
-                        <p class="small text-primary fw-bold ls-1 mb-0" style="color: var(--secondary) !important;">DEVELOPER</p>
+                
+                <div class="col-md-10" data-aos="fade-up" data-aos-delay="300">
+                    <h5 class="fw-bold text-main mb-4 border-bottom border-secondary pb-2 mt-4" style="border-color: var(--glass-border) !important;">AI & Machine Learning</h5>
+                    <div class="d-flex flex-wrap gap-3">
+                        <span class="tech-pill"><i class="bi bi-robot text-primary"></i> Explainable AI (XAI)</span>
+                        <span class="tech-pill"><i class="bi bi-cpu text-warning"></i> TensorFlow</span>
+                        <span class="tech-pill"><i class="bi bi-chat-left-text text-success"></i> Natural Language Processing (NLP)</span>
+                        <span class="tech-pill"><i class="bi bi-qr-code-scan text-info"></i> Computer Vision</span>
                     </div>
                 </div>
             </div>
@@ -644,16 +623,16 @@
     <section class="marquee-section">
         <div class="container-fluid">
             <div class="text-center mb-4">
-                <span class="section-tag">Trusted Partners</span>
+                <span class="text-muted small text-uppercase fw-bold letter-spacing-1">Trusted Partners & Ecosystem</span>
             </div>
-            <div class="marquee-wrapper" style="mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);">
-                <div class="marquee-content d-flex align-items-center">
-                    <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" class="client-logo" alt="Prashanottar" style="height: 60px; filter: none;">
+            <div class="marquee-wrapper" style="mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent); overflow: hidden;">
+                <div class="marquee-content d-flex align-items-center" style="width: max-content;">
+                    <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" class="client-logo" alt="Prashanottar" style="height: 50px;">
                     <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" class="client-logo" alt="Client">
                     <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" class="client-logo" alt="Client">
                     <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" class="client-logo rounded-circle" alt="Client">
+                    <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" class="client-logo" alt="Prashanottar" style="height: 50px;">
                     <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" class="client-logo" alt="Client">
-                    <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" class="client-logo" alt="Prashanottar" style="height: 60px; filter: none;">
                     <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" class="client-logo" alt="Client">
                     <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" class="client-logo rounded-circle" alt="Client">
                 </div>
@@ -662,49 +641,49 @@
     </section>
 
     <footer>
-        <div class="container position-relative z-2">
+        <div class="container">
             <div class="row g-5 mb-5">
-                <div class="col-lg-5">
-                    <a class="navbar-brand mb-4 gap-2" href="#">
-                        <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="Logo" style="height: 50px;">
-                        <span class="fw-bold fs-3">NP TechCrafters</span>
+                <div class="col-lg-4">
+                    <a class="navbar-brand d-flex align-items-center gap-2 mb-4" href="#">
+                        <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="Logo" style="height: 42px; border-radius: 8px;">
+                        <span class="fw-bold fs-4 text-main">NP TechCrafters</span>
                     </a>
-                    <p class="mb-4 text-secondary lead fs-6">Empowering the next generation of tech leaders through virtual internships, live projects, and cutting-edge skill development.</p>
-                    <div class="d-flex gap-3 social-links">
-                        <a href="https://www.instagram.com/np.techcrafters" class="btn"><i class="bi bi-instagram"></i></a>
-                        <a href="https://www.facebook.com/people/NP-TechCrafters/61565158317180/" class="btn"><i class="bi bi-facebook"></i></a>
-                        <a href="https://www.linkedin.com/company/np-techcrafters" class="btn"><i class="bi bi-linkedin"></i></a>
+                    <p class="text-secondary small mb-4 pe-lg-4">Empowering the next generation of tech leaders through enterprise-grade architecture, virtual internships, and cutting-edge skill development.</p>
+                    <div class="d-flex gap-2">
+                        <a href="https://www.instagram.com/np.techcrafters" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.facebook.com/people/NP-TechCrafters/61565158317180/" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.linkedin.com/company/np-techcrafters" class="social-link"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-6 offset-lg-1">
-                    <h6 class="fw-bold mb-4 text-white" style="font-family: 'Space Grotesk'">Company</h6>
-                    <ul class="list-unstyled d-flex flex-column gap-3">
-                        <li><a href="#hero" class="text-decoration-none text-secondary link-hover">Home</a></li>
-                        <li><a href="#about" class="text-decoration-none text-secondary link-hover">About Us</a></li>
-                        <li><a href="#team" class="text-decoration-none text-secondary link-hover">Our Team</a></li>
+                <div class="col-lg-2 col-6 offset-lg-2">
+                    <h6 class="fw-bold mb-4 text-main">Company</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="#hero" class="footer-link">Overview</a></li>
+                        <li><a href="#about" class="footer-link">About Us</a></li>
+                        <li><a href="#stack" class="footer-link">Tech Stack</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-6">
-                    <h6 class="fw-bold mb-4 text-white" style="font-family: 'Space Grotesk'">Resources</h6>
-                     <ul class="list-unstyled d-flex flex-column gap-3">
-                        <li><a href="#services" class="text-decoration-none text-secondary link-hover">Services</a></li>
-                        <li><a href="#projects" class="text-decoration-none text-secondary link-hover">Case Studies</a></li>
-                        <li><a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="text-decoration-none text-primary fw-bold link-hover" style="color: var(--tertiary) !important;">Apply Now</a></li>
+                    <h6 class="fw-bold mb-4 text-main">Services</h6>
+                     <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="#services" class="footer-link">Capabilities</a></li>
+                        <li><a href="#projects" class="footer-link">Case Studies</a></li>
+                        <li><a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="footer-link text-primary fw-bold">Apply Now</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2">
-                    <h6 class="fw-bold mb-4 text-white" style="font-family: 'Space Grotesk'">Contact</h6>
-                    <ul class="list-unstyled d-flex flex-column gap-3 text-secondary small">
-                        <li class="d-flex gap-2"><i class="bi bi-geo-alt" style="color: var(--secondary)"></i> Saharanpur, UP, India</li>
-                        <li class="d-flex gap-2"><i class="bi bi-envelope" style="color: var(--secondary)"></i> nptechcrafters@gmail.com</li>
-                        <li class="d-flex gap-2"><i class="bi bi-telephone" style="color: var(--secondary)"></i> +91 9149188705</li>
+                    <h6 class="fw-bold mb-4 text-main">Contact</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 text-secondary small">
+                        <li class="d-flex gap-2"><i class="bi bi-geo-alt mt-1"></i> Saharanpur, UP, India</li>
+                        <li class="d-flex gap-2"><i class="bi bi-envelope mt-1"></i> nptechcrafters@gmail.com</li>
+                        <li class="d-flex gap-2"><i class="bi bi-telephone mt-1"></i> +91 9149188705</li>
                     </ul>
                 </div>
             </div>
             <div class="border-top pt-4 d-md-flex justify-content-between align-items-center text-center text-md-start" style="border-color: var(--glass-border) !important;">
-                <small class="text-secondary mb-2 mb-md-0 d-block">© 2025 NP TechCrafters. All rights reserved. Engineered in India.</small>
+                <small class="text-secondary mb-2 mb-md-0 d-block">&copy; 2026 NP TechCrafters. All rights reserved.</small>
                 <div class="small text-secondary">
-                    Total Visits: <span id="visitCount" class="fw-bold font-monospace" style="color: var(--secondary);">...</span>
+                    Total Visits: <span id="visitCount" class="fw-bold font-monospace" style="color: var(--text-main);">...</span>
                 </div>
             </div>
         </div>
@@ -715,32 +694,48 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     
     <script>
-        AOS.init({ duration: 1000, once: true, easing: 'cubic-bezier(0.25, 0.8, 0.25, 1)', offset: 50 });
+        // Initialize Animations
+        AOS.init({ duration: 800, once: true, easing: 'ease-out-cubic', offset: 50 });
 
+        // Theme Management
         function setTheme(theme) {
             document.documentElement.setAttribute('data-bs-theme', theme);
             localStorage.setItem('theme', theme);
             const icon = document.querySelector('#themeToggle i');
-            if (theme === 'dark') { icon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill'); } 
-            else { icon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill'); }
+            if (theme === 'dark') { 
+                icon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill'); 
+            } else { 
+                icon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill'); 
+            }
         }
+        
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-bs-theme');
             setTheme(currentTheme === 'dark' ? 'light' : 'dark');
         }
+        
+        // Default to dark mode if no local storage is set
         setTheme(localStorage.getItem('theme') || 'dark');
 
+        // Navbar Scroll Effect
         window.addEventListener("scroll", () => {
             const navbar = document.querySelector(".navbar");
             navbar.classList.toggle('py-2', window.scrollY > 50);
             navbar.classList.toggle('py-3', window.scrollY <= 50);
+            if(window.scrollY > 50) {
+                navbar.style.boxShadow = "var(--shadow-soft)";
+            } else {
+                navbar.style.boxShadow = "none";
+            }
         });
 
+        // Typewriter Effect
         new Typed(".typewriter", {
-            strings: ["Web Development.", "AI & Machine Learning.", "Mobile Apps.", "UI/UX Design."],
-            typeSpeed: 50, backSpeed: 30, backDelay: 2000, loop: true, showCursor: true, cursorChar: '_', autoInsertCss: true,
+            strings: ["Skill Development.", "AI Solutions.", "Mobile Architecture."],
+            typeSpeed: 40, backSpeed: 20, backDelay: 2500, loop: true, showCursor: true, cursorChar: '|'
         });
 
+        // Visitor Counter logic
         let visits = localStorage.getItem("visits") || 18472;
         visits = parseInt(visits) + 1;
         localStorage.setItem("visits", visits);
@@ -748,7 +743,3 @@
     </script>
 </body>
 </html>
-
-
-
-
