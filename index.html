@@ -1,415 +1,753 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NP TechCrafters | Enterprise Digital Solutions</title>
     <meta name="description" content="MSME-approved EdTech & Consultancy | Web, Mobile, AI, Design | Live Projects" />
-
     <link rel="icon" href="https://i.postimg.cc/sgkt3F0D/NPTECH.jpg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <style>
         :root {
-            /* --- Corporate Tech Palette --- */
-            --primary: #2563eb; /* Sharp Electric Blue */
-            --primary-hover: #1d4ed8;
-            --secondary: #0ea5e9; /* Clean Sky Blue */
-            --accent: #10b981; /* Success/Live Green */
-            
-            /* --- Dark Mode Base --- */
-            --bg-body: #0b0f19; 
-            --bg-surface-1: #111827; 
-            --bg-surface-2: #1f2937; 
-            
-            /* --- Text --- */
-            --text-main: #f9fafb;
-            --text-secondary: #9ca3af;
-            --text-muted: #6b7280;
-            
-            /* --- Enterprise Glass Effect --- */
-            --glass-bg: rgba(255, 255, 255, 0.02);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-highlight: rgba(255, 255, 255, 0.12);
-            
-            /* Clean, professional shadows */
-            --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-            --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--primary) inset;
-            
-            --gradient-text: linear-gradient(to right, #ffffff, #93c5fd);
-            --radius-md: 16px;
-            --radius-lg: 24px;
+            --ink: #050810;
+            --ink-2: #0d1120;
+            --ink-3: #161c2e;
+            --ink-4: #1e2640;
+            --steel: #2a3452;
+            --mist: #8892aa;
+            --fog: #b8c0d0;
+            --snow: #eef1f8;
+            --white: #ffffff;
+
+            --blue: #3b6bff;
+            --blue-glow: rgba(59,107,255,0.18);
+            --blue-dim: rgba(59,107,255,0.08);
+            --cyan: #00d4ff;
+            --emerald: #00e5a0;
+            --amber: #ffb347;
+
+            --font-head: 'Syne', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            --font-mono: 'DM Mono', monospace;
+
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --radius-xl: 32px;
+
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(59,107,255,0.4);
+            --glow: 0 0 40px rgba(59,107,255,0.2);
         }
 
-        /* --- Light Mode Refinements --- */
-        [data-bs-theme="light"] {
-            --bg-body: #f8fafc;
-            --bg-surface-1: #ffffff;
-            --bg-surface-2: #f1f5f9;
-            --text-main: #0f172a;
-            --text-secondary: #475569;
-            --text-muted: #94a3b8;
-            --glass-bg: #ffffff;
-            --glass-border: rgba(0, 0, 0, 0.06);
-            --glass-highlight: rgba(37, 99, 235, 0.2);
-            --shadow-soft: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
-            --shadow-hover: 0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 0 0 1px var(--primary) inset;
-            --gradient-text: linear-gradient(to right, #0f172a, var(--primary));
-        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* --- Global Styles --- */
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
+            font-family: var(--font-body);
+            background: var(--ink);
+            color: var(--snow);
             overflow-x: hidden;
-            line-height: 1.6;
-        }
-        
-        /* Subtle, professional background glow */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -20%; left: 50%;
-            transform: translateX(-50%);
-            width: 80vw; height: 80vh;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(11, 15, 25, 0) 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-        [data-bs-theme="light"] body::before {
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, rgba(248, 250, 252, 0) 70%);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4, h5, h6, .navbar-brand, .btn {
-            font-family: 'Space Grotesk', sans-serif;
+        /* ── Noise texture overlay ── */
+        body::after {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 9999; opacity: 0.4;
+        }
+
+        /* ── Ambient gradient spheres ── */
+        .ambient {
+            position: fixed; pointer-events: none; z-index: -1; border-radius: 50%;
+            filter: blur(120px); opacity: 0.12;
+        }
+        .ambient-1 { width: 700px; height: 700px; background: var(--blue); top: -200px; right: -200px; }
+        .ambient-2 { width: 500px; height: 500px; background: var(--cyan); bottom: 0; left: -150px; }
+        .ambient-3 { width: 400px; height: 400px; background: var(--emerald); top: 60%; right: 10%; opacity: 0.06; }
+
+        /* ── Typography ── */
+        h1, h2, h3, h4, h5 { font-family: var(--font-head); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+
+        .display-mega {
+            font-size: clamp(3.5rem, 9vw, 7.5rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 0.95;
+        }
+
+        .display-lg { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; }
+        .display-md { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; }
+
+        .text-mist { color: var(--mist); }
+        .text-fog { color: var(--fog); }
+        .text-blue { color: var(--blue); }
+        .text-cyan { color: var(--cyan); }
+        .text-emerald { color: var(--emerald); }
+
+        .label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--blue);
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .label::before {
+            content: '';
+            display: inline-block; width: 20px; height: 1px;
+            background: var(--blue);
+        }
+
+        /* ── Gradient text ── */
+        .grad-text {
+            background: linear-gradient(135deg, #fff 0%, #93c5fd 50%, var(--cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .grad-blue {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ── Navigation ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 1.4rem 0;
+            transition: all 0.4s ease;
+        }
+        nav.scrolled {
+            background: rgba(5, 8, 16, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+        }
+        .nav-inner {
+            max-width: 1240px; margin: 0 auto;
+            padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-brand {
+            display: flex; align-items: center; gap: 12px;
+            text-decoration: none;
+        }
+        .nav-brand img { height: 36px; border-radius: 8px; }
+        .nav-brand-name {
+            font-family: var(--font-head);
+            font-weight: 700; font-size: 1.05rem;
+            color: var(--white);
             letter-spacing: -0.02em;
         }
 
-        /* --- Utilities --- */
-        .section-tag {
-            display: inline-flex; align-items: center;
-            padding: 6px 14px;
-            border-radius: 6px;
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border: 1px solid rgba(37, 99, 235, 0.2);
-            margin-bottom: 1.5rem;
+        .nav-links {
+            display: flex; align-items: center; gap: 0.2rem;
+            list-style: none;
         }
-        [data-bs-theme="light"] .section-tag { background: rgba(37, 99, 235, 0.05); }
-
-        .text-gradient {
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* --- Navbar --- */
-        .navbar {
-            padding: 1.2rem 0;
-            background: rgba(11, 15, 25, 0.8);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--glass-border);
-            transition: all 0.3s ease;
-        }
-        [data-bs-theme="light"] .navbar { background: rgba(255, 255, 255, 0.9); }
-        
-        .navbar-brand img { height: 38px; border-radius: 8px; }
-        .nav-link {
-            color: var(--text-secondary) !important;
+        .nav-links a {
+            color: var(--mist);
+            text-decoration: none;
+            font-size: 0.88rem;
             font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.5rem 1.2rem !important;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s;
+        }
+        .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+
+        .nav-actions { display: flex; align-items: center; gap: 12px; }
+        .nav-cta {
+            background: var(--blue);
+            color: #fff;
+            padding: 0.55rem 1.4rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            letter-spacing: -0.01em;
+        }
+        .nav-cta:hover { background: #2a5af0; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(59,107,255,0.35); }
+
+        .theme-btn {
+            background: none; border: 1px solid var(--border);
+            width: 36px; height: 36px; border-radius: var(--radius-sm);
+            cursor: pointer; color: var(--mist); font-size: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .theme-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.15); }
+
+        .hamburger {
+            display: none; background: none; border: 1px solid var(--border);
+            width: 40px; height: 40px; border-radius: var(--radius-sm);
+            cursor: pointer; color: var(--white); font-size: 1.2rem;
+            align-items: center; justify-content: center;
+        }
+
+        .mobile-menu {
+            display: none; position: fixed; inset: 0; z-index: 999;
+            background: rgba(5,8,16,0.97);
+            backdrop-filter: blur(24px);
+            flex-direction: column; align-items: center; justify-content: center;
+            gap: 2rem;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            font-family: var(--font-head); font-size: 2rem; font-weight: 700;
+            color: var(--snow); text-decoration: none;
             transition: color 0.2s;
         }
-        .nav-link:hover, .nav-link.active { color: var(--text-main) !important; }
-
-        .btn-primary-custom {
-            background-color: var(--primary);
-            color: #fff !important;
-            padding: 0.7rem 1.8rem;
-            border-radius: 8px;
-            font-weight: 600;
-            border: none;
-            transition: all 0.2s;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
-        }
-        .btn-primary-custom:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        .mobile-menu a:hover { color: var(--blue); }
+        .mobile-close {
+            position: absolute; top: 1.5rem; right: 2rem;
+            background: none; border: none; color: var(--mist);
+            font-size: 2rem; cursor: pointer;
         }
 
-        /* --- Hero Section --- */
+        /* ── Sections ── */
+        section { position: relative; }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 2rem; }
+
+        /* ── Hero ── */
         #hero {
-            padding-top: 180px;
-            padding-bottom: 120px;
+            min-height: 100vh;
+            display: flex; align-items: center;
+            padding: 140px 0 100px;
+        }
+        .hero-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 6rem; align-items: center;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            border: 1px solid rgba(59,107,255,0.3);
+            background: var(--blue-dim);
+            color: #93c5fd;
+            padding: 6px 14px; border-radius: 50px;
+            font-size: 0.78rem; font-weight: 500;
+            letter-spacing: 0.02em; margin-bottom: 2rem;
+        }
+        .hero-badge .dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--emerald);
+            box-shadow: 0 0 8px var(--emerald);
+            animation: pulse 2s ease infinite;
+        }
+        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem; }
+        .btn-primary {
+            background: var(--blue);
+            color: #fff; padding: 0.85rem 2rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600; font-size: 0.95rem;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+            transition: all 0.25s;
+            box-shadow: 0 4px 20px rgba(59,107,255,0.3);
+        }
+        .btn-primary:hover { background: #2a5af0; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(59,107,255,0.45); color: #fff; }
+
+        .btn-ghost {
+            border: 1px solid var(--border);
+            color: var(--fog); padding: 0.85rem 2rem;
+            border-radius: var(--radius-sm);
+            font-weight: 500; font-size: 0.95rem;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+            transition: all 0.25s; background: transparent;
+        }
+        .btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: var(--white); background: rgba(255,255,255,0.04); }
+
+        /* Hero visual */
+        .hero-visual {
             position: relative;
         }
-        .hero-title {
-            font-size: clamp(3rem, 7vw, 5.5rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero-img-container {
-            position: relative;
+        .hero-card {
+            background: var(--ink-2);
+            border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: 8px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px var(--border);
         }
-        .hero-img {
-            border-radius: calc(var(--radius-lg) - 8px);
-            width: 100%;
-            filter: contrast(1.05);
+        .hero-card-header {
+            background: var(--ink-3);
+            padding: 1rem 1.5rem;
+            display: flex; align-items: center; gap: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .dot-red { width:10px;height:10px;border-radius:50%;background:#ff5f57; }
+        .dot-yellow { width:10px;height:10px;border-radius:50%;background:#febc2e; }
+        .dot-green { width:10px;height:10px;border-radius:50%;background:#28c840; }
+        .hero-card-title { font-family: var(--font-mono); font-size: 0.75rem; color: var(--mist); margin-left: 8px; }
+        .hero-card-body { padding: 2rem; }
+        .code-line { font-family: var(--font-mono); font-size: 0.82rem; line-height: 2; }
+        .code-key { color: #7dd3fc; }
+        .code-val { color: var(--emerald); }
+        .code-str { color: #fca5a5; }
+        .code-comment { color: var(--mist); }
+        .code-num { color: var(--amber); }
+
+        /* ── Stats ── */
+        #stats {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border);
+        }
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 1px; background: var(--border);
+            border: 1px solid var(--border); border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .stat-item {
+            background: var(--ink-2);
+            padding: 2.5rem;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        .stat-item:hover { background: var(--ink-3); }
+        .stat-num {
+            font-family: var(--font-head);
+            font-size: 3.5rem; font-weight: 800;
+            letter-spacing: -0.04em; display: block;
+            background: linear-gradient(135deg, #fff 30%, var(--blue) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mist); font-family: var(--font-mono); margin-top: 0.5rem; }
+
+        /* ── About ── */
+        #about { padding: 8rem 0; background: var(--ink-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+        .about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .pillar {
+            background: var(--ink-3);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.8rem;
+            transition: all 0.3s;
+        }
+        .pillar:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: var(--glow); }
+        .pillar-icon {
+            width: 48px; height: 48px;
+            background: var(--blue-dim);
+            border: 1px solid rgba(59,107,255,0.2);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; color: var(--blue);
+            margin-bottom: 1.2rem;
+        }
+        .pillar h5 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+        .pillar p { font-size: 0.83rem; color: var(--mist); line-height: 1.6; }
+
+        .msme-tag {
+            display: inline-flex; align-items: center; gap: 10px;
+            border: 1px solid rgba(0,229,160,0.25);
+            background: rgba(0,229,160,0.05);
+            padding: 10px 18px; border-radius: var(--radius-sm);
+            font-size: 0.83rem; color: var(--emerald);
+            margin-top: 2rem;
         }
 
-        /* --- Professional Cards --- */
-        .pro-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-md);
+        /* ── Services ── */
+        #services { padding: 8rem 0; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .service-card {
+            background: var(--ink-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
             padding: 2.5rem;
-            height: 100%;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-soft);
+            transition: all 0.35s;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
         }
-        .pro-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--glass-highlight);
-            box-shadow: var(--shadow-hover);
+        .service-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--blue), transparent);
+            opacity: 0; transition: opacity 0.3s;
         }
-        .card-icon-wrapper {
+        .service-card:hover { border-color: var(--border-hover); transform: translateY(-6px); box-shadow: var(--glow); }
+        .service-card:hover::before { opacity: 1; }
+
+        .service-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem; color: var(--steel);
+            margin-bottom: 1.8rem; display: block;
+        }
+        .service-icon {
             width: 56px; height: 56px;
-            background: rgba(37, 99, 235, 0.1);
+            background: var(--blue-dim);
+            border: 1px solid rgba(59,107,255,0.2);
             border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; color: var(--blue);
             margin-bottom: 1.5rem;
-            color: var(--primary);
-            font-size: 1.5rem;
-            border: 1px solid rgba(37, 99, 235, 0.2);
+            transition: all 0.3s;
+        }
+        .service-card:hover .service-icon { background: rgba(59,107,255,0.15); border-color: rgba(59,107,255,0.4); }
+        .service-card h3 { font-size: 1.2rem; margin-bottom: 1rem; }
+        .service-card p { font-size: 0.88rem; color: var(--mist); line-height: 1.7; }
+        .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.5rem; }
+        .s-tag {
+            font-family: var(--font-mono); font-size: 0.65rem;
+            background: var(--ink-3); border: 1px solid var(--border);
+            color: var(--mist); padding: 4px 10px; border-radius: 4px;
         }
 
-        /* --- Project Showcase --- */
-        .project-showcase {
-            position: relative;
+        /* ── Projects ── */
+        #projects { padding: 8rem 0; background: var(--ink-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .project-card {
+            background: var(--ink-3);
+            border: 1px solid var(--border);
             border-radius: var(--radius-md);
             overflow: hidden;
-            height: 380px;
-            border: 1px solid var(--glass-border);
-            background: var(--bg-surface-1);
+            transition: all 0.35s;
+            display: flex; flex-direction: column;
         }
-        .project-showcase img {
-            width: 100%; height: 60%; object-fit: cover;
-            border-bottom: 1px solid var(--glass-border);
+        .project-card:hover { border-color: var(--border-hover); transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+        .project-img { width: 100%; height: 200px; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s; }
+        .project-card:hover .project-img { filter: brightness(1); }
+        .project-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+        .project-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+        .p-badge {
+            font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase;
+            background: var(--ink-4); border: 1px solid var(--border);
+            color: var(--mist); padding: 3px 9px; border-radius: 4px; letter-spacing: 0.05em;
         }
-        .project-content {
-            padding: 1.5rem;
-            height: 40%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .tech-badge {
-            font-size: 0.65rem; padding: 4px 10px; border-radius: 4px;
-            font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
-            background: var(--bg-surface-2); border: 1px solid var(--glass-border);
-            color: var(--text-secondary);
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* --- Tech Stack Pills --- */
-        .tech-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: var(--bg-surface-1);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            color: var(--text-main);
-            font-weight: 500;
-            font-size: 0.9rem;
+        .p-badge.live { background: rgba(0,229,160,0.1); border-color: rgba(0,229,160,0.3); color: var(--emerald); }
+        .p-badge.research { background: rgba(59,107,255,0.1); border-color: rgba(59,107,255,0.3); color: #93c5fd; }
+        .project-body h4 { font-size: 1rem; margin-bottom: 0.6rem; }
+        .project-body p { font-size: 0.83rem; color: var(--mist); line-height: 1.6; flex: 1; }
+        .project-links { display: flex; gap: 8px; margin-top: 1.2rem; }
+        .plink {
+            flex: 1; text-align: center; text-decoration: none;
+            padding: 0.55rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600;
             transition: all 0.2s;
         }
-        .tech-pill:hover {
-            background: rgba(37, 99, 235, 0.1);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
+        .plink-primary { background: var(--blue); color: #fff; }
+        .plink-primary:hover { background: #2a5af0; color: #fff; }
+        .plink-ghost { background: var(--ink-4); border: 1px solid var(--border); color: var(--fog); }
+        .plink-ghost:hover { border-color: rgba(255,255,255,0.2); color: var(--white); background: var(--ink); }
+        .plink-internal { background: transparent; border: 1px dashed var(--steel); color: var(--mist); cursor: default; }
 
-        /* --- Footer & Marquee --- */
-        .marquee-section {
-            border-top: 1px solid var(--glass-border);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 3rem 0;
-            background: var(--bg-surface-1);
+        /* ── Stack ── */
+        #stack { padding: 8rem 0; }
+        .stack-categories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .stack-cat {
+            background: var(--ink-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2rem;
         }
-        .client-logo {
-            height: 40px; margin: 0 40px;
-            filter: grayscale(100%) opacity(0.6); transition: 0.3s;
+        .stack-cat-title {
+            font-family: var(--font-mono);
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em;
+            color: var(--blue); margin-bottom: 1.5rem;
+            display: flex; align-items: center; gap: 8px;
         }
-        .client-logo:hover { filter: grayscale(0%) opacity(1); }
+        .stack-cat-title::after {
+            content: ''; flex: 1; height: 1px; background: var(--border);
+        }
+        .stack-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+        .stack-pill {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--ink-3); border: 1px solid var(--border);
+            color: var(--fog); padding: 7px 14px; border-radius: var(--radius-sm);
+            font-size: 0.82rem; font-weight: 500; transition: all 0.2s;
+            cursor: default;
+        }
+        .stack-pill:hover { border-color: var(--border-hover); color: var(--white); background: var(--ink-4); }
+        .stack-pill i { color: var(--blue); font-size: 0.9rem; }
 
+        /* ── Marquee ── */
+        #partners {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--ink-2);
+            overflow: hidden;
+        }
+        .marquee-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--steel); text-align: center; margin-bottom: 2rem; }
+        .marquee-track {
+            display: flex; align-items: center;
+            width: max-content;
+            animation: marquee 28s linear infinite;
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .marquee-track img {
+            height: 38px; margin: 0 36px;
+            filter: grayscale(100%) brightness(0.5);
+            transition: all 0.3s;
+            object-fit: contain;
+        }
+        .marquee-track img:hover { filter: grayscale(0%) brightness(1); }
+
+        /* ── Footer ── */
         footer {
-            background: var(--bg-body);
-            padding-top: 5rem; padding-bottom: 2rem;
-            border-top: 1px solid var(--glass-border);
+            padding: 6rem 0 2rem;
+            border-top: 1px solid var(--border);
         }
-        .social-link {
-            width: 40px; height: 40px;
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 4rem; margin-bottom: 4rem; }
+        .footer-brand-name { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; color: var(--white); }
+        .footer-desc { font-size: 0.85rem; color: var(--mist); line-height: 1.7; margin: 1rem 0 1.5rem; max-width: 300px; }
+        .socials { display: flex; gap: 8px; }
+        .social-btn {
+            width: 36px; height: 36px;
+            background: var(--ink-2); border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
             display: flex; align-items: center; justify-content: center;
-            border-radius: 8px;
-            background: var(--bg-surface-1);
-            border: 1px solid var(--glass-border);
-            color: var(--text-secondary);
-            transition: 0.2s;
+            color: var(--mist); text-decoration: none;
+            font-size: 0.9rem; transition: all 0.2s;
         }
-        .social-link:hover {
-            background: var(--primary); color: white;
-            border-color: var(--primary);
+        .social-btn:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+        .footer-col h6 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fog); margin-bottom: 1.2rem; font-family: var(--font-mono); }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+        .footer-links a { color: var(--mist); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--white); }
+        .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; color: var(--mist); font-size: 0.85rem; margin-bottom: 0.8rem; }
+        .footer-contact-item i { color: var(--blue); margin-top: 2px; }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border); padding-top: 2rem;
+            display: flex; align-items: center; justify-content: space-between;
         }
-        .footer-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: 0.2s;
-            font-size: 0.95rem;
+        .footer-bottom small { color: var(--steel); font-size: 0.82rem; }
+        .visit-counter { font-family: var(--font-mono); font-size: 0.78rem; color: var(--steel); }
+        .visit-counter span { color: var(--fog); }
+
+        /* ── Section header pattern ── */
+        .section-header { margin-bottom: 5rem; }
+        .section-header p { color: var(--mist); max-width: 500px; margin-top: 1.2rem; font-size: 0.95rem; }
+
+        /* ── Decorative line ── */
+        .decor-line {
+            display: flex; align-items: center; gap: 1rem;
+            margin-bottom: 1.5rem;
         }
-        .footer-link:hover { color: var(--primary); }
+        .decor-line::before, .decor-line::after {
+            content: ''; flex: 1; height: 1px; background: var(--border);
+        }
+        .decor-line span {
+            font-family: var(--font-mono); font-size: 0.65rem;
+            color: var(--steel); letter-spacing: 0.15em; text-transform: uppercase;
+        }
+
+        /* ── Light theme ── */
+        [data-theme="light"] {
+            --ink: #f4f6fb;
+            --ink-2: #ffffff;
+            --ink-3: #f0f3fb;
+            --ink-4: #e4e9f5;
+            --steel: #c4cdd8;
+            --mist: #6b7a99;
+            --fog: #3d4a66;
+            --snow: #1a2035;
+            --white: #0a0f1e;
+            --border: rgba(0,0,0,0.07);
+            --border-hover: rgba(59,107,255,0.35);
+        }
+        [data-theme="light"] body::before { background: radial-gradient(circle at 70% 30%, rgba(59,107,255,0.06), transparent 60%); }
+        [data-theme="light"] nav.scrolled { background: rgba(244,246,251,0.9); }
+        [data-theme="light"] .ambient { opacity: 0.05; }
+
+        /* ── Responsive ── */
+        @media (max-width: 992px) {
+            .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-visual { display: none; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid, .projects-grid, .stack-categories { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+            .nav-links, .nav-cta { display: none; }
+            .hamburger { display: flex; }
+        }
+        @media (max-width: 640px) {
+            .services-grid, .projects-grid, .stack-categories { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .about-pillars { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
-
 <body>
 
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-                <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="Logo">
-                <span class="fw-bold fs-5 text-main">NP TechCrafters</span>
-            </a>
-            
-            <div class="d-flex align-items-center gap-3 order-lg-3">
-                <div id="themeToggle" onclick="toggleTheme()" style="cursor: pointer; color: var(--text-secondary);">
-                    <i class="bi bi-moon-stars-fill fs-5"></i>
-                </div>
-                <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-                    <i class="bi bi-list fs-1" style="color: var(--text-main);"></i>
-                </button>
-            </div>
+    <!-- Ambient Lights -->
+    <div class="ambient ambient-1"></div>
+    <div class="ambient ambient-2"></div>
+    <div class="ambient ambient-3"></div>
 
-            <div class="collapse navbar-collapse" id="nav">
-                <ul class="navbar-nav mx-auto mb-3 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="#hero">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Capabilities</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Work</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#stack">Tech Stack</a></li>
-                </ul>
-                <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" target="_blank" class="btn btn-primary-custom d-none d-lg-block">Apply Now</a>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" id="mobileClose"><i class="bi bi-x"></i></button>
+        <a href="#hero" onclick="closeMobile()">Overview</a>
+        <a href="#about" onclick="closeMobile()">About</a>
+        <a href="#services" onclick="closeMobile()">Capabilities</a>
+        <a href="#projects" onclick="closeMobile()">Work</a>
+        <a href="#stack" onclick="closeMobile()">Tech Stack</a>
+        <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" target="_blank" style="color: var(--blue);">Apply Now →</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-brand">
+                <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="NP TechCrafters Logo">
+                <span class="nav-brand-name">NP TechCrafters</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#hero">Overview</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Capabilities</a></li>
+                <li><a href="#projects">Work</a></li>
+                <li><a href="#stack">Stack</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Toggle theme">
+                    <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+                </button>
+                <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" target="_blank" class="nav-cta">Apply Now</a>
+                <button class="hamburger" id="hamburger" aria-label="Menu"><i class="bi bi-list"></i></button>
             </div>
         </div>
     </nav>
 
-    <section id="hero" class="d-flex align-items-center">
+    <!-- Hero -->
+    <section id="hero">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <div class="section-tag"><i class="bi bi-check-circle-fill me-2"></i> MSME Approved</div>
-                    <h1 class="hero-title">Engineering <br> <span class="text-gradient">Digital Scale.</span></h1>
-                    <p class="lead mb-5 fw-normal text-secondary" style="max-width: 540px;">
-                        Bridging the gap between academic theory and industry execution through robust engineering, AI integration, and immersive <span class="text-main fw-bold typewriter"></span>
+            <div class="hero-grid">
+                <div data-aos="fade-up">
+                    <div class="hero-badge">
+                        <span class="dot"></span>
+                        MSME Approved · Govt. of India
+                    </div>
+                    <h1 class="display-mega mb-4">
+                        Building<br><span class="grad-text">Digital</span><br>Futures.
+                    </h1>
+                    <p style="color: var(--mist); max-width: 480px; font-size: 1.05rem;">
+                        Enterprise-grade software, AI systems, and mobile platforms — paired with immersive mentorship for the next generation of tech leaders.
                     </p>
-                    <div class="d-flex gap-3 flex-wrap">
-                        <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="btn btn-primary-custom">Start Your Journey</a>
-                        <a href="#projects" class="btn bg-transparent fw-bold" style="border: 1px solid var(--glass-border); color: var(--text-main); border-radius: 8px; padding: 0.7rem 1.8rem;">View Case Studies</a>
+                    <div class="hero-actions">
+                        <a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="btn-primary">
+                            Start Your Journey <i class="bi bi-arrow-right"></i>
+                        </a>
+                        <a href="#projects" class="btn-ghost">
+                            <i class="bi bi-folder2-open"></i> View Work
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
-                    <div class="hero-img-container">
-                        <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/hero-img.png" class="img-fluid hero-img" alt="Digital Infrastructure">
+
+                <div class="hero-visual" data-aos="fade-left" data-aos-delay="150">
+                    <div class="hero-card">
+                        <div class="hero-card-header">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                            <span class="hero-card-title">np-techcrafters / stack.json</span>
+                        </div>
+                        <div class="hero-card-body">
+                            <div class="code-line"><span class="code-comment">// Company Profile</span></div>
+                            <div class="code-line"><span class="code-key">"company"</span>: <span class="code-str">"NP TechCrafters"</span>,</div>
+                            <div class="code-line"><span class="code-key">"status"</span>: <span class="code-val">MSME_APPROVED</span>,</div>
+                            <div class="code-line"><span class="code-key">"founded"</span>: <span class="code-num">2022</span>,</div>
+                            <div class="code-line">&nbsp;</div>
+                            <div class="code-line"><span class="code-comment">// Core Capabilities</span></div>
+                            <div class="code-line"><span class="code-key">"expertise"</span>: [</div>
+                            <div class="code-line">&nbsp;&nbsp;<span class="code-str">"Full-Stack Engineering"</span>,</div>
+                            <div class="code-line">&nbsp;&nbsp;<span class="code-str">"AI & Machine Learning"</span>,</div>
+                            <div class="code-line">&nbsp;&nbsp;<span class="code-str">"Cross-Platform Mobile"</span>,</div>
+                            <div class="code-line">&nbsp;&nbsp;<span class="code-str">"EdTech & Mentorship"</span></div>
+                            <div class="code-line">],</div>
+                            <div class="code-line">&nbsp;</div>
+                            <div class="code-line"><span class="code-key">"projects_deployed"</span>: <span class="code-num">25</span><span style="color:var(--mist)">+</span>,</div>
+                            <div class="code-line"><span class="code-key">"students_mentored"</span>: <span class="code-num">500</span><span style="color:var(--mist)">+</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="impact" class="py-5 border-top border-bottom" style="border-color: var(--glass-border) !important; background: rgba(37, 99, 235, 0.02);">
-        <div class="container py-4">
-            <div class="row g-4 text-center">
-                <div class="col-6 col-md-3" data-aos="fade-up">
-                    <h2 class="display-5 fw-bold text-gradient mb-2">25+</h2>
-                    <p class="text-secondary small text-uppercase letter-spacing-1 fw-bold mb-0">Projects Deployed</p>
+    <!-- Stats -->
+    <section id="stats">
+        <div class="container">
+            <div class="stats-grid" data-aos="fade-up">
+                <div class="stat-item">
+                    <span class="stat-num">25+</span>
+                    <span class="stat-label">Projects Deployed</span>
                 </div>
-                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
-                    <h2 class="display-5 fw-bold text-gradient mb-2">500+</h2>
-                    <p class="text-secondary small text-uppercase letter-spacing-1 fw-bold mb-0">Students Mentored</p>
+                <div class="stat-item">
+                    <span class="stat-num">500+</span>
+                    <span class="stat-label">Students Mentored</span>
                 </div>
-                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
-                    <h2 class="display-5 fw-bold text-gradient mb-2">4+</h2>
-                    <p class="text-secondary small text-uppercase letter-spacing-1 fw-bold mb-0">Live Platforms</p>
+                <div class="stat-item">
+                    <span class="stat-num">4+</span>
+                    <span class="stat-label">Live Platforms</span>
                 </div>
-                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
-                    <h2 class="display-5 fw-bold text-gradient mb-2">100%</h2>
-                    <p class="text-secondary small text-uppercase letter-spacing-1 fw-bold mb-0">Client Delivery</p>
+                <div class="stat-item">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Client Delivery</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-5" style="background: var(--bg-surface-1);">
-        <div class="container py-5">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <span class="section-tag">Corporate Identity</span>
-                    <h2 class="display-6 fw-bold mb-4">Architecting the <span class="text-gradient">Ecosystem</span></h2>
-                    <p class="text-secondary mb-4">
-                        NP TechCrafters is a forward-thinking technology consultancy and MSME-approved EdTech innovator. We design scalable architecture and engineer systems that drive real-world impact.
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div data-aos="fade-right">
+                    <span class="label">Our Identity</span>
+                    <h2 class="display-lg mt-4 mb-6">Architecting the <span class="grad-blue">Ecosystem.</span></h2>
+                    <p style="color: var(--mist); line-height: 1.8; margin: 1.5rem 0;">
+                        NP TechCrafters is a forward-thinking technology consultancy and MSME-approved EdTech innovator. We design scalable architecture and engineer systems that drive measurable, real-world impact.
                     </p>
-                    <p class="text-secondary mb-4">
-                        Led by active researchers and industry veterans, our expertise spans across cross-platform mobile development, robust backend ecosystems, and Explainable AI (XAI) models. Concurrently, we cultivate the next generation of technical leaders through hands-on virtual internships.
+                    <p style="color: var(--mist); line-height: 1.8; margin-bottom: 1.5rem;">
+                        Led by active researchers and industry veterans, our expertise spans cross-platform mobile, robust backend ecosystems, and Explainable AI (XAI) models — while cultivating the next generation of technical leaders through live project mentorship.
                     </p>
-                    <div class="d-flex gap-4 mt-5">
-                        <div class="border-start border-primary border-3 ps-3">
-                            <h4 class="fw-bold mb-1">MSME</h4>
-                            <span class="text-muted small text-uppercase letter-spacing-1">Govt. Recognized</span>
-                        </div>
-                        <div class="border-start border-primary border-3 ps-3">
-                            <h4 class="fw-bold mb-1">Live</h4>
-                            <span class="text-muted small text-uppercase letter-spacing-1">Project Mentorship</span>
-                        </div>
+                    <div class="msme-tag">
+                        <i class="bi bi-patch-check-fill"></i>
+                        MSME Government Recognized · Saharanpur, UP, India
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="row g-4">
-                        <div class="col-sm-6">
-                            <div class="pro-card">
-                                <div class="card-icon-wrapper"><i class="bi bi-cpu"></i></div>
-                                <h5 class="fw-bold">Innovation</h5>
-                                <p class="small text-secondary mb-0">Building robust tech infrastructure for tomorrow.</p>
-                            </div>
+
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="about-pillars">
+                        <div class="pillar">
+                            <div class="pillar-icon"><i class="bi bi-cpu-fill"></i></div>
+                            <h5>Innovation</h5>
+                            <p>Building robust tech infrastructure designed for tomorrow's challenges.</p>
                         </div>
-                        <div class="col-sm-6 mt-sm-5">
-                            <div class="pro-card">
-                                <div class="card-icon-wrapper"><i class="bi bi-people"></i></div>
-                                <h5 class="fw-bold">Community</h5>
-                                <p class="small text-secondary mb-0">Empowering and training future developers.</p>
-                            </div>
+                        <div class="pillar">
+                            <div class="pillar-icon"><i class="bi bi-people-fill"></i></div>
+                            <h5>Community</h5>
+                            <p>Empowering and upskilling future developers through mentorship.</p>
+                        </div>
+                        <div class="pillar">
+                            <div class="pillar-icon"><i class="bi bi-shield-check"></i></div>
+                            <h5>Quality</h5>
+                            <p>Delivering enterprise-grade solutions with meticulous attention to detail.</p>
+                        </div>
+                        <div class="pillar">
+                            <div class="pillar-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                            <h5>Growth</h5>
+                            <p>Scaling products and talent pipelines with strategic precision.</p>
                         </div>
                     </div>
                 </div>
@@ -417,331 +755,322 @@
         </div>
     </section>
 
-    <section id="services" class="py-5">
-        <div class="container py-5">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <span class="section-tag">Capabilities</span>
-                <h2 class="display-6 fw-bold mb-3">Core <span class="text-gradient">Competencies</span></h2>
-                <p class="text-secondary">Mastering high-demand technologies through practical application.</p>
+    <!-- Services -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="label">Core Competencies</span>
+                <h2 class="display-lg mt-4">What We <span class="grad-blue">Build.</span></h2>
+                <p>Mastering high-demand technologies through practical, production-grade application.</p>
             </div>
-            
-            <div class="row g-4">
-                <div class="col-lg-4" data-aos="fade-up">
-                    <div class="pro-card">
-                        <div class="card-icon-wrapper"><i class="bi bi-code-square"></i></div>
-                        <h4 class="fw-bold mb-3">Full-Stack Engineering</h4>
-                        <p class="text-secondary mb-0">Develop scalable ecosystems. We specialize in MERN Stack (MongoDB, Express, React, Node.js) and robust Python Django architectures.</p>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="pro-card">
-                        <div class="card-icon-wrapper"><i class="bi bi-diagram-3"></i></div>
-                        <h4 class="fw-bold mb-3">AI & Machine Learning</h4>
-                        <p class="text-secondary mb-0">Harness data intelligence. We develop predictive models, NLP systems, and intelligent automation with a strong focus on Explainable AI (XAI).</p>
+
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up">
+                    <span class="service-num">01 — Engineering</span>
+                    <div class="service-icon"><i class="bi bi-code-slash"></i></div>
+                    <h3>Full-Stack Engineering</h3>
+                    <p>Develop scalable, high-performance ecosystems. We specialize in MERN Stack (MongoDB, Express, React, Node.js) and robust Python Django architectures built for scale.</p>
+                    <div class="service-tags">
+                        <span class="s-tag">React.js</span>
+                        <span class="s-tag">Node.js</span>
+                        <span class="s-tag">Django</span>
+                        <span class="s-tag">MongoDB</span>
                     </div>
                 </div>
 
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="pro-card">
-                        <div class="card-icon-wrapper"><i class="bi bi-phone"></i></div>
-                        <h4 class="fw-bold mb-3">Cross-Platform Mobile</h4>
-                        <p class="text-secondary mb-0">Deliver seamless native experiences for iOS and Android utilizing single dynamic codebases with Flutter and Firebase integration.</p>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="service-num">02 — Intelligence</span>
+                    <div class="service-icon"><i class="bi bi-robot"></i></div>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Harness data intelligence. We develop predictive models, NLP systems, and intelligent automation with a strong focus on Explainable AI (XAI) for transparency.</p>
+                    <div class="service-tags">
+                        <span class="s-tag">XAI</span>
+                        <span class="s-tag">NLP</span>
+                        <span class="s-tag">TensorFlow</span>
+                        <span class="s-tag">Computer Vision</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-   <section id="projects" class="py-5" style="background: var(--bg-surface-1);">
-    <div class="container py-5">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5" data-aos="fade-up">
-            <div>
-                <span class="section-tag">Portfolio</span>
-                <h2 class="display-6 fw-bold mb-0">Recent <span class="text-gradient">Deployments</span></h2>
-            </div>
-            <p class="text-secondary mb-0 mt-3 mt-md-0 max-w-md">Real-world platforms built with industry-grade technologies.</p>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                <div class="project-showcase d-flex flex-column">
-                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="B2H Nirman">
-                    <div class="project-content">
-                        <div>
-                            <div class="d-flex flex-wrap gap-2 mb-2">
-                                <span class="tech-badge">Flutter</span>
-                                <span class="tech-badge">Firebase</span>
-                                <span class="tech-badge bg-success text-white border-success">Live App</span>
-                            </div>
-                            <h5 class="fw-bold mb-1">B2H Nirman</h5>
-                            <p class="text-secondary small mb-3" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                                Cross-platform e-commerce mobile application streamlining construction material procurement.
-                            </p>
-                        </div>
-                        <div class="d-flex gap-2">
-                            <a href="https://b2hnirman.com" target="_blank" class="btn btn-sm btn-primary-custom w-50">Website</a>
-                            <a href="https://play.google.com/store/apps/details?id=com.np.ecommerceapp&pcampaignid=web_share" target="_blank" class="btn btn-sm w-50" style="background: var(--bg-surface-2); color: var(--text-main); border: 1px solid var(--glass-border);">Play Store</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="project-showcase d-flex flex-column">
-                    <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" alt="Prashanottar Platform">
-                    <div class="project-content">
-                        <div>
-                            <div class="d-flex flex-wrap gap-2 mb-2">
-                                <span class="tech-badge">Python</span>
-                                <span class="tech-badge">Django</span>
-                            </div>
-                            <h5 class="fw-bold mb-1">Prashanottar</h5>
-                            <p class="text-secondary small mb-3">An intelligent Q&A and exam-preparation platform for competitive learning.</p>
-                        </div>
-                        <a href="https://prashanottar.pythonanywhere.com/" target="_blank" class="btn btn-sm btn-primary-custom w-100 mt-auto">View Platform</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="project-showcase d-flex flex-column">
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&w=800&q=80" alt="Smart Billing">
-                    <div class="project-content">
-                        <div>
-                            <div class="d-flex flex-wrap gap-2 mb-2">
-                                <span class="tech-badge">Android</span>
-                                <span class="tech-badge">QR API</span>
-                            </div>
-                            <h5 class="fw-bold mb-1">Smart Billing System</h5>
-                            <p class="text-secondary small mb-3">Barcode-based billing and inventory management integrated with a grocery app.</p>
-                        </div>
-                        <a href="https://play.google.com/store/apps/details?id=com.Project1.mygrocery&hl=en_IN" target="_blank" class="btn btn-sm w-100 mt-auto" style="background: var(--bg-surface-2); color: var(--text-main); border: 1px solid var(--glass-border);">View on Play Store</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="project-showcase d-flex flex-column">
-                    <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=800&q=80" alt="XCI Classes">
-                    <div class="project-content">
-                        <div>
-                            <div class="d-flex flex-wrap gap-2 mb-2">
-                                <span class="tech-badge">Web</span>
-                                <span class="tech-badge">EdTech</span>
-                            </div>
-                            <h5 class="fw-bold mb-1">XCI Classes</h5>
-                            <p class="text-secondary small mb-3">A modern EdTech website delivering structured courses and digital learning resources.</p>
-                        </div>
-                        <a href="https://xciclasses.com/" target="_blank" class="btn btn-sm btn-primary-custom w-100 mt-auto">Visit Website</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="project-showcase d-flex flex-column">
-                    <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?auto=format&fit=crop&w=800&q=80" alt="Q-In System">
-                    <div class="project-content">
-                        <div>
-                            <div class="d-flex flex-wrap gap-2 mb-2">
-                                <span class="tech-badge">Mobile</span>
-                                <span class="tech-badge">Geofencing</span>
-                            </div>
-                            <h5 class="fw-bold mb-1">Q-In Tracker</h5>
-                            <p class="text-secondary small mb-3">Smart mobile attendance system utilizing QR scanners and geofencing.</p>
-                        </div>
-                        <span class="btn btn-sm w-100 mt-auto disabled" style="background: transparent; color: var(--text-secondary); border: 1px dashed var(--glass-border);">Internal Tool</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
-                <div class="project-showcase d-flex flex-column">
-                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80" alt="AI Legal">
-                    <div class="project-content">
-                        <div>
-                            <div class="d-flex flex-wrap gap-2 mb-2">
-                                <span class="tech-badge">NLP</span>
-                                <span class="tech-badge">XAI</span>
-                            </div>
-                            <h5 class="fw-bold mb-1">Legal AI Analytics</h5>
-                            <p class="text-secondary small mb-3">Bail prediction and legal risk analysis using Explainable AI (XAI) models.</p>
-                        </div>
-                        <span class="btn btn-sm w-100 mt-auto disabled" style="background: transparent; color: var(--primary); border: 1px solid rgba(37, 99, 235, 0.3);">Research Protocol</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-    <section id="stack" class="py-5">
-        <div class="container py-5 text-center">
-            <div class="mb-5" data-aos="fade-up">
-                <span class="section-tag">Technology Arsenal</span>
-                <h2 class="display-6 fw-bold mb-3">Powered by <span class="text-gradient">Modern Tech</span></h2>
-                <p class="text-secondary max-w-md mx-auto">We leverage industry-leading frameworks and tools to build robust, scalable, and high-performance digital products.</p>
-            </div>
-            
-            <div class="row g-5 mt-3 text-start justify-content-center">
-                <div class="col-md-5" data-aos="fade-up" data-aos-delay="100">
-                    <h5 class="fw-bold text-main mb-4 border-bottom border-secondary pb-2" style="border-color: var(--glass-border) !important;">Frontend & Mobile</h5>
-                    <div class="d-flex flex-wrap gap-3">
-                        <span class="tech-pill"><i class="bi bi-phone text-primary"></i> Flutter</span>
-                        <span class="tech-pill"><i class="bi bi-filetype-jsx text-info"></i> React.js</span>
-                        <span class="tech-pill"><i class="bi bi-android2 text-success"></i> Android SDK</span>
-                        <span class="tech-pill"><i class="bi bi-bootstrap text-purple" style="color: #8b5cf6;"></i> Bootstrap</span>
-                        <span class="tech-pill"><i class="bi bi-palette text-warning"></i> Tailwind CSS</span>
-                    </div>
-                </div>
-                
-                <div class="col-md-5" data-aos="fade-up" data-aos-delay="200">
-                    <h5 class="fw-bold text-main mb-4 border-bottom border-secondary pb-2" style="border-color: var(--glass-border) !important;">Backend & Database</h5>
-                    <div class="d-flex flex-wrap gap-3">
-                        <span class="tech-pill"><i class="bi bi-filetype-py text-warning"></i> Python / Django</span>
-                        <span class="tech-pill"><i class="bi bi-server text-success"></i> Node.js</span>
-                        <span class="tech-pill"><i class="bi bi-database text-info"></i> MongoDB</span>
-                        <span class="tech-pill"><i class="bi bi-database-fill text-primary"></i> Firebase</span>
-                        <span class="tech-pill"><i class="bi bi-cloud text-secondary"></i> AWS Cloud</span>
-                    </div>
-                </div>
-                
-                <div class="col-md-10" data-aos="fade-up" data-aos-delay="300">
-                    <h5 class="fw-bold text-main mb-4 border-bottom border-secondary pb-2 mt-4" style="border-color: var(--glass-border) !important;">AI & Machine Learning</h5>
-                    <div class="d-flex flex-wrap gap-3">
-                        <span class="tech-pill"><i class="bi bi-robot text-primary"></i> Explainable AI (XAI)</span>
-                        <span class="tech-pill"><i class="bi bi-cpu text-warning"></i> TensorFlow</span>
-                        <span class="tech-pill"><i class="bi bi-chat-left-text text-success"></i> Natural Language Processing (NLP)</span>
-                        <span class="tech-pill"><i class="bi bi-qr-code-scan text-info"></i> Computer Vision</span>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="service-num">03 — Mobile</span>
+                    <div class="service-icon"><i class="bi bi-phone"></i></div>
+                    <h3>Cross-Platform Mobile</h3>
+                    <p>Deliver seamless native experiences for iOS and Android from a single dynamic codebase using Flutter and Firebase integration.</p>
+                    <div class="service-tags">
+                        <span class="s-tag">Flutter</span>
+                        <span class="s-tag">Firebase</span>
+                        <span class="s-tag">Android SDK</span>
+                        <span class="s-tag">iOS</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="marquee-section">
-        <div class="container-fluid">
-            <div class="text-center mb-4">
-                <span class="text-muted small text-uppercase fw-bold letter-spacing-1">Trusted Partners & Ecosystem</span>
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;">
+                <div>
+                    <span class="label">Portfolio</span>
+                    <h2 class="display-lg mt-4">Recent <span class="grad-blue">Deployments.</span></h2>
+                </div>
+                <p style="color: var(--mist); max-width: 340px; font-size: 0.9rem; padding-bottom: 4px;">Real-world platforms built with industry-grade technologies and deployed at scale.</p>
             </div>
-            <div class="marquee-wrapper" style="mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent); overflow: hidden;">
-                <div class="marquee-content d-flex align-items-center" style="width: max-content;">
-                    <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" class="client-logo" alt="Prashanottar" style="height: 50px;">
-                    <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" class="client-logo" alt="Client">
-                    <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" class="client-logo" alt="Client">
-                    <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" class="client-logo rounded-circle" alt="Client">
-                    <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" class="client-logo" alt="Prashanottar" style="height: 50px;">
-                    <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" class="client-logo" alt="Client">
-                    <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" class="client-logo" alt="Client">
-                    <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" class="client-logo rounded-circle" alt="Client">
-                    <img src="b2hnirman.jpeg" class="client-logo rounded-circle" alt="Client">
 
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="B2H Nirman" class="project-img">
+                    <div class="project-body">
+                        <div class="project-badges">
+                            <span class="p-badge">Flutter</span>
+                            <span class="p-badge">Firebase</span>
+                            <span class="p-badge live">● Live App</span>
+                        </div>
+                        <h4>B2H Nirman</h4>
+                        <p>Cross-platform e-commerce mobile application streamlining construction material procurement for contractors and retailers.</p>
+                        <div class="project-links">
+                            <a href="https://b2hnirman.com" target="_blank" class="plink plink-primary">Website</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.np.ecommerceapp" target="_blank" class="plink plink-ghost">Play Store</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="80">
+                    <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" alt="Prashanottar" class="project-img" style="object-fit:contain;background:var(--ink-3);padding:1rem;">
+                    <div class="project-body">
+                        <div class="project-badges">
+                            <span class="p-badge">Python</span>
+                            <span class="p-badge">Django</span>
+                        </div>
+                        <h4>Prashanottar</h4>
+                        <p>An intelligent Q&A and exam-preparation platform engineered for competitive learning at scale.</p>
+                        <div class="project-links">
+                            <a href="https://prashanottar.pythonanywhere.com/" target="_blank" class="plink plink-primary">View Platform</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="160">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&w=800&q=80" alt="Smart Billing" class="project-img">
+                    <div class="project-body">
+                        <div class="project-badges">
+                            <span class="p-badge">Android</span>
+                            <span class="p-badge">QR API</span>
+                        </div>
+                        <h4>Smart Billing System</h4>
+                        <p>Barcode-based billing and inventory management system integrated within a grocery mobile app.</p>
+                        <div class="project-links">
+                            <a href="https://play.google.com/store/apps/details?id=com.Project1.mygrocery&hl=en_IN" target="_blank" class="plink plink-ghost">View on Play Store</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="0">
+                    <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=800&q=80" alt="XCI Classes" class="project-img">
+                    <div class="project-body">
+                        <div class="project-badges">
+                            <span class="p-badge">Web</span>
+                            <span class="p-badge">EdTech</span>
+                        </div>
+                        <h4>XCI Classes</h4>
+                        <p>A modern EdTech website delivering structured courses and curated digital learning resources.</p>
+                        <div class="project-links">
+                            <a href="https://xciclasses.com/" target="_blank" class="plink plink-primary">Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="80">
+                    <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?auto=format&fit=crop&w=800&q=80" alt="Q-In Tracker" class="project-img">
+                    <div class="project-body">
+                        <div class="project-badges">
+                            <span class="p-badge">Mobile</span>
+                            <span class="p-badge">Geofencing</span>
+                        </div>
+                        <h4>Q-In Tracker</h4>
+                        <p>Smart mobile attendance system utilizing QR scanners and precision geofencing technology.</p>
+                        <div class="project-links">
+                            <a class="plink plink-internal">Internal Tool</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="160">
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80" alt="Legal AI" class="project-img">
+                    <div class="project-body">
+                        <div class="project-badges">
+                            <span class="p-badge">NLP</span>
+                            <span class="p-badge">XAI</span>
+                            <span class="p-badge research">Research</span>
+                        </div>
+                        <h4>Legal AI Analytics</h4>
+                        <p>Bail prediction and legal risk analysis using Explainable AI models for transparent jurisprudence.</p>
+                        <div class="project-links">
+                            <a class="plink plink-internal">Research Protocol</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Tech Stack -->
+    <section id="stack">
+        <div class="container">
+            <div class="section-header text-center" data-aos="fade-up" style="margin-bottom: 4rem;">
+                <span class="label" style="justify-content:center;">Technology Arsenal</span>
+                <h2 class="display-lg mt-4">Powered by <span class="grad-blue">Modern Tech.</span></h2>
+                <p style="margin: 1rem auto 0; max-width: 500px;">We leverage industry-leading frameworks and tools to build robust, scalable, and high-performance digital products.</p>
+            </div>
+
+            <div class="stack-categories">
+                <div class="stack-cat" data-aos="fade-up">
+                    <div class="stack-cat-title">Frontend & Mobile</div>
+                    <div class="stack-pills">
+                        <span class="stack-pill"><i class="bi bi-phone"></i> Flutter</span>
+                        <span class="stack-pill"><i class="bi bi-filetype-jsx"></i> React.js</span>
+                        <span class="stack-pill"><i class="bi bi-android2"></i> Android SDK</span>
+                        <span class="stack-pill"><i class="bi bi-bootstrap"></i> Bootstrap</span>
+                        <span class="stack-pill"><i class="bi bi-palette"></i> Tailwind CSS</span>
+                    </div>
+                </div>
+                <div class="stack-cat" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stack-cat-title">Backend & Database</div>
+                    <div class="stack-pills">
+                        <span class="stack-pill"><i class="bi bi-filetype-py"></i> Python</span>
+                        <span class="stack-pill"><i class="bi bi-server"></i> Django</span>
+                        <span class="stack-pill"><i class="bi bi-hexagon"></i> Node.js</span>
+                        <span class="stack-pill"><i class="bi bi-database"></i> MongoDB</span>
+                        <span class="stack-pill"><i class="bi bi-database-fill"></i> Firebase</span>
+                        <span class="stack-pill"><i class="bi bi-cloud"></i> AWS Cloud</span>
+                    </div>
+                </div>
+                <div class="stack-cat" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stack-cat-title">AI & Intelligence</div>
+                    <div class="stack-pills">
+                        <span class="stack-pill"><i class="bi bi-robot"></i> Explainable AI</span>
+                        <span class="stack-pill"><i class="bi bi-cpu"></i> TensorFlow</span>
+                        <span class="stack-pill"><i class="bi bi-chat-left-text"></i> NLP</span>
+                        <span class="stack-pill"><i class="bi bi-eye"></i> Computer Vision</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section id="partners">
+        <div class="container">
+            <p class="marquee-label">Trusted Partners & Ecosystem</p>
+        </div>
+        <div class="marquee-track">
+            <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" alt="Prashanottar">
+            <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" alt="Xperts">
+            <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" alt="Partner">
+            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="NP TechCrafters">
+            <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" alt="Prashanottar">
+            <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" alt="Xperts">
+            <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" alt="Partner">
+            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="NP TechCrafters">
+            <!-- Duplicate for seamless loop -->
+            <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" alt="Prashanottar">
+            <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" alt="Xperts">
+            <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" alt="Partner">
+            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="NP TechCrafters">
+            <img src="https://i.postimg.cc/jdRWL7b1/Prashanottar.png" alt="Prashanottar">
+            <img src="https://i.postimg.cc/7LXtc9p8/xperts-logo-1.png" alt="Xperts">
+            <img src="https://i.postimg.cc/QMSYPmRD/logogk1.png" alt="Partner">
+            <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="NP TechCrafters">
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="row g-5 mb-5">
-                <div class="col-lg-4">
-                    <a class="navbar-brand d-flex align-items-center gap-2 mb-4" href="#">
-                        <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" alt="Logo" style="height: 42px; border-radius: 8px;">
-                        <span class="fw-bold fs-4 text-main">NP TechCrafters</span>
-                    </a>
-                    <p class="text-secondary small mb-4 pe-lg-4">Empowering the next generation of tech leaders through enterprise-grade architecture, virtual internships, and cutting-edge skill development.</p>
-                    <div class="d-flex gap-2">
-                        <a href="https://www.instagram.com/np.techcrafters" class="social-link"><i class="bi bi-instagram"></i></a>
-                        <a href="https://www.facebook.com/people/NP-TechCrafters/61565158317180/" class="social-link"><i class="bi bi-facebook"></i></a>
-                        <a href="https://www.linkedin.com/company/np-techcrafters" class="social-link"><i class="bi bi-linkedin"></i></a>
+            <div class="footer-grid">
+                <div>
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;">
+                        <img src="https://raw.githubusercontent.com/Ravikantmahi/nptechcrafters/refs/heads/main/imgs/NPTECH.jpeg" style="height:36px;border-radius:8px;" alt="Logo">
+                        <span class="footer-brand-name">NP TechCrafters</span>
+                    </div>
+                    <p class="footer-desc">Empowering the next generation of tech leaders through enterprise-grade architecture, virtual internships, and cutting-edge skill development.</p>
+                    <div class="socials">
+                        <a href="https://www.instagram.com/np.techcrafters" target="_blank" class="social-btn"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.facebook.com/people/NP-TechCrafters/61565158317180/" target="_blank" class="social-btn"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.linkedin.com/company/np-techcrafters" target="_blank" class="social-btn"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-6 offset-lg-2">
-                    <h6 class="fw-bold mb-4 text-main">Company</h6>
-                    <ul class="list-unstyled d-flex flex-column gap-2">
-                        <li><a href="#hero" class="footer-link">Overview</a></li>
-                        <li><a href="#about" class="footer-link">About Us</a></li>
-                        <li><a href="#stack" class="footer-link">Tech Stack</a></li>
+                <div class="footer-col">
+                    <h6>Company</h6>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Overview</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#stack">Tech Stack</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-6">
-                    <h6 class="fw-bold mb-4 text-main">Services</h6>
-                     <ul class="list-unstyled d-flex flex-column gap-2">
-                        <li><a href="#services" class="footer-link">Capabilities</a></li>
-                        <li><a href="#projects" class="footer-link">Case Studies</a></li>
-                        <li><a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" class="footer-link text-primary fw-bold">Apply Now</a></li>
+                <div class="footer-col">
+                    <h6>Services</h6>
+                    <ul class="footer-links">
+                        <li><a href="#services">Capabilities</a></li>
+                        <li><a href="#projects">Case Studies</a></li>
+                        <li><a href="https://forms.gle/UeHuM7e4rSVp6Wuu8" target="_blank" style="color: var(--blue); font-weight: 600;">Apply Now →</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2">
-                    <h6 class="fw-bold mb-4 text-main">Contact</h6>
-                    <ul class="list-unstyled d-flex flex-column gap-2 text-secondary small">
-                        <li class="d-flex gap-2"><i class="bi bi-geo-alt mt-1"></i> Saharanpur, UP, India</li>
-                        <li class="d-flex gap-2"><i class="bi bi-envelope mt-1"></i> nptechcrafters@gmail.com</li>
-                        <li class="d-flex gap-2"><i class="bi bi-telephone mt-1"></i> +91 9149188705</li>
-                    </ul>
+                <div class="footer-col">
+                    <h6>Contact</h6>
+                    <div class="footer-contact-item">
+                        <i class="bi bi-geo-alt"></i>
+                        <span>Saharanpur, UP, India</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="bi bi-envelope"></i>
+                        <span>nptechcrafters@gmail.com</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="bi bi-telephone"></i>
+                        <span>+91 9149188705</span>
+                    </div>
                 </div>
             </div>
-            <div class="border-top pt-4 d-md-flex justify-content-between align-items-center text-center text-md-start" style="border-color: var(--glass-border) !important;">
-                <small class="text-secondary mb-2 mb-md-0 d-block">&copy; 2026 NP TechCrafters. All rights reserved.</small>
-                <div class="small text-secondary">
-                    Total Visits: <span id="visitCount" class="fw-bold font-monospace" style="color: var(--text-main);">...</span>
-                </div>
+
+            <div class="footer-bottom">
+                <small>&copy; 2026 NP TechCrafters. All rights reserved.</small>
+                <div class="visit-counter">Visits: <span id="visitCount">—</span></div>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    
     <script>
-        // Initialize Animations
-        AOS.init({ duration: 800, once: true, easing: 'ease-out-cubic', offset: 50 });
+        AOS.init({ duration: 750, once: true, easing: 'ease-out-quad', offset: 40 });
 
-        // Theme Management
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-bs-theme', theme);
-            localStorage.setItem('theme', theme);
-            const icon = document.querySelector('#themeToggle i');
-            if (theme === 'dark') { 
-                icon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill'); 
-            } else { 
-                icon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill'); 
-            }
-        }
-        
+        // Navbar scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        // Theme toggle
+        let isDark = true;
         function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
-            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+            isDark = !isDark;
+            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            document.getElementById('themeIcon').className = isDark ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
         }
-        
-        // Default to dark mode if no local storage is set
-        setTheme(localStorage.getItem('theme') || 'dark');
+        const saved = localStorage.getItem('theme');
+        if (saved === 'light') toggleTheme();
 
-        // Navbar Scroll Effect
-        window.addEventListener("scroll", () => {
-            const navbar = document.querySelector(".navbar");
-            navbar.classList.toggle('py-2', window.scrollY > 50);
-            navbar.classList.toggle('py-3', window.scrollY <= 50);
-            if(window.scrollY > 50) {
-                navbar.style.boxShadow = "var(--shadow-soft)";
-            } else {
-                navbar.style.boxShadow = "none";
-            }
-        });
+        // Mobile menu
+        document.getElementById('hamburger').onclick = () => document.getElementById('mobileMenu').classList.add('open');
+        document.getElementById('mobileClose').onclick = closeMobile;
+        function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
 
-        // Typewriter Effect
-        new Typed(".typewriter", {
-            strings: ["Skill Development.", "AI Solutions.", "Mobile Architecture."],
-            typeSpeed: 40, backSpeed: 20, backDelay: 2500, loop: true, showCursor: true, cursorChar: '|'
-        });
-
-        // Visitor Counter logic
-        let visits = localStorage.getItem("visits") || 18472;
-        visits = parseInt(visits) + 1;
-        localStorage.setItem("visits", visits);
-        document.getElementById("visitCount").textContent = visits.toLocaleString();
+        // Visit counter
+        let v = parseInt(localStorage.getItem('visits') || '18472') + 1;
+        localStorage.setItem('visits', v);
+        document.getElementById('visitCount').textContent = v.toLocaleString('en-IN');
     </script>
 </body>
 </html>
